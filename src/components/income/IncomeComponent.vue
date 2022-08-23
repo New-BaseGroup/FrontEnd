@@ -1,43 +1,45 @@
 <template>
-  <form @submit.prevent="submitIncome">
-    <label for="date">Income category</label>
-    <select
-      name="income-category"
-      id="income-category"
-      v-model="selectedIncomeCat"
-    >
-      <!-- Later when fetching -->
-      <!-- <option v-for="inCat in category" :key="inCat.id" value="">
+  <base-card>
+    <form @submit.prevent="submitIncome">
+      <label for="date">Income category</label>
+      <select
+        name="income-category"
+        id="income-category"
+        v-model="selectedIncomeCat"
+      >
+        <!-- Later when fetching -->
+        <!-- <option v-for="inCat in category" :key="inCat.id" value="">
       {{ inCat.name }}
     </option> -->
-      <option value=""></option>
-      <option value="salary">Salary</option>
-      <option value="loan">loan</option>
-      <option value="other">Other</option>
-    </select>
-    <p v-if="selectedIncomeCat === ''">{{ validationMsg }}</p>
+        <option value=""></option>
+        <option value="salary">Salary</option>
+        <option value="loan">loan</option>
+        <option value="other">Other</option>
+      </select>
+      <p v-if="selectedIncomeCat === ''">{{ validationMsg }}</p>
 
-    <label for="income-amount">Balance:</label>
-    <input type="number" name="income-amount" v-model="incomeAmount" />
+      <label for="income-amount">Balance:</label>
+      <input type="number" name="income-amount" v-model="incomeAmount" />
 
-    <p v-if="incomeAmount === 0">{{ validationMsg }}</p>
+      <p v-if="incomeAmount === 0">{{ validationMsg }}</p>
 
-    <label for="date">Income Date & Time</label>
-    <input type="date" id="date" name="date" v-model="dateTime" required />
-    <p v-if="dateTime === ' '">{{ validationMsg }}</p>
+      <label for="date">Income Date & Time</label>
+      <input type="date" id="date" name="date" v-model="dateTime" required />
+      <p v-if="dateTime === ' '">{{ validationMsg }}</p>
 
-    <label for="description">Describe the income details</label>
-    <textarea
-      name="description"
-      id="description"
-      cols="30"
-      rows="3"
-      placeholder="Optional"
-      v-model="description"
-    ></textarea>
-    <button>submit</button>
-    <p v-if="error !== ''">{{ error }} {{ resetRequestError }}</p>
-  </form>
+      <label for="description">Describe the income details</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="30"
+        rows="3"
+        placeholder="Optional"
+        v-model="description"
+      ></textarea>
+      <button>submit</button>
+      <p v-if="error !== ''">{{ error }} {{ resetRequestError }}</p>
+    </form>
+  </base-card>
 </template>
 
 <script>
