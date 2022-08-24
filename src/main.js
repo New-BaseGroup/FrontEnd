@@ -1,11 +1,8 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import ExpenseComponent from "./components/expense/ExpenseComponent.vue";
+const app = createApp(App);
 
-import './assets/main.css'
+app.component("expense-component", ExpenseComponent);
 
-const app = createApp(App)
-
-app.use(router)
-
-app.mount('#app')
+app.mount("#app");
