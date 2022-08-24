@@ -23,9 +23,7 @@
 
       <label>Expense name:</label>
       <!-- <input type="text" name="expense-name" v-model="expenseName" /> -->
-      <expense-name-field
-        @expense-name="getExpenseNameBack"
-      ></expense-name-field>
+      <ExpenseNameField @expense-name="getExpenseNameBack"></ExpenseNameField>
       <!-- <div v-for="expense in expenseList" :key="expense">
         <ExpenseNameField @expense-name="getExpenseNameBack"></ExpenseNameField>
       </div> -->
@@ -65,6 +63,9 @@
 import axios from "axios";
 import ExpenseNameField from "./ExpenseNameField.vue";
 export default {
+  components: {
+    ExpenseNameField,
+  },
   data() {
     return {
       selectedExpCat: "food",
