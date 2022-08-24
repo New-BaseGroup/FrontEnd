@@ -8,43 +8,39 @@
 			<!-- <option v-for="exCat in category" :key="exCat.id" value="">
       {{ exCat.name }}
     </option> -->
-			<option value="" disabled hidden>Select Category</option>
+			<option value="" disabled hidden>Select Category</option> <!-- This is coz our default value is an empty string so this will shot up by default.-->
 			<option value="1">Food</option>
 			<option value="2">Car</option>
 			<option value="3">Other</option>
 		</select>
 
-		<p v-if="balanceChangeDTO.budgetCategoryID > 3">{{ validationMsg }}</p>
-
-		<!-- <label for="title">Expense name:</label>-->
-		<!-- <input type="text" name="expense-name" v-model="expenseName" /> -->
+	
 
 		<input type="text" name="title" v-model="v$.balanceChangeDTO.title.$model" placeholder="Expense name:" />
+
+    <!-- v$ is so we use the validator component. same with $model.-->
+		<!-- this 2 rows are copy pasted from the validation @vuelidate/validators and will show error message if the validation rules are broken and will only show error if 
+    user has inputed something in the field aka it togles it to dirty first after user inputs.-->
+
 		<div class="input-errors" v-for="(error, index) of v$.balanceChangeDTO.title.$errors" :key="index">
 			<div class="error-msg">{{ error.$message }}</div>
 		</div>
 
-		<!-- <div v-for="expense in expenseList" :key="expense">
-        <ExpenseNameField @expense-name="getExpenseNameBack"></ExpenseNameField>
-      </div> -->
-
-		<!-- ------------------------ -->
-		<!-- ------------------------ -->
-		<!-- ------------------------ -->
-		<!-- ------------------------ -->
-		<!-- ------------------------ -->
-		<!-- ------------------------ -->
-		<!-- ------------------------ -->
-		<!--<label for="expense-amount">Balance:</label>-->
-		<input type="number" name="expense-amount" v-model="v$.balanceChangeDTO.amount.$model" placeholder="Amount:" />
-		<div class="input-errors" v-for="(error, index) of v$.balanceChangeDTO.amount.$errors" :key="index">
+	
+		<input type="number" name="expense-amount" v-model="v$.balanceChangeDTO.amount.$model" placeholder="Amount:" /> 
+    <div class="input-errors" v-for="(error, index) of v$.balanceChangeDTO.amount.$errors" :key="index">
 			<div class="error-msg">{{ error.$message }}</div>
 		</div>
+     
+     <!-- old validation method  
 		<p v-if="balanceChangeDTO.amount === 0">{{ validationMsg }}</p>
+    -->
 
 		<label for="balanceDate">Expense Date & Time</label>
 		<input type="date" name="balanceDate" v-model="v$.balanceChangeDTO.date.$model" />
-		<p v-if="balanceChangeDTO.date === ''">{{ validationMsg }}</p>
+		<div class="input-errors" v-for="(error, index) of v$.balanceChangeDTO.date.$errors" :key="index">
+			<div class="error-msg">{{ error.$message }}</div>
+		</div>
 
 		<label for="description">Description</label>
 		<textarea
@@ -67,14 +63,14 @@ import useVuelidate from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
 export default {
 	setup() {
-		return { v$: useVuelidate() };
+		return { v$: useVuelidate() }; //this on is to use the validator funktion
 	},
 	components: {
 		ExpenseNameField,
 	},
 	data() {
 		return {
-			balanceChangeDTO: {
+			balanceChangeDTO: { //now we can send balanceChangeDTO directly to endpoint as its formated same as the backend wants it.
 				budgetCategoryID: '',
 				title: '',
 				amount: '',
@@ -87,7 +83,8 @@ export default {
 	},
 	validations() {
 		return {
-			balanceChangeDTO: { // here we can add validation rules.
+			balanceChangeDTO: {
+				// here we can add validation rules.
 				budgetCategoryID: { required }, // matches this.balanceChangeDTO.budgetCategoryID
 				title: { required }, // matches this.balanceChangeDTO.title
 				amount: { required },
@@ -97,7 +94,7 @@ export default {
 	},
 
 	computed: {
-		resetRequestError() {
+		resetRequestError() { //legazy code as validation is now used by an other function
 			setTimeout(() => {
 				this.error = '';
 			}, 3000);
@@ -106,7 +103,7 @@ export default {
 	methods: {
 		submitExpense() {
 			axios
-				.post('api', {
+				.post('api', { // adam: have not done anything here realy. 
 					// keys must match DTO
 					budgetCategoryID: this.budgetCategoryID == '' ? this.validationMsg : this.budgetCategoryID,
 					amount: this.amount == 0 ? this.validationMsg : this.amount,
