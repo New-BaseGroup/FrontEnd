@@ -13,6 +13,7 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
   </header>
   <RouterView />
+  <income-component></income-component>
 </template>
 
 <style scoped>
