@@ -9,11 +9,12 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/register">Register</RouterLink>
+        <RouterLink to="/income">Income</RouterLink>
+        <RouterLink to="/expense">Expense</RouterLink>
       </nav>
     </div>
   </header>
   <RouterView />
-  <income-component></income-component>
 </template>
 
 <style scoped>
