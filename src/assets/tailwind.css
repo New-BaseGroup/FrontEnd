@@ -3,3 +3,12 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+    .logo-main {
+      @apply text-white tracking-tight text-4xl;
+    }
+    .sideBardNavigation {
+      @apply flex w-full cursor-pointer items-center rounded-tl-full rounded-bl-full pl-4 transition duration-300 ease-in-out mr-0 py-4 hover:bg-white hover:text-[#76C6D1]; 
+    }
+  }
