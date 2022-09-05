@@ -44,7 +44,7 @@ import { RouterLink, RouterView } from "vue-router";
           >
             <RouterLink
               class="relative hover:text-[#76C6D1] flex items-center justify-left gap-2"
-              to="/"
+              to="/dashboard"
             >
               <font-awesome-icon :icon="['fas', 'home']" />
               <h1 class="">
