@@ -49,8 +49,8 @@
   </div>
 
   <div class="">
-    <base-card class="flex flex-col items-center">
-      <div class="flex justify-between gap-60">
+    <base-card class="flex flex-col">
+      <div class="flex justify-between">
         <p class="ml-5 text-xl text-[#76C6D1]">Transactions</p>
         <button
           class="mr-5 bg-[#76C6D1] text-white px-4 py-1 rounded-xl hover:bg-[#9ccad0]"
@@ -206,7 +206,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="flex gap-4">
+      <div class="flex self-center gap-4">
         <p class="bg-[#bebebe] px-2 rounded text-white cursor-pointer">1</p>
         <p class="cursor-pointer">2</p>
         <p class="cursor-pointer">3</p>
