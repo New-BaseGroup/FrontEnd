@@ -7,7 +7,7 @@
 
   <side :class="` col-span-1 ${sideBarWidth}`">
     <span
-      class="relative top-0 left-0 flex flex-col bg-[#76C6D1] h-screen overflow-hidden"
+      class="relative top-0 left-0 flex flex-col bg-[#3094a1] h-screen overflow-hidden"
     >
       <span
         :class="` self-center ${
@@ -16,7 +16,7 @@
         >Logo</span
       >
       <button
-        :class="`absolute top-12 right-0 w-5 h-12 bg-[#76C6D1] cursor-pointer rounded-tl-[60%] rounded-bl-[60%]  `"
+        :class="`absolute top-12 right-0 w-5 h-12 bg-[#3094a1] cursor-pointer rounded-tl-[60%] rounded-bl-[60%]  `"
         style="box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.24)"
         @click="
           {
@@ -35,10 +35,10 @@
         :class="`absolute overflow-hidden w-full  mt-20  pt-10 flex flex-col items-center gap-8 text-lg`"
       >
         <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#76C6D1] ml-8 p-4 rounded-tl-full rounded-bl-full"
+          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
-            class="relative hover:text-[#76C6D1] flex items-center justify-left gap-2"
+            class="relative hover:text-[#3094a1] flex items-center justify-left gap-2"
             to="/dashboard"
           >
             <font-awesome-icon :icon="['fas', 'home']" />
@@ -49,7 +49,7 @@
         </li>
 
         <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#76C6D1] ml-8 p-4 rounded-tl-full rounded-bl-full"
+          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
             class="relative w-full hover:text-[#76C6D1] flex items-center justify-left gap-2"
@@ -61,10 +61,10 @@
         </li>
 
         <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#76C6D1] ml-8 p-4 rounded-tl-full rounded-bl-full"
+          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
-            class="relative w-full hover:text-[#76C6D1] flex items-center justify-left gap-2"
+            class="relative w-full hover:text-[#3094a1] flex items-center justify-left gap-2"
             to="/expense"
           >
             <font-awesome-icon :icon="['fas', 'notes-medical']" />
@@ -72,7 +72,7 @@
           </RouterLink>
         </li>
         <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#76C6D1] ml-8 p-4 rounded-tl-full rounded-bl-full"
+          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
             class="relative w-full hover:text-[#76C6D1] flex items-center justify-left gap-2"
@@ -83,10 +83,10 @@
           </RouterLink>
         </li>
         <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#76C6D1] ml-8 p-4 rounded-tl-full rounded-bl-full"
+          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
-            class="relative w-full hover:text-[#76C6D1] flex items-center justify-left gap-2"
+            class="relative w-full hover:text-[#3094a1] flex items-center justify-left gap-2"
             to="/register"
           >
             <font-awesome-icon :icon="['fas', 'id-card']" />
@@ -94,10 +94,10 @@
           </RouterLink>
         </li>
         <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#76C6D1] ml-8 p-4 rounded-tl-full rounded-bl-full"
+          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
-            class="relative w-full hover:text-[#76C6D1] flex items-center justify-left gap-2"
+            class="relative w-full hover:text-[#3094a1] flex items-center justify-left gap-2"
             to="/login"
           >
             <font-awesome-icon :icon="['far', 'eye']" />

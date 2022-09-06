@@ -16,7 +16,7 @@
     </div>
     <div>
       <button
-        class="bg-[#76C6D1] text-white text-xl font-bold p-4 rounded-full"
+        class="bg-[#3094a1] text-white text-xl font-bold p-4 rounded-full"
       >
         AA
       </button>
@@ -28,21 +28,21 @@
 
     <base-card>
       <div class="leading-3 px-5 py-1">
-        <h3 class="text-[#76C6D1] text-xl">15000</h3>
+        <h3 class="text-[#3094a1] text-xl">15000</h3>
         <p class="text-[#8D8D8D]">Total budget</p>
       </div>
     </base-card>
 
     <base-card>
       <div class="leading-3 px-5 py-1">
-        <h3 class="text-[#76C6D1] text-xl">17500</h3>
+        <h3 class="text-[#3094a1] text-xl">17500</h3>
         <p class="text-[#8D8D8D]">Total income</p>
       </div>
     </base-card>
 
     <base-card>
       <div class="leading-3 px-5 py-1">
-        <h3 class="text-[#76C6D1] text-xl">4500</h3>
+        <h3 class="text-[#3094a1] text-xl">4500</h3>
         <p class="text-[#8D8D8D]">Total expense</p>
       </div>
     </base-card>
@@ -51,9 +51,9 @@
   <div class="">
     <base-card class="flex flex-col">
       <div class="flex justify-between">
-        <p class="ml-5 text-xl text-[#76C6D1]">Transactions</p>
+        <p class="ml-5 text-xl text-[#3094a1]">Transactions</p>
         <button
-          class="mr-5 bg-[#76C6D1] text-white px-4 py-1 rounded-xl hover:bg-[#9ccad0]"
+          class="mr-5 bg-[#3094a1] text-white px-4 py-1 rounded-xl hover:bg-[#9ccad0]"
         >
           View All
         </button>
