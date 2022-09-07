@@ -29,7 +29,7 @@
                         />
                         <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
                     </div>
-                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full" v-on:submit="login()">Login</button>
+                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full disabled:bg-teal-100" v-on:submit="login()" :disabled="this.v$.input.$invalid">Login</button>
                 </form>
             </div>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
