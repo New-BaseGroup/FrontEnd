@@ -11,8 +11,7 @@ export default createStore({
         loggedin: false,
         data: {
             budget: {},
-            incomes: {},
-            expenses: {}
+            balance: {},
         }
     },
 

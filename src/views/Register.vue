@@ -1,22 +1,26 @@
 <template>
     <base-card>
         <div>
-            <h3>This is the register.</h3>
+            <h3 class="text-2xl my-4 text-center">This is the register.</h3>
             <div>
                 <form @submit.prevent="register">
-                    <div class="inputWrapper">
-                        <label>Username</label><br/>
-                        <input 
+                    <div class="my-5">
+                        <label for="username">Username</label><br/>
+                        <input
+                            id="username"
+                            class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="text" 
                             v-model="input.user" 
                             placeholder="Username"
-                            @blur="v$.input.password.$touch()"
+                            @blur="v$.input.user.$touch()"
                         />
                         <div v-if="this.v$.input.user.$error"><p>Enter a username</p></div>
                     </div>
-                    <div class="inputWrapper">
-                        <label>Password</label><br/>
+                    <div class="my-5">
+                        <label for="password">Password</label><br/>
                         <input 
+                            id="password"
+                            class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="password" 
                             v-model="input.password" 
                             placeholder="Password"
@@ -24,18 +28,22 @@
                         />
                         <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
                     </div>
-                    <div class="inputWrapper">
-                        <label>Confirm password</label><br/>
+                    <div class="my-5">
+                        <label for="confirmpassword">Confirm password</label><br/>
                         <input 
+                            id="confirmpassword"
+                            class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="password" 
                             placeholder="Confirm Password"
                             @blur="v$.confirmpassword.$touch()"
                         />
                         <div v-if="this.v$.confirmpassword.$error"><p>Enter a password</p></div>
                     </div>
-                    <div class="inputWrapper">
-                        <label>Email</label><br/>
-                        <input 
+                    <div class="my-5">
+                        <label for="email">Email</label><br/>
+                        <input
+                            id="email"
+                            class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="email" 
                             v-model="input.email" 
                             placeholder="Email"
@@ -43,7 +51,7 @@
                         />
                         <div v-if="this.v$.input.email.$error"><p>Enter a correct email</p></div>
                     </div>
-                    <button v-on:submit="register">Register</button>
+                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full" v-on:submit="register">Register</button>
                 </form>
             </div>
         </div>
@@ -98,8 +106,8 @@ export default {
     },
     methods: {
         async register () {
-            await API_Service.PostService('Account/register', this.input)
-            .then(function(response){
+            await API_Service.PostService('Account/register', this.state.input)
+            .then(response => {
             if(response?.status == 'success'){
                 alert("You're now registered " + response?.message);
             } else {

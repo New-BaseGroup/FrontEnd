@@ -1,13 +1,15 @@
 <template>
     <base-card>
         <div>
-            <h3>This is the login page.</h3>
+            <h3 class="text-2xl my-4 text-center">This is the login page.</h3>
             <div>
                 <p v-if="loggedin">You're already logged in as '{{user}}'</p>
                 <form @submit.prevent="login">
-                    <div class="input wrapper">
-                        <label>Username</label><br/>
+                    <div class="my-5">
+                        <label for="username">Username</label><br/>
                         <input 
+                            id="username"
+                            class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="text" 
                             v-model="state.input.user" 
                             placeholder="Username" 
@@ -15,9 +17,11 @@
                         />
                         <div v-if="this.v$.input.user.$error"><p>Enter a username</p></div>
                     </div>
-                    <div class="input wrapper">
-                        <label>Password</label><br/>
-                        <input 
+                    <div class="my-5">
+                        <label for="password">Password</label><br/>
+                        <input
+                            id="password"
+                            class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="password" 
                             v-model="state.input.password" 
                             placeholder="Password" 
@@ -25,7 +29,7 @@
                         />
                         <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
                     </div>
-                    <button v-on:submit="login()">Login</button>
+                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full" v-on:submit="login()">Login</button>
                 </form>
             </div>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -96,11 +100,11 @@ export default {
             setLoggedin: 'setLoggedin'
         }),
         async login() {
-            await API_Service.PostService('Account/login', this.input)
-            .then(function(response){
+            await API_Service.PostService('Account/login', this.state.input)
+            .then(response => {
                 console.log(response);
                 if(response?.status == 'success'){
-                    // updateLoggedin(response.message);
+                    this.updateLoggedin(response.message);
                     alert("Du är nu inloggad '" + response?.message + "'");
                 } else {
                     alert(response.message);
