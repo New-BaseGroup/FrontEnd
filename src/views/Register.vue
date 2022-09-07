@@ -10,7 +10,7 @@
                             id="username"
                             class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="text" 
-                            v-model="input.user" 
+                            v-model="state.input.user" 
                             placeholder="Username"
                             @blur="v$.input.user.$touch()"
                         />
@@ -22,7 +22,7 @@
                             id="password"
                             class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="password" 
-                            v-model="input.password" 
+                            v-model="state.input.password" 
                             placeholder="Password"
                             @blur="v$.input.password.$touch()"
                         />
@@ -33,6 +33,7 @@
                         <input 
                             id="confirmpassword"
                             class="w-full border rounded h-12 px-4 focus:outline-none"
+                            v-model="state.confirmpassword"
                             type="password" 
                             placeholder="Confirm Password"
                             @blur="v$.confirmpassword.$touch()"
@@ -45,13 +46,13 @@
                             id="email"
                             class="w-full border rounded h-12 px-4 focus:outline-none"
                             type="email" 
-                            v-model="input.email" 
+                            v-model="state.input.email" 
                             placeholder="Email"
                             @blur="v$.input.email.$touch()"
                         />
                         <div v-if="this.v$.input.email.$error"><p>Enter a correct email</p></div>
                     </div>
-                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full" v-on:submit="register">Register</button>
+                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full disabled:bg-teal-100" v-on:submit="register" :disabled="this.v$.input.$invalid">Register</button>
                 </form>
             </div>
         </div>
