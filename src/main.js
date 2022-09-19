@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "@/store";
-import BaseCard from "./components/UI/BaseCard.vue";
 import "./assets/tailwind.css";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -13,8 +12,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons"; //all barnds icons
 
 library.add(far, fas, fab);
 
-const app = createApp(App)
-  .component("base-card", BaseCard)
+const app = createApp(App) 
   .component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
 app.use(store);

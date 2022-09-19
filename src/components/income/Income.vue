@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <div class="base-card">
     <form @submit.prevent="submitIncome">
       <div>
         <label for="date">Income category</label>
@@ -68,7 +68,7 @@
       <button :disabled="this.v$.incomeDTO.$invalid" @click="addIncome">submit</button>
       <!-- <p v-if="error !== ''">{{ error }} {{ resetRequestError }}</p> -->
     </form>
-  </base-card>
+  </div>
 </template>
 
 <script>

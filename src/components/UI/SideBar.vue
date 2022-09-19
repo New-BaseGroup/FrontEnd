@@ -1,27 +1,35 @@
 <template>
-	<div
-		class="transition-all duration-300 flex h-screen flex-col justify-between bg-[#76C6D1] text-white"
-		:class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
-	>
-		<div class="py-4 pl-5">
-			<div v-for="(item, index) in navItems" :key="index" class="flex w-full items-center justify-between mb-14">
-				<RouterLink :to="item.link">
-					<font-awesome-icon :icon="item.icon"/>
-					<span v-if="expanded">
-						{{ item.title }}
-					</span>
-					
-				</RouterLink>
-			</div>
+	<div class="h-full flex flex-row">
+		<div
+			class="transition-all h-full duration-300 flex-col justify-between bg-[#3094a1] text-white"
+			:class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
+		>
+			<RouterLink
+				v-for="item in navItems"
+				:key="item.name"
+				:to="item.link"
+				class="sideBardNavigation"
+				active-class="sideBarNavigationActive"
+			>
+				<span><font-awesome-icon :icon="item.icon" /></span>
+				<span class="ml-2" v-if="expanded">
+					{{ item.title }}
+				</span>
+			</RouterLink>
 		</div>
+		<button @click="expand" class="sideBarButton">
+			<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
+		</button>
 	</div>
 </template>
 
 <script setup>
-const props = defineProps({
-	expanded: { type: Boolean, default: true },
-});
-
+import { ref } from 'vue';
+const expanded = ref(true);
+function expand() {
+	console.log(expanded);
+	expanded.value = !expanded.value;
+}
 const navItems = [
 	{
 		icon: 'home',
