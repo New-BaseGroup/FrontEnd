@@ -11,7 +11,9 @@
 				class="sideBardNavigation"
 				active-class="sideBarNavigationActive"
 			>
-				<span><font-awesome-icon :icon="item.icon" /></span>
+				<span>
+					<font-awesome-icon :icon="item.icon" />
+				</span>
 				<span class="ml-2" v-if="expanded">
 					{{ item.title }}
 				</span>
@@ -27,7 +29,6 @@
 import { ref } from 'vue';
 const expanded = ref(true);
 function expand() {
-	console.log(expanded);
 	expanded.value = !expanded.value;
 }
 const navItems = [
