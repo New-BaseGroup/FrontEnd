@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <div class="base-card">
     <form @submit.prevent="submitBudget">
       <div>
         <label for="budget-budgetName">Budget Name:</label>
@@ -104,7 +104,7 @@
         submit
       </button>
     </form>
-  </base-card>
+  </div>
 </template>
 
 <script>

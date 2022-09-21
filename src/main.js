@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "@/store";
-import BaseCard from "./components/UI/BaseCard.vue";
 import "./assets/tailwind.css";
 import { createPinia } from 'pinia'
 
@@ -15,7 +14,6 @@ import { fab } from "@fortawesome/free-brands-svg-icons"; //all barnds icons
 library.add(far, fas, fab);
 const pinia = createPinia();
 const app = createApp(App)
-  .component("base-card", BaseCard)
   .component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
 app.use(pinia);

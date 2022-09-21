@@ -1,5 +1,5 @@
 <template>
-    <base-card>
+    <div class="base-card">
         <div>
             <h3 class="page-header-text">This is the login page.</h3>
             <div>
@@ -52,7 +52,7 @@
                 data-logo_alignment="left">
             </div> -->
         </div>
-    </base-card>
+    </div>
 </template>
 
 <script>
