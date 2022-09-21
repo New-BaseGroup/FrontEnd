@@ -3,3 +3,21 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+    .page-header-text {
+        @apply text-2xl my-4 text-center;
+    }
+
+    .submit-button {
+        @apply px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full disabled:bg-teal-100;
+    }
+
+    .input {
+        @apply w-full border rounded h-12 px-4 focus:outline-none;
+    }
+
+    .input-wrapper {
+        @apply my-5;
+    }
+}

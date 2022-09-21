@@ -1,14 +1,14 @@
 <template>
     <base-card>
         <div>
-            <h3 class="text-2xl my-4 text-center">This is the register.</h3>
+            <h3 class="page-header-text">This is the register.</h3>
             <div>
                 <form @submit.prevent="register">
-                    <div class="my-5">
+                    <div class="input-wrapper">
                         <label for="username">Username</label><br/>
                         <input
                             id="username"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="input"
                             type="text" 
                             v-model="state.input.user" 
                             placeholder="Username"
@@ -16,11 +16,11 @@
                         />
                         <div v-if="this.v$.input.user.$error"><p>Enter a username</p></div>
                     </div>
-                    <div class="my-5">
+                    <div class="input-wrapper">
                         <label for="password">Password</label><br/>
                         <input 
                             id="password"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="input"
                             type="password" 
                             v-model="state.input.password" 
                             placeholder="Password"
@@ -28,11 +28,11 @@
                         />
                         <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
                     </div>
-                    <div class="my-5">
+                    <div class="input-wrapper">
                         <label for="confirmpassword">Confirm password</label><br/>
                         <input 
                             id="confirmpassword"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="input"
                             v-model="state.confirmpassword"
                             type="password" 
                             placeholder="Confirm Password"
@@ -40,11 +40,11 @@
                         />
                         <div v-if="this.v$.confirmpassword.$error"><p>Enter a password</p></div>
                     </div>
-                    <div class="my-5">
+                    <div class="input-wrapper">
                         <label for="email">Email</label><br/>
                         <input
                             id="email"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="input"
                             type="email" 
                             v-model="state.input.email" 
                             placeholder="Email"
@@ -52,7 +52,7 @@
                         />
                         <div v-if="this.v$.input.email.$error"><p>Enter a correct email</p></div>
                     </div>
-                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full disabled:bg-teal-100" v-on:submit="register" :disabled="this.v$.input.$invalid">Register</button>
+                    <button class="submit-button" v-on:submit="register" :disabled="this.v$.input.$invalid">Register</button>
                 </form>
             </div>
         </div>
@@ -109,8 +109,8 @@ export default {
         async register () {
             await API_Service.PostService('Account/register', this.state.input)
             .then(response => {
-            if(response?.status == 'success'){
-                alert("You're now registered " + response?.message);
+            if(response.status == 'success'){
+                alert("You're now registered " + response.message);
             } else {
                 alert(response.message);
             }

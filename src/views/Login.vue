@@ -1,15 +1,15 @@
 <template>
     <base-card>
         <div>
-            <h3 class="text-2xl my-4 text-center">This is the login page.</h3>
+            <h3 class="page-header-text">This is the login page.</h3>
             <div>
-                <p v-if="loggedin">You're already logged in as '{{user}}'</p>
+                <p v-if="getLoggedin">You're already logged in as '{{getUser}}'</p>
                 <form @submit.prevent="login">
-                    <div class="my-5">
+                    <div class="input-wrapper">
                         <label for="username">Username</label><br/>
                         <input 
                             id="username"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="input"
                             type="text" 
                             v-model="state.input.user" 
                             placeholder="Username" 
@@ -17,11 +17,11 @@
                         />
                         <div v-if="this.v$.input.user.$error"><p>Enter a username</p></div>
                     </div>
-                    <div class="my-5">
+                    <div class="input-wrapper">
                         <label for="password">Password</label><br/>
                         <input
                             id="password"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="input"
                             type="password" 
                             v-model="state.input.password" 
                             placeholder="Password" 
@@ -29,12 +29,12 @@
                         />
                         <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
                     </div>
-                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full disabled:bg-teal-100" v-on:submit="login()" :disabled="this.v$.input.$invalid">Login</button>
+                    <button class="submit-button" v-on:submit="login()" :disabled="this.v$.input.$invalid">Login</button>
                 </form>
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-            <!-- <button class="google-signin" data-onsuccess="onSignIn">Sign in google</button> -->
+            <button class="google-signin" data-onsuccess="onSignIn">Sign in google</button>
             <div id="g_id_onload"
                 data-client_id="242131194887-qtr7rfremep6ljrv6s96pq5ihpj605pj.apps.googleusercontent.com"
                 data-context="signin"
@@ -50,17 +50,18 @@
                 data-text="signin_with"
                 data-size="large"
                 data-logo_alignment="left">
-            </div>
+            </div> -->
         </div>
     </base-card>
 </template>
 
 <script>
 import API_Service from '../API/API_Service.js';
-import { mapMutations, mapGetters } from 'vuex';
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
+import { useUserStore } from '../store/Stores/user.js';
+// const userStore = useUserStore();
 
 export default {
     name:'Login', 
@@ -92,28 +93,25 @@ export default {
         return {}
     },
     computed: {
-        ...mapGetters(['user','loggedin'])
     },
     methods: {
-        ...mapMutations({
-            setUser: 'setUser',
-            setLoggedin: 'setLoggedin'
-        }),
         async login() {
             await API_Service.PostService('Account/login', this.state.input)
             .then(response => {
                 console.log(response);
-                if(response?.status == 'success'){
+                if(response.status == 'success'){
                     this.updateLoggedin(response.message);
-                    alert("Du är nu inloggad '" + response?.message + "'");
+                    alert("Du är nu inloggad '" + response.message + "'");
                 } else {
                     alert(response.message);
                 }
             });
         },
         updateLoggedin(user){
-            this.$store.commit('setLoggedin', true);
-            this.$store.commit('setUser' , user);
+            const userStore = useUserStore();
+            userStore.setLoggedin(true);
+            userStore.setUser(user);
+            console.log(userStore.getUser)
         },
         onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
