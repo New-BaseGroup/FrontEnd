@@ -1,8 +1,8 @@
 <template>
-	<div class="container flex space-x-2 h-screen w-auto">
+	<div class="container min-h-screen flex space-x-2 h-max ">
 		<SideBar />
 
-		<div class="item w-screen h-auto bg-white-700">
+		<div class="item w-full h-full bg-white-700">
 			<router-view />
 		</div>
 	</div>

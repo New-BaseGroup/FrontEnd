@@ -1,5 +1,5 @@
 <template>
-	<div class="h-full flex flex-row">
+	<div class="flex flex-row">
 		<div
 			class="transition-all h-full duration-300 flex-col justify-between bg-[#3094a1] text-white"
 			:class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
@@ -19,9 +19,10 @@
 				</span>
 			</RouterLink>
 		</div>
-		<button @click="expand" class="sideBarButton">
+		<button @click="expand" class="sideBarButton" >
 			<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
 		</button>
+		
 	</div>
 </template>
 
@@ -31,6 +32,7 @@ const expanded = ref(true);
 function expand() {
 	expanded.value = !expanded.value;
 }
+const hover = ref(false);
 const navItems = [
 	{
 		icon: 'home',

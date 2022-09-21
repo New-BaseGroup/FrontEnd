@@ -6,17 +6,17 @@
 
 @layer components {
     .base-card {
-        @apply container rounded shadow-md p-4 mx-auto my-8 max-w-3xl;
+        @apply rounded;
     }
     .sideBardNavigation {
-        @apply flex w-full cursor-pointer items-center rounded-l-full  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  hover:bg-white hover:text-[#3094a1]; 
+        @apply flex w-full cursor-pointer items-center rounded-l-full  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  hover:bg-white hover:text-[#3094a1] active:scale-110; 
 
       }
       .sideBarNavigationActive{
-        @apply flex w-full cursor-pointer items-center rounded-l-full  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  bg-white text-[#3094a1]; 
+        @apply flex w-full cursor-pointer items-center rounded-l-full  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  bg-white text-[#3094a1] active:scale-110; 
       }
       .sideBarButton{
-        @apply mb-auto px-1 py-5  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white text-[#3094a1] border;
+        @apply mb-auto px-1 py-3  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white text-[#3094a1] border active:scale-110;
       }
 
 }
