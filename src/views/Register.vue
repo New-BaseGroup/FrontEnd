@@ -58,28 +58,22 @@
         </div>
     </div>
 </template>
+<script setup>
+    import API_Service from '../API/API_Service.js';
+    import useValidate from "@vuelidate/core";
+    import { required, sameAs, email } from "@vuelidate/validators";
+    import { reactive, computed } from "vue";
 
-<script>
-import API_Service from '../API/API_Service.js';
-import useValidate from "@vuelidate/core";
-import { required, sameAs, email } from "@vuelidate/validators";
-import { reactive, computed } from "vue";
-
-export default {
-    name:'register', 
-    mounted () {
-        console.log("started registration");
-    },
-    setup(){
-		const state = reactive({
+    const state = reactive({
 			input: {
 				user: '',
 				password: '',
                 email: ''
 			},
             confirmpassword: ''
-		});
-		const rules = computed(() => {
+	});
+
+    const rules = computed(() => {
 			return {
 				input: {
 					user: { required },
@@ -88,26 +82,12 @@ export default {
 				},
                 confirmpassword: {required}
 			};
-		});
-		const v$ = useValidate(rules, state);
-		return {
-			state,
-			v$,
-		};
-    },
-    data() {
-        return {
-            input: {
-                user: '',
-                password: '',
-                email: ''
-            },
-            users: []
-        }
-    },
-    methods: {
-        async register () {
-            await API_Service.PostService('Account/register', this.state.input)
+	});
+
+    const v$ = useValidate(rules, state);
+
+    async function register () {
+            await API_Service.PostService('Account/register', state.input)
             .then(response => {
             if(response.status == 'success'){
                 alert("You're now registered " + response.message);
@@ -115,9 +95,7 @@ export default {
                 alert(response.message);
             }
             });
-        },
-    }
-}
+        }
 </script>
 <style scoped>
 .inputWrapper{
