@@ -52,20 +52,8 @@
           class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
         >
           <RouterLink
-            class="relative w-full hover:text-[#76C6D1] flex items-center justify-left gap-2"
-            to="/income"
-          >
-            <font-awesome-icon :icon="['fas', 'building-columns']" />
-            <h1 class="">{{ expandSideBar ? "Income" : "" }}</h1>
-          </RouterLink>
-        </li>
-
-        <li
-          class="relative w-full text-white hover:bg-[#FAFAFA] hover:text-[#3094a1] ml-8 p-4 rounded-tl-full rounded-bl-full"
-        >
-          <RouterLink
             class="relative w-full hover:text-[#3094a1] flex items-center justify-left gap-2"
-            to="/expense"
+            to="/balance"
           >
             <font-awesome-icon :icon="['fas', 'notes-medical']" />
             <h1 class="">{{ expandSideBar ? "Transaction" : "" }}</h1>
