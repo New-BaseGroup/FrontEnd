@@ -40,14 +40,9 @@ const navItems = [
 		link: '/dashboard',
 	},
 	{
-		icon: 'building-columns',
-		title: 'Income',
-		link: '/income',
-	},
-	{
 		icon: 'notes-medical',
 		title: 'Transaction',
-		link: '/expense',
+		link: '/balance',
 	},
 	{
 		icon: 'wallet',

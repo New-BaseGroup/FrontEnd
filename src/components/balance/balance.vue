@@ -1,14 +1,10 @@
 <template>
 	<div class="base-card">
-		<form @submit.prevent="submitExpense">
+		<form @submit.prevent="submitbalance">
 			<div>
-				<label for="date">Expense category</label>
-				<select
-					name="expense-category"
-					id="expense-category"
-					v-model="state.balanceChangeDTO.budgetCategoryID"
-					@blur="v$.balanceChangeDTO.budgetCategoryID.$touch()"
-				>
+				<label for="date">Balance category</label>
+				<select name="balance-category" id="balance-category" v-model="state.balanceChangeDTO.budgetCategoryID"
+					@blur="v$.balanceChangeDTO.budgetCategoryID.$touch()">
 					<!-- Later when fetching -->
 					<!-- <option v-for="inCat in category" :key="inCat.id" value="">
       {{ inCat.name }}
@@ -16,7 +12,7 @@
     !!!! Changed value to numbers as thats how the categeories are saved in the db.
      @blur="v$.balanceChangeDTO.budgetCategoryID.$touch() is so that we validate after u highlight the field.
     -->
-					<option value="" hidden>Select income category</option>
+					<option value="" hidden>Select Balance category</option>
 					<option value="1">Food</option>
 					<option value="2">Car</option>
 					<option value="3">Other</option>
@@ -24,10 +20,12 @@
 
 				<div v-if="this.v$.balanceChangeDTO.budgetCategoryID.$error">You need to pick a category.</div>
 			</div>
-      <input type="text" name="title" v-model="state.balanceChangeDTO.title" @blur="v$.balanceChangeDTO.title.$touch()" placeholder="Expense name:" />
+			<input type="text" name="title" v-model="state.balanceChangeDTO.title"
+				@blur="v$.balanceChangeDTO.title.$touch()" placeholder="Balance name:" />
 			<div>
-				<label for="income-amount">Balance:</label>
-				<input type="text" name="income-amount" v-model="state.balanceChangeDTO.amount" @blur="v$.balanceChangeDTO.amount.$touch()" />
+				<label for="balance-amount">Balance:</label>
+				<input type="text" name="balance-amount" v-model="state.balanceChangeDTO.amount"
+					@blur="v$.balanceChangeDTO.amount.$touch()" />
 				<div class="input-errors" v-for="error of this.v$.balanceChangeDTO.amount.$error" :key="error.$uid">
 					<div class="error-msg">{{ error.$message }}</div>
 				</div>
@@ -36,24 +34,19 @@
 				</div>
 			</div>
 
-			<label for="date">Income Date & Time</label>
-			<input type="date" id="date" name="date" v-model="state.balanceChangeDTO.date" @blur="v$.balanceChangeDTO.date.$touch()" />
+			<label for="date">Balance Date & Time</label>
+			<input type="date" id="date" name="date" v-model="state.balanceChangeDTO.date"
+				@blur="v$.balanceChangeDTO.date.$touch()" />
 			<div class="input-errors" v-for="error of v$.balanceChangeDTO.date.$error" :key="error.$uid">
 				<div class="error-msg">{{ error.$message }}</div>
 			</div>
 
 			<!-- <p v-if="date === ' '">{{ validationMsg }}</p> -->
 
-			<label for="description">Describe the expense details</label>
-			<textarea
-				name="description"
-				id="description"
-				cols="30"
-				rows="3"
-				placeholder="Optional"
-				v-model="state.balanceChangeDTO.description"
-			></textarea>
-			<button :disabled="this.v$.balanceChangeDTO.$invalid" @click="addIncome">submit</button>
+			<label for="description">Describe the Balance details</label>
+			<textarea name="description" id="description" cols="30" rows="3" placeholder="Optional"
+				v-model="state.balanceChangeDTO.description"></textarea>
+			<button :disabled="this.v$.balanceChangeDTO.$invalid" @click="addBalance">submit</button>
 			<!-- <p v-if="error !== ''">{{ error }} {{ resetRequestError }}</p> -->
 		</form>
 	</div>
@@ -80,7 +73,7 @@ export default {
 				balanceChangeDTO: {
 					budgetCategoryID: { required },
 					amount: { required, numeric },
-          title: {required},
+        		    title: {required},
 					date: { required },
 					description: {},
 				},
@@ -89,14 +82,14 @@ export default {
 		const v$ = useValidate(rules, state);
 		return {
 			state,
-			v$,
+			v$
 		};
 	},
 	data() {
 		return {};
 	},
 	methods: {
-		submitIncome() {
+		submitBalance() {
 			// axios
 			//   .post("api", {
 			//     // keys must match DTO
@@ -114,7 +107,7 @@ export default {
 			//   .catch((error) => (this.error = error.message));
 			this.v$.$validate();
 		},
-		addIncome() {
+		addBalance() {
 			console.log(this.v$.balanceChangeDTO.amount.$error);
 			console.log(this.state.balanceChangeDTO);
 		},
