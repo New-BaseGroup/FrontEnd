@@ -26,30 +26,30 @@
   <div class="flex mx-[20%] mt-5">
     <!-- to be seperate component later -->
 
-    <base-card>
+    <div class="base-card">
       <div class="leading-3 px-5 py-1">
         <h3 class="text-[#3094a1] text-xl">15000</h3>
         <p class="text-[#8D8D8D]">Total budget</p>
       </div>
-    </base-card>
+    </div>
 
-    <base-card>
+    <div class="base-card">s
       <div class="leading-3 px-5 py-1">
         <h3 class="text-[#3094a1] text-xl">17500</h3>
         <p class="text-[#8D8D8D]">Total income</p>
       </div>
-    </base-card>
+    </div>
 
-    <base-card>
+    <div class="base-card">
       <div class="leading-3 px-5 py-1">
         <h3 class="text-[#3094a1] text-xl">4500</h3>
         <p class="text-[#8D8D8D]">Total expense</p>
       </div>
-    </base-card>
-  </div>
-
-  <div class="">
-    <base-card class="flex flex-col">
+    </div>
+  
+</div>
+  <div class="base-card">
+    <div class="flex flex-col">
       <div class="flex justify-between">
         <p class="ml-5 text-xl text-[#3094a1]">Transactions</p>
         <button
@@ -217,13 +217,11 @@
             :icon="['fas', 'caret-right']"
         /></span>
       </div>
-    </base-card>
-  </div>
+    </div>
+    </div>
+  
 </template>
 
-<script>
-import BaseCard from "../components/UI/BaseCard.vue";
-export default {
-  components: { BaseCard },
-};
+<script setup>
+
 </script>

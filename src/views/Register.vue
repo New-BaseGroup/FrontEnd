@@ -1,5 +1,5 @@
 <template>
-    <base-card>
+    <div class="base-card">
         <div>
             <h3 class="text-2xl my-4 text-center">This is the register.</h3>
             <div>
@@ -56,7 +56,7 @@
                 </form>
             </div>
         </div>
-    </base-card>
+    </div>
 </template>
 
 <script>
