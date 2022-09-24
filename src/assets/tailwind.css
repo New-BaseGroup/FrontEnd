@@ -5,18 +5,44 @@
 @tailwind utilities;
 
 @layer components {
-    .base-card {
-        @apply container rounded shadow-md p-4 mx-auto my-8 max-w-3xl;
-    }
-    .sideBardNavigation {
-        @apply flex w-full cursor-pointer items-center rounded-l-full  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  hover:bg-white hover:text-[#3094a1]; 
+  .base-card {
+    @apply container rounded shadow-md p-4 mx-auto my-8 max-w-3xl;
+  }
+  .sideBardNavigation {
+    @apply flex w-full cursor-pointer items-center rounded-l-full pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4   hover:bg-background-hover hover:text-background-text;
+  }
+  .sideBarNavigationActive {
+    @apply flex  w-full cursor-pointer items-center rounded-l-full pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4   bg-white text-[#3094a1];
+  }
+  .sideBarButton {
+    @apply absolute top-1/2 left-[100%] mb-auto px-1 py-5  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white  text-[#3094a1] border;
+  }
+}
 
-      }
-      .sideBarNavigationActive{
-        @apply flex w-full cursor-pointer items-center rounded-l-full  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  bg-white text-[#3094a1]; 
-      }
-      .sideBarButton{
-        @apply mb-auto px-1 py-5  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white text-[#3094a1] border;
-      }
+.theme-light {
+  --bg-background-primary: #3094a1;
+  --bg-background-secondary: #f7fafc;
+  --bg-background-ternary: #e2e8f0;
+  --bg-background-hover: #f7fafc;
+  --text-background-text: #3094a1;
+}
 
+.theme-dark {
+  /* --bg-background-primary: #06373d; */
+  --bg-background-primary: #0d2438;
+  --bg-background-secondary: #102c44;
+  --bg-background-ternary: #9da9b2;
+
+  --bg-background-hover: #102c44;
+  --text-background-text: #f7fafc;
+}
+
+/* --bg-background-primary: #06373d; */
+.body-color {
+  background-color: var(--bg-background-secondary);
+}
+
+.content-wrapper {
+  transition: background-color 0.3s;
+  /* add to app class to give feel of background color transition changing */
 }
