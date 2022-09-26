@@ -1,7 +1,7 @@
 <template>
   <button @click="ToggleTheme">
     <font-awesome-icon
-      v-if="theme === 'theme-light'"
+      v-if="theme === 'light-theme'"
       icon="moon"
       class="text-xl text-[#fff] hover:text-[#2b2b2b]"
     />
