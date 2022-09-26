@@ -17,6 +17,10 @@
   .sideBarButton {
     @apply absolute top-1/2 left-[100%] mb-auto px-1 py-5  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white  text-[#3094a1] border;
   }
+
+  .toggle {
+    @apply flex w-full text-background-text  cursor-pointer items-center  pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4  ;
+  }
 }
 
 .theme-light {
@@ -25,16 +29,18 @@
   --bg-background-ternary: #e2e8f0;
   --bg-background-hover: #f7fafc;
   --text-background-text: #3094a1;
+  --text-toggle-text: #252525;
 }
 
 .theme-dark {
-  /* --bg-background-primary: #06373d; */
   --bg-background-primary: #0d2438;
   --bg-background-secondary: #102c44;
-  --bg-background-ternary: #9da9b2;
-
+  --bg-background-ternary: #c3c3c3;
   --bg-background-hover: #102c44;
-  --text-background-text: #f7fafc;
+  --text-background-text: #ccf807;
+  --text-content-text: #d6d3d3;
+  --text-toggle-text: #ccf807;
+
 }
 
 /* --bg-background-primary: #06373d; */

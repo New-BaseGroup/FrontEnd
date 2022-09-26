@@ -28,22 +28,22 @@
 
     <div class="base-card">
       <div class="leading-3 px-5 py-1">
-        <h3 class="text-[#3094a1] text-xl">15000</h3>
-        <p class="text-[#8D8D8D]">Total budget</p>
-      </div>
-    </div>
-
-    <div class="base-card">s
-      <div class="leading-3 px-5 py-1">
-        <h3 class="text-[#3094a1] text-xl">17500</h3>
-        <p class="text-[#8D8D8D]">Total income</p>
+        <h3 class="text-[#94d3db] text-xl">15000</h3>
+        <p class="text-background-content">Total budget</p>
       </div>
     </div>
 
     <div class="base-card">
       <div class="leading-3 px-5 py-1">
-        <h3 class="text-[#3094a1] text-xl">4500</h3>
-        <p class="text-[#8D8D8D]">Total expense</p>
+        <h3 class="text-[#94d3db] text-xl">17500</h3>
+        <p class="text-background-content-text">Total income</p>
+      </div>
+    </div>
+
+    <div class="base-card">
+      <div class="leading-3 px-5 py-1">
+        <h3 class="text-[#94d3db] text-xl">4500</h3>
+        <p class="text-background-content-text">Total expense</p>
       </div>
     </div>
   
@@ -51,7 +51,7 @@
   <div class="base-card">
     <div class="flex flex-col">
       <div class="flex justify-between">
-        <p class="ml-5 text-xl text-[#3094a1]">Transactions</p>
+        <p class="ml-5 text-xl text-[#94d3db]">Transactions</p>
         <button
           class="mr-5 bg-[#3094a1] text-white px-4 py-1 rounded-xl hover:bg-[#9ccad0]"
         >
@@ -60,7 +60,7 @@
       </div>
       <table class="flex flex-col gap-6 my-8">
         <thead class="">
-          <tr class="flex justify-between mx-5 text-[#3a3a3a]">
+          <tr class="flex justify-between mx-5 text-[#c6c6c6]">
             <th class="">Date</th>
             <th class="">Type</th>
             <th class="">Payee</th>
@@ -71,7 +71,7 @@
         <tbody class="flex flex-col gap-4">
           <!-- here will be transaction loop -->
 
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>
@@ -90,7 +90,7 @@
               /></span>
             </td>
           </tr>
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>
@@ -109,7 +109,7 @@
               /></span>
             </td>
           </tr>
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>
@@ -128,7 +128,7 @@
               /></span>
             </td>
           </tr>
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>
@@ -147,7 +147,7 @@
               /></span>
             </td>
           </tr>
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>
@@ -166,7 +166,7 @@
               /></span>
             </td>
           </tr>
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>
@@ -185,7 +185,7 @@
               /></span>
             </td>
           </tr>
-          <tr class="flex mx-5 border-b text-[#5C5B5B]">
+          <tr class="flex mx-5 border-b">
             <td class="mb-2">
               <p class="">07/07/2022</p>
             </td>

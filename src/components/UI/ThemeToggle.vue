@@ -1,12 +1,13 @@
 <template>
-  <button @click="ToggleTheme">
-    <font-awesome-icon
+ 
+    <button @click="ToggleTheme">
+      <font-awesome-icon
       v-if="theme === 'theme-light'"
       icon="moon"
-      class="text-[#2c2c2c] text-4xl"
-    />
-    <font-awesome-icon v-else icon="sun" class="text-[#f1ed0b] text-4xl" />
-  </button>
+      class="text-xl text-[#fff] hover:text-[#2b2b2b] "
+      />
+      <font-awesome-icon v-else icon="sun" class=" text-xl" />
+    </button>
 </template>
 
 <script setup>
@@ -18,7 +19,7 @@ localStorage.setItem("theme", theme.value);
 
 const emitThemeClass = defineEmits(["theme"]);
 
-theme.value = localStorage.getItem("theme") || "theme-light";
+theme.value = localStorage.getItem("theme");
 
 const ToggleTheme = () => {
   theme.value = theme.value == "theme-light" ? "theme-dark" : "theme-light";

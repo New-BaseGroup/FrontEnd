@@ -21,6 +21,8 @@ module.exports = {
         ternary: "var(--bg-background-ternary)",
         hover: "var(--bg-background-hover)",
         text: "var(--text-background-text)",
+        toggle: "var(--text-toggle-text)",
+        content: "var(--text-content-text)",
       },
 
       inherit: colors.inherit,
