@@ -24,6 +24,7 @@ module.exports = {
       textcolor: {
         text: "var(--text-background)",
         content: "var(--text-content)",
+        active: "var(--text-active)",
       },
 
       inherit: colors.inherit,

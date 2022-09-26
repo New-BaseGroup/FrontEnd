@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-row relative">
+  <div class="flex flex-row h-full">
     <div
-      class="transition-all h-full duration-300 flex-col justify-between text-white"
+      class="transition-all bg-background-primary overflow-clip h-full duration-300 flex flex-col text-white"
       :class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
     >
       <RouterLink
@@ -18,10 +18,11 @@
           {{ item.title }}
         </span>
       </RouterLink>
-      <div>
-        <ThemeToggle class="fixed bottom-0 w-2 toggle" />
+      <div class="toggle">
+        <ThemeToggle />
       </div>
     </div>
+
     <button @click="expand" class="sideBarButton">
       <font-awesome-icon
         :icon="expanded === true ? 'caret-left' : 'caret-right'"
