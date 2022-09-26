@@ -1,30 +1,30 @@
 <template>
- 
-    <button @click="ToggleTheme">
-      <font-awesome-icon
+  <button @click="ToggleTheme">
+    <font-awesome-icon
       v-if="theme === 'theme-light'"
       icon="moon"
-      class="text-xl text-[#fff] hover:text-[#2b2b2b] "
-      />
-      <font-awesome-icon v-else icon="sun" class=" text-xl" />
-    </button>
+      class="text-xl text-[#fff] hover:text-[#2b2b2b]"
+    />
+    <font-awesome-icon v-else icon="sun" class="text-xl text-[#ccf807]" />
+  </button>
 </template>
 
 <script setup>
 import { defineEmits, ref } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
 
-const theme = ref("theme-light");
+const theme = ref("light-theme");
 
-localStorage.setItem("theme", theme.value);
-
-const emitThemeClass = defineEmits(["theme"]);
-
-theme.value = localStorage.getItem("theme");
+if (localStorage.getItem("theme") == null) {
+  localStorage.setItem("theme", "light-theme");
+} else {
+  theme.value = localStorage.getItem("theme");
+}
 
 const ToggleTheme = () => {
-  theme.value = theme.value == "theme-light" ? "theme-dark" : "theme-light";
+  theme.value = theme.value == "light-theme" ? "dark-theme" : "light-theme";
   localStorage.setItem("theme", theme.value);
-  emitThemeClass("theme", theme.value);
-  console.log("toggle comp", theme.value);
+  store.commit("setTheme", theme.value);
 };
 </script>

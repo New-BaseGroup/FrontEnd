@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full flex flex-row relative ">
+  <div class="h-full flex flex-row relative">
     <div
-			class=" relative transition-all h-full duration-300 flex-col justify-between text-white "
+      class="relative transition-all h-full duration-300 flex-col justify-between text-white"
       :class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
     >
       <RouterLink
@@ -18,14 +18,14 @@
           {{ item.title }}
         </span>
       </RouterLink>
-      <div 
->
-
-        <ThemeToggle @theme="HandleEmits" class=" fixed bottom-0 toggle " />
+      <div>
+        <ThemeToggle class="fixed bottom-0 w-2 toggle" />
       </div>
     </div>
     <button @click="expand" class="sideBarButton">
-			<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
+      <font-awesome-icon
+        :icon="expanded === true ? 'caret-left' : 'caret-right'"
+      />
     </button>
   </div>
 </template>
@@ -42,40 +42,34 @@ function expand() {
 
 const navItems = [
   {
-		icon: 'home',
-		title: 'Dashboard',
-		link: '/dashboard',
+    icon: "home",
+    title: "Dashboard",
+    link: "/dashboard",
   },
   {
-		icon: 'building-columns',
-		title: 'Income',
-		link: '/income',
+    icon: "building-columns",
+    title: "Income",
+    link: "/income",
   },
   {
-		icon: 'notes-medical',
-		title: 'Transaction',
-		link: '/expense',
+    icon: "notes-medical",
+    title: "Transaction",
+    link: "/expense",
   },
   {
-		icon: 'wallet',
-		title: 'Budget',
-		link: '/budget',
+    icon: "wallet",
+    title: "Budget",
+    link: "/budget",
   },
   {
-		icon: 'id-card',
-		title: 'Register',
-		link: '/register',
+    icon: "id-card",
+    title: "Register",
+    link: "/register",
   },
   {
-		icon: 'eye',
-		title: 'Login',
-		link: '/login',
+    icon: "eye",
+    title: "Login",
+    link: "/login",
   },
 ];
-const ToggleTheme = ref("theme-light");
-const emitThemeClass = defineEmits(["theme"]);
-const HandleEmits = (data) => {
-  ToggleTheme.value = data;
-  emitThemeClass("theme", ToggleTheme.value);
-};
 </script>
