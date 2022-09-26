@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-row relative">
+  <div class="flex flex-row relative">
     <div
       class="relative transition-all h-full duration-300 flex-col justify-between text-white"
       :class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
@@ -40,6 +40,7 @@ function expand() {
   expanded.value = !expanded.value;
 }
 
+
 const navItems = [
   {
     icon: "home",
@@ -71,5 +72,6 @@ const navItems = [
     title: "Login",
     link: "/login",
   },
+
 ];
 </script>

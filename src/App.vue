@@ -1,8 +1,9 @@
 <template>
+
   <div class="body-color content-wrapper" :class="store.state.toggle">
-    <div class="container flex space-x-2 h-screen w-full">
+    <div class="container flex space-x-2 h-screen w-max">
       <div class="bg-background-primary content-wrapper">
-        <SideBar @theme="HandleEmits" class="bg-background-primary" />
+        <SideBar class="bg-background-primary" />
       </div>
 
       <div
