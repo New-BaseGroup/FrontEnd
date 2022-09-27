@@ -13,9 +13,6 @@ module.exports = {
     },
     colors: ({ colors }) => ({
       background: {
-        // primary: "#3094a1",
-        // secondary: "#f7fafc",
-        // ternary: "#e2e8f0",
         primary: "var(--bg-background-primary)",
         secondary: "var(--bg-background-secondary)",
         ternary: "var(--bg-background-ternary)",

@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 import ThemeToggle from "./ThemeToggle.vue";
 
 const expanded = ref(true);
