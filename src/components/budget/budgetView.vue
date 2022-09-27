@@ -1,0 +1,30 @@
+<template>
+    <div v-if="!siteStore.loading">
+        <browserTable
+            :data="budgetStore.getBudget"
+            :key="table"
+        />
+        <browserTable
+            :data="budgetStore.getBudgetCategories"
+            :key="table"
+        />
+    </div>
+</template>
+<script setup>
+import { useBudgetStore } from "../../stores/budget.js";
+import  browserTable from "../browser/browserTable.vue";
+import { useSiteStore } from "../../stores/site.js";
+const budgetStore = useBudgetStore();
+const siteStore = useSiteStore();
+
+async function getData() {
+  if (!budgetStore.getBudget) {
+    await budgetStore.fetchBudget();
+  }
+}
+
+getData();
+
+</script>
+<style>
+</style>

@@ -3,7 +3,9 @@ import Dashboard from "../views/Dashboard.vue";
 import register from "../views/Register.vue";
 import login from "../views/Login.vue";
 import balance from "../components/balance/balance.vue";
-import budget from "../components/budget/Budget.vue";
+import budgetCreate from "../components/budget/Budget.vue";
+import budgetView from "../components/budget/budgetView.vue";
+import budget from "../views/Budget.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -36,6 +38,16 @@ const router = createRouter({
       path: "/budget",
       name: "budget",
       component: budget,
+      children: [
+        {
+          path: 'create',
+          component: budgetCreate,
+        },
+        {
+          path: 'view',
+          component: budgetView,
+        }
+      ]
     },
   ],
 });

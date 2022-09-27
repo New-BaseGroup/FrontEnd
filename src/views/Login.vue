@@ -7,29 +7,37 @@
                 <form @submit.prevent="login">
                     <div class="input-wrapper">
                         <label for="username">Username</label><br/>
-                        <input 
+                        <input
                             id="username"
                             class="input"
-                            type="text" 
-                            v-model="state.input.user" 
-                            placeholder="Username" 
+                            type="text"
+                            v-model="state.input.user"
+                            placeholder="Username"
                             @blur="v$.input.user.$touch()"
                         />
-                        <div v-if="this.v$.input.user.$error"><p>Enter a username</p></div>
+                        <div v-if="this.v$.input.user.$error">
+                            <p>Enter a username</p>
+                        </div>
                     </div>
                     <div class="input-wrapper">
                         <label for="password">Password</label><br/>
                         <input
                             id="password"
                             class="input"
-                            type="password" 
-                            v-model="state.input.password" 
-                            placeholder="Password" 
+                            type="password"
+                            v-model="state.input.password"
+                            placeholder="Password"
                             @blur="v$.input.password.$touch()"
                         />
-                        <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
+                        <div v-if="this.v$.input.password.$error">
+                            <p>Enter a password</p>
+                        </div>
                     </div>
-                    <button class="submit-button" v-on:submit="login()" :disabled="this.v$.input.$invalid">Login</button>
+                    <button
+                        class="submit-button"
+                        v-on:submit="login()"
+                        :disabled="this.v$.input.$invalid"
+                    >Login</button>
                 </form>
             </div>
             <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -56,56 +64,54 @@
 </template>
 
 <script setup>
-    import API_Service from '../API/API_Service.js';
-    import useValidate from "@vuelidate/core";
-    import { required } from "@vuelidate/validators";
-    import { reactive, computed } from "vue";
-    import { useUserStore } from '../stores/user.js';
-    const userStore = useUserStore();
+import API_Service from "../API/API_Service.js";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import { reactive, computed } from "vue";
+import { useUserStore } from "../stores/user.js";
+const userStore = useUserStore();
 
-    const state = reactive({
-			input: {
-				user: '',
-				password: ''
-			},
-	});
+const state = reactive({
+  input: {
+    user: "",
+    password: "",
+  },
+});
 
-    const rules = computed(() => {
-			return {
-				input: {
-					user: { required },
-					password: { required }
-				},
-			};
-	});
+const rules = computed(() => {
+  return {
+    input: {
+      user: { required },
+      password: { required },
+    },
+  };
+});
 
-    const v$ = useValidate(rules, state);
+const v$ = useValidate(rules, state);
 
-    async function login() {
-            await API_Service.PostService('Account/login', state.input)
-            .then(response => {
-                console.log(response);
-                if(response.status == 'success'){
-                    updateLoggedin(response.message);
-                    alert("Du är nu inloggad '" + response.message + "'");
-                } else {
-                    alert(response.message);
-                }
-            });
+async function login() {
+  await API_Service.PostService("Account/login", state.input).then(response => {
+    console.log(response);
+    if (response.status == "success") {
+      updateLoggedin(response.message);
+      alert("Du är nu inloggad '" + response.message + "'");
+    } else {
+      alert(response.message);
     }
-    function updateLoggedin(user){
-            userStore.setLoggedin(true);
-            userStore.setUser(user);
-            console.log(userStore.getUser)
-    }
-    function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    }
+  });
+}
+function updateLoggedin(user) {
+  userStore.setLoggedin(true);
+  userStore.setUser(user);
+  console.log(userStore.getUser);
+}
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log("Name: " + profile.getName());
+  console.log("Image URL: " + profile.getImageUrl());
+  console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
 </script>
 <style>
-
 </style>
