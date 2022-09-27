@@ -1,6 +1,6 @@
 <template>
-  <div class="body-color content-wrapper" :class="store.state.toggle">
-    <div class="container flex space-x-2 h-screen w-max">
+  <div class="body-color content-wrapper flex space-x-2 min-h-screen w-max" :class="store.state.toggle">
+
       <div class="content-wrapper">
         <SideBar />
       </div>
@@ -8,7 +8,7 @@
       <div class="item w-screen h-auto text-textcolor-content content-wrapper">
         <router-view />
       </div>
-    </div>
+
   </div>
 </template>
 <script setup>
