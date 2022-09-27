@@ -63,7 +63,6 @@
 						v-model="state.budgetDTO.selectedBudgetCat"
 						@blur="v$.budgetDTO.selectedBudgetCat.$touch()"
 					>
-						
 						<option value="" hidden>Select budget category</option>
 						<option value="1">Budget 1</option>
 						<option value="2">Budget 2</option>
@@ -117,7 +116,6 @@ export default {
 	},
 	methods: {
 		submitBudget() {
-
 			this.v$.$validate();
 		},
 		addBudget() {

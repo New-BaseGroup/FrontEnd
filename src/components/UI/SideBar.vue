@@ -11,11 +11,11 @@
 				<span>
 					<font-awesome-icon :icon="item.icon" />
 				</span>
-				<span class="sideBarText" >
+				<span class="sideBarText">
 					{{ item.title }}
 				</span>
 			</RouterLink>
-				<ThemeToggle />
+			<ThemeToggle />
 		</div>
 
 		<!-- <button @click="expand" class="sideBarButton">
