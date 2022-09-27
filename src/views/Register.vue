@@ -1,58 +1,65 @@
 <template>
     <div class="base-card">
-        <div>
-            <h3 class="text-2xl my-4 text-center">This is the register.</h3>
+        <div class="base-card-Container">
+            <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+                <h1 class="tracking-wide">SkyBudget<span class="font-mono">™</span></h1>
+            </div>
+            <h3 class="text-2xl my-4 text-center">Register a new user</h3>
             <div>
                 <form @submit.prevent="register">
-                    <div class="my-5">
-                        <label for="username">Username</label><br/>
+
+                        <label class="text-sm font-medium" for="username">Username</label><br/>
                         <input
                             id="username"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="baseInput"
                             type="text" 
                             v-model="state.input.user" 
                             placeholder="Username"
+                            required
                             @blur="v$.input.user.$touch()"
                         />
-                        <div v-if="this.v$.input.user.$error"><p>Enter a username</p></div>
-                    </div>
-                    <div class="my-5">
+                       
+
+
                         <label for="password">Password</label><br/>
                         <input 
                             id="password"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="baseInput"
                             type="password" 
                             v-model="state.input.password" 
                             placeholder="Password"
+                            required
                             @blur="v$.input.password.$touch()"
                         />
-                        <div v-if="this.v$.input.password.$error"><p>Enter a password</p></div>
-                    </div>
-                    <div class="my-5">
+                      
+
+
                         <label for="confirmpassword">Confirm password</label><br/>
                         <input 
                             id="confirmpassword"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="baseInput"
                             v-model="state.confirmpassword"
                             type="password" 
+                            required
                             placeholder="Confirm Password"
                             @blur="v$.confirmpassword.$touch()"
                         />
-                        <div v-if="this.v$.confirmpassword.$error"><p>Enter a password</p></div>
-                    </div>
-                    <div class="my-5">
+                        
+
+
                         <label for="email">Email</label><br/>
                         <input
                             id="email"
-                            class="w-full border rounded h-12 px-4 focus:outline-none"
+                            class="baseInput"
                             type="email" 
                             v-model="state.input.email" 
                             placeholder="Email"
+                            required
                             @blur="v$.input.email.$touch()"
                         />
-                        <div v-if="this.v$.input.email.$error"><p>Enter a correct email</p></div>
-                    </div>
-                    <button class="px-4 py-2 rounded bg-teal-500 text-white hover:bg-teal-700 my-4 w-full disabled:bg-teal-100" v-on:submit="register" :disabled="this.v$.input.$invalid">Register</button>
+                
+
+                    <button class="inputButton" v-on:submit="register" >Register</button>
                 </form>
             </div>
         </div>

@@ -1,54 +1,66 @@
 <template>
 	<div class="base-card">
-		<form @submit.prevent="submitbalance">
-			<div>
-				<label for="date">Balance category</label>
-				<select name="balance-category" id="balance-category" v-model="state.balanceChangeDTO.budgetCategoryID"
-					@blur="v$.balanceChangeDTO.budgetCategoryID.$touch()">
-					<!-- Later when fetching -->
-					<!-- <option v-for="inCat in category" :key="inCat.id" value="">
-      {{ inCat.name }}
-    </option> 
-    !!!! Changed value to numbers as thats how the categeories are saved in the db.
-     @blur="v$.balanceChangeDTO.budgetCategoryID.$touch() is so that we validate after u highlight the field.
-    -->
-					<option value="" hidden>Select Balance category</option>
-					<option value="1">Food</option>
-					<option value="2">Car</option>
-					<option value="3">Other</option>
-				</select>
-
-				<div v-if="this.v$.balanceChangeDTO.budgetCategoryID.$error">You need to pick a category.</div>
+		<div class="base-card-Container">
+			<div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+				<h1 class="tracking-wide">SkyBudget<span class="font-mono">™</span></h1>
 			</div>
-			<input type="text" name="title" v-model="state.balanceChangeDTO.title"
-				@blur="v$.balanceChangeDTO.title.$touch()" placeholder="Balance name:" />
-			<div>
-				<label for="balance-amount">Balance:</label>
-				<input type="text" name="balance-amount" v-model="state.balanceChangeDTO.amount"
-					@blur="v$.balanceChangeDTO.amount.$touch()" />
-				<div class="input-errors" v-for="error of this.v$.balanceChangeDTO.amount.$error" :key="error.$uid">
-					<div class="error-msg">{{ error.$message }}</div>
+			<h3 class="text-2xl my-4 text-center">Add a new balance change</h3>
+			<form @submit.prevent="submitbalance">
+				<div>
+					<label for="date">Balance category</label>
+					<select
+						required
+						name="balance-category"
+						id="balance-category"
+						v-model="state.balanceChangeDTO.budgetCategoryID"
+						@blur="v$.balanceChangeDTO.budgetCategoryID.$touch()"
+					>
+						<option value="" hidden>Select Balance category</option>
+						<option value="1">Food</option>
+						<option value="2">Car</option>
+						<option value="3">Other</option>
+					</select>
+					<label for="title">Balance name:</label>
+					<input
+						required
+						type="text"
+						name="title"
+						v-model="state.balanceChangeDTO.title"
+						@blur="v$.balanceChangeDTO.title.$touch()"
+					/>
+
+					<label for="balance-amount">Balance:</label>
+					<input
+						required
+						type="text"
+						name="balance-amount"
+						v-model="state.balanceChangeDTO.amount"
+						@blur="v$.balanceChangeDTO.amount.$touch()"
+					/>
+
+					<label for="date">Balance Date & Time</label>
+					<input
+						required
+						type="date"
+						id="date"
+						name="date"
+						v-model="state.balanceChangeDTO.date"
+						@blur="v$.balanceChangeDTO.date.$touch()"
+					/>
+
+					<label for="description">Describe the Balance details</label>
+					<textarea
+						name="description"
+						id="description"
+						cols="30"
+						rows="3"
+						placeholder="Optional"
+						v-model="state.balanceChangeDTO.description"
+					></textarea>
+					<button @click="addBalance">submit</button>
 				</div>
-				<div v-if="this.v$.balanceChangeDTO.amount.$error">
-					{{ this.v$.balanceChangeDTO.amount.$errors[0].$message }}
-				</div>
-			</div>
-
-			<label for="date">Balance Date & Time</label>
-			<input type="date" id="date" name="date" v-model="state.balanceChangeDTO.date"
-				@blur="v$.balanceChangeDTO.date.$touch()" />
-			<div class="input-errors" v-for="error of v$.balanceChangeDTO.date.$error" :key="error.$uid">
-				<div class="error-msg">{{ error.$message }}</div>
-			</div>
-
-			<!-- <p v-if="date === ' '">{{ validationMsg }}</p> -->
-
-			<label for="description">Describe the Balance details</label>
-			<textarea name="description" id="description" cols="30" rows="3" placeholder="Optional"
-				v-model="state.balanceChangeDTO.description"></textarea>
-			<button :disabled="this.v$.balanceChangeDTO.$invalid" @click="addBalance">submit</button>
-			<!-- <p v-if="error !== ''">{{ error }} {{ resetRequestError }}</p> -->
-		</form>
+			</form>
+		</div>
 	</div>
 </template>
 
@@ -63,7 +75,7 @@ export default {
 			balanceChangeDTO: {
 				budgetCategoryID: '',
 				amount: '',
-        title: '',
+				title: '',
 				date: new Date().toJSON().slice(0, 10),
 				description: '',
 			},
@@ -73,7 +85,7 @@ export default {
 				balanceChangeDTO: {
 					budgetCategoryID: { required },
 					amount: { required, numeric },
-        		    title: {required},
+					title: { required },
 					date: { required },
 					description: {},
 				},
@@ -82,7 +94,7 @@ export default {
 		const v$ = useValidate(rules, state);
 		return {
 			state,
-			v$
+			v$,
 		};
 	},
 	data() {
@@ -90,21 +102,6 @@ export default {
 	},
 	methods: {
 		submitBalance() {
-			// axios
-			//   .post("api", {
-			//     // keys must match DTO
-			//     budgetCategoryID:
-			//       this.budgetCategoryID == ""
-			//         ? this.validationMsg
-			//         : this.budgetCategoryID,
-			//     amount:
-			//       this.amount == 0 ? this.validationMsg : this.amount,
-			//     date: this.date == "" ? this.validationMsg : this.date,
-			//     description:
-			//       this.description == "" ? this.validationMsg : this.description,
-			//   })
-			//   .then((res) => console.log(res))
-			//   .catch((error) => (this.error = error.message));
 			this.v$.$validate();
 		},
 		addBalance() {
@@ -123,5 +120,3 @@ form {
 	padding: 0 10%;
 }
 </style>
-
-
