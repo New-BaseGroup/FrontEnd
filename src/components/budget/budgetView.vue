@@ -1,16 +1,26 @@
 <template>
-  <div v-if="!siteStore.loading">
-    <h4>Budget Info</h4>
-    <browserTable
-      :data="budgetStore.getBudget"
-      :key="table"
-    />
-    <h4>Category Info</h4>
-    <browserTable
-      :data="budgetStore.getBudgetCategories"
-      :key="table"
-    />
-  </div>
+  <div
+    v-if="!siteStore.loading"
+    class="base-card"
+  >
+    <div class="base-card-Container">
+      <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+        <h1 class="tracking-wide">SkyBudget
+          <span class="font-mono">™</span>
+        </h1>
+      </div>
+      <h4>Budget Info</h4>
+      <browserTable
+        :data="budgetStore.getBudget"
+        :key="table"
+      />
+      <h4>Category Info</h4>
+      <browserTable
+        :data="budgetStore.getBudgetCategories"
+        :key="table"
+      />
+    </div>
+    </div>
 </template>
 <script setup>
 import { useBudgetStore } from "../../stores/budget.js";

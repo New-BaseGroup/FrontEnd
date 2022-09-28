@@ -58,14 +58,14 @@
 	</div>
 	<ThemeToggle />
 	</div>
-	<button
+	<!-- <button
 	    @click="expand"
 	    class="sideBarButton"
 	>
 		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
-		</button>
+		</button> -->
 
-		</div>
+	</div>
 </template>
 
 <script setup>

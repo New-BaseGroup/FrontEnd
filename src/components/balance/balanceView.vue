@@ -1,16 +1,26 @@
 <template>
-    <div v-if="!siteStore.loading">
-        <div
-            v-for="budget in budgetStore.getBudget"
-            :key="budget"
-        >
-            <h4>Balance changes in {{budget.name}}</h4>
-            <browserTable
-                :data="budgetStore.getBalance"
-                :key="table"
-            />
-    </div>
-    </div>
+    <div
+        v-if="!siteStore.loading"
+        class="base-card"
+    >
+        <div class="base-card-Container">
+            <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+                <h1 class="tracking-wide">SkyBudget
+                    <span class="font-mono">™</span>
+                </h1>
+            </div>
+            <div
+                v-for="budget in budgetStore.getBudget"
+                :key="budget"
+            >
+                <h4>Balance changes in {{budget.name}}</h4>
+                <browserTable
+                    :data="budgetStore.getBalance"
+                    :key="table"
+                />
+        </div>
+        </div>
+        </div>
 </template>
 <script setup>
 import { useBudgetStore } from "../../stores/budget.js";
@@ -20,9 +30,9 @@ const budgetStore = useBudgetStore();
 const siteStore = useSiteStore();
 
 async function getData() {
-  if (!budgetStore.getBudget) {
-    await budgetStore.fetchBudget();
-  }
+    if (!budgetStore.getBudget) {
+        await budgetStore.fetchBudget();
+    }
 }
 
 getData();
