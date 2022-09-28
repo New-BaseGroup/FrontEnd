@@ -47,7 +47,7 @@
 }
 @layer components {
   .rootContainer {
-    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700 bg-[url('src/assets/images/bg-light3.png')] bg-blend-multiply;
+    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700 bg-[url('@/assets/images/bg-light3.png')] bg-blend-multiply;
   }
   .mainContainer {
     @apply w-screen h-auto text-textcolor-content container mt-14;
@@ -58,6 +58,9 @@
   }
   .base-card {
     @apply p-4 flex flex-col justify-center  max-w-md mx-auto;
+  }
+  .base-card-table {
+    @apply p-4 flex flex-col justify-center mx-auto;
   }
   .base-card-Container {
     @apply p-6 bg-background-primary rounded;
@@ -82,7 +85,7 @@
   }
 
   .toggle {
-    @apply w-full text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
+    @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
   }
 }
 

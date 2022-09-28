@@ -15,45 +15,42 @@
 					<span>
 						<font-awesome-icon :icon="item.icon" />
 					</span>
-					<span
-					    class="ml-2"
-					    v-if="expanded"
-					>
+					<span class="sideBarText">
 						{{ item.title }}
-						</span>
-						</RouterLink>
-						<div v-else>
-							<RouterLink
-							    :key="item.name"
-							    :to="item.link"
-							    class="sideBardNavigation"
-							    active-class="sideBarNavigationActive"
-							    @click="setActiveSublink(item)"
+					</span>
+					</RouterLink>
+					<div v-else>
+						<RouterLink
+						    :key="item.name"
+						    :to="item.link"
+						    class="sideBardNavigation"
+						    active-class="sideBarNavigationActive"
+						    @click="setActiveSublink(item)"
+						>
+							<span>
+								<font-awesome-icon :icon="item.icon" />
+							</span>
+							<span class="sideBarText">
+								{{ item.title }}
+							</span>
+							</RouterLink>
+							<div
+							    v-for="sublink in item.sublinks"
+							    :key="sublink"
+							    v-show="activeSub == item.title"
 							>
-								<span>
-									<font-awesome-icon :icon="item.icon" />
-								</span>
-								<span
-								    class="ml-2"
-								    v-if="expanded"
+								<router-link
+								    :key="sublink.name"
+								    :to="item.link + sublink.link"
+								    class="sideBardNavigation"
+								    active-class="sideBarNavigationActive"
 								>
-									{{ item.title }}
+									<span>
+										<font-awesome-icon :icon="sublink.icon" />
 									</span>
-									</RouterLink>
-									<div
-									    v-for="sublink in item.sublinks"
-									    :key="sublink"
-									    v-show="activeSub == item.title"
-									>
-										<router-link
-										    :key="sublink.name"
-										    :to="item.link + sublink.link"
-										    class="sideBardNavigation"
-										    active-class="sideBarNavigationActive"
-										>
-											<span v-if="expanded">{{ sublink.title }}</span>
-											</router-link>
-						</div>
+									<span class="sideBarText">{{ sublink.title }}</span>
+									</router-link>
+					</div>
 		</div>
 	</div>
 	<ThemeToggle />
@@ -94,12 +91,12 @@ const navItems = [
         link: "/balance",
         sublinks: [
             {
-                icon: "",
+                icon: "fa-solid fa-plus",
                 title: "Create",
                 link: "/create",
             },
             {
-                icon: "",
+                icon: "fa-solid fa-list",
                 title: "View",
                 link: "/view",
             },
@@ -111,12 +108,12 @@ const navItems = [
         link: "/budget",
         sublinks: [
             {
-                icon: "",
+                icon: "fa-solid fa-plus",
                 title: "Create",
                 link: "/create",
             },
             {
-                icon: "",
+                icon: "fa-solid fa-list",
                 title: "View",
                 link: "/view",
             },

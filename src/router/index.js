@@ -37,13 +37,13 @@ const router = createRouter({
       component: balance,
       children: [
         {
-          path: 'create',
-          component: balanceCreate,
+          path: '/balance/view',
+          component: balanceView,
         },
         {
-          path: 'view',
-          component: balanceView,
-        }
+          path: '/balance/create',
+          component: balanceCreate,
+        },
       ]
     },
     {
@@ -52,13 +52,13 @@ const router = createRouter({
       component: budget,
       children: [
         {
-          path: 'create',
-          component: budgetCreate,
+          path: '/budget/view',
+          component: budgetView,
         },
         {
-          path: 'view',
-          component: budgetView,
-        }
+          path: '/budget/create',
+          component: budgetCreate,
+        },
       ]
     },
   ],

@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="!siteStore.loading"
-        class="base-card"
+        class="base-card-table"
     >
         <div class="base-card-Container">
             <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">

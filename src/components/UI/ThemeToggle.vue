@@ -4,7 +4,7 @@
 	    class="toggle"
 	>
 		<font-awesome-icon
-		    v-if="theme === 'light-theme'"
+		    v-if="siteStore.getTheme === 'light-theme'"
 		    icon="moon"
 		    class="text-xl text-[#fff] hover:text-[#2b2b2b]"
 		/>
@@ -18,21 +18,19 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useSiteStore } from "../../stores/site";
+import { useSiteStore } from '../../stores/site';
 const siteStore = useSiteStore();
 
-const theme = ref("light-theme");
-
-if (localStorage.getItem("theme") == null) {
-    localStorage.setItem("theme", "light-theme");
+if (localStorage.getItem('theme') == null) {
+    localStorage.setItem('theme', 'light-theme');
 } else {
-    theme.value = localStorage.getItem("theme");
+    siteStore.setTheme();
 }
 
 const ToggleTheme = () => {
-    theme.value = theme.value == "light-theme" ? "dark-theme" : "light-theme";
-    localStorage.setItem("theme", theme.value);
+    siteStore.getTheme == 'light-theme'
+        ? localStorage.setItem('theme', 'dark-theme')
+        : localStorage.setItem('theme', 'light-theme');
     siteStore.setTheme();
 };
 </script>
