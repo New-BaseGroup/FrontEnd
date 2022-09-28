@@ -55,7 +55,6 @@
           <button
             class="inputButton"
             v-on:submit="login()"
-            :disabled="this.v$.input.$invalid"
           >Login</button>
             </form>
       </div>
@@ -64,17 +63,17 @@
 </template>
 
 <script setup>
-import API_Service from '../API/API_Service.js';
-import useValidate from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
-import { reactive, computed } from 'vue';
-import { useUserStore } from '../stores/user.js';
+import API_Service from "../API/API_Service.js";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import { reactive, computed } from "vue";
+import { useUserStore } from "../stores/user.js";
 const userStore = useUserStore();
 
 const state = reactive({
     input: {
-        user: '',
-        password: '',
+        user: "",
+        password: "",
     },
 });
 
@@ -90,10 +89,10 @@ const rules = computed(() => {
 const v$ = useValidate(rules, state);
 
 async function login() {
-    await API_Service.PostService('Account/login', state.input).then(
+    await API_Service.PostService("Account/login", state.input).then(
         (response) => {
             console.log(response);
-            if (response.status == 'success') {
+            if (response.status == "success") {
                 updateLoggedin(response.message);
                 alert("Du är nu inloggad '" + response.message + "'");
             } else {
