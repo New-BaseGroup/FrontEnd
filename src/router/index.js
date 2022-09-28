@@ -35,6 +35,7 @@ const router = createRouter({
       path: "/balance",
       name: "balance",
       component: balance,
+      redirect: '/balance/view',
       children: [
         {
           path: '/balance/view',
@@ -50,6 +51,7 @@ const router = createRouter({
       path: "/budget",
       name: "budget",
       component: budget,
+      redirect: '/budget/view',
       children: [
         {
           path: '/budget/view',

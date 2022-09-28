@@ -5,130 +5,136 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply overflow-y-scroll;
-  }
-  label {
-    @apply text-sm font-medium;
-  }
-  input {
-    @apply mb-3 px-2 py-1.5 mt-1 block w-full border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+    body {
+        @apply overflow-y-scroll;
+    }
+    label {
+        @apply text-sm font-medium;
+    }
+    input {
+        @apply mb-3 px-2 py-1.5 mt-1 block w-full border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
     bg-background-secondary
     focus:outline-none
     focus:border-sky-500
     focus:ring-1
     focus:ring-sky-500
     focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
-  }
-  button {
-    @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300 disabled:bg-background-secondary;
-  }
-  form {
-    @apply flex flex-col justify-center;
-  }
-  textarea {
-    @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+    }
+    button {
+        @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300 disabled:bg-background-secondary;
+    }
+    form {
+        @apply flex flex-col justify-center;
+    }
+    textarea {
+        @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
     bg-background-secondary
     focus:outline-none
     focus:border-sky-500
     focus:ring-1
     focus:ring-sky-500
     focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
-  }
-  select {
-    @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+    }
+    select {
+        @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
     bg-background-secondary
     focus:outline-none
     focus:border-sky-500
     focus:ring-1
     focus:ring-sky-500
     focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
-  }
+    }
 }
 @layer components {
-  .rootContainer {
-    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700 bg-[url('@/assets/images/bg-light3.png')] bg-blend-multiply;
-  }
-  .mainContainer {
-    @apply w-screen h-auto text-textcolor-content container mt-14;
-  }
+    .rootContainer {
+        @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700 bg-[url('@/assets/images/bg-light3.png')] bg-blend-multiply;
+    }
+    .mainContainer {
+        @apply w-screen h-auto text-textcolor-content container mt-14;
+    }
 
-  .inputButton {
-    @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300;
-  }
-  .base-card {
-    @apply p-4 flex flex-col justify-center  max-w-md mx-auto;
-  }
-  .base-card-table {
-    @apply p-4 flex flex-col justify-center mx-auto;
-  }
-  .base-card-Container {
-    @apply p-6 bg-background-primary rounded;
-  }
-  .sideBarContainer {
-    @apply bg-background-primary flex flex-row min-h-screen;
-  }
-  .sideBarContent {
-    @apply transition-all bg-background-primary overflow-clip max-h-screen duration-300 flex flex-col text-textcolor-content w-[50px] xl:w-36;
-  }
-  .sideBarText {
-    @apply ml-0 xl:ml-2 invisible xl:visible;
-  }
-  .sideBardNavigation {
-    @apply flex w-full  cursor-pointer items-center rounded-l-full pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4   hover:bg-background-hover hover:text-textcolor-text active:scale-110;
-  }
-  .sideBarNavigationActive {
-    @apply flex  w-full cursor-pointer items-center rounded-l-full pl-3 transition duration-300 ease-in-out ml-1  py-4 my-4   bg-background-secondary text-textcolor-active active:scale-110;
-  }
-  .sideBarButton {
-    @apply px-1 py-3  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white text-[#3094a1] border active:scale-110;
-  }
+    .inputButton {
+        @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300;
+    }
+    .base-card {
+        @apply p-4 flex flex-col justify-center  max-w-md mx-auto;
+    }
+    .base-card-table {
+        @apply p-4 flex flex-col justify-center mx-auto;
+    }
+    .base-card-Container {
+        @apply p-6 bg-background-primary rounded;
+    }
+    .sideBarContainer {
+        @apply bg-background-primary flex flex-row min-h-screen;
+    }
+    .sideBarContent {
+        @apply transition-all bg-background-primary overflow-clip max-h-screen duration-300 flex flex-col text-textcolor-content w-[50px] xl:w-36;
+    }
+    .sideBarText {
+        @apply ml-0 xl:ml-2 invisible xl:visible;
+    }
+    .sideBardNavigation {
+        @apply flex w-full  cursor-pointer items-center rounded-l-full pl-3   ml-1 transition duration-300 ease-in-out py-4 mt-10   hover:bg-background-hover hover:text-textcolor-text active:scale-110;
+    }
+    .sideBarNavigationActive {
+        @apply flex  w-full cursor-pointer items-center rounded-l-full pl-3   ml-1 transition duration-300 ease-in-out py-4 mt-10  bg-background-secondary text-textcolor-active active:scale-110;
+    }
+    .sideBardNavigationSub {
+        @apply flex w-full  cursor-pointer items-center rounded-l-full xl:ml-8 pl-3   ml-1 transition duration-300 ease-in-out py-1 my-1   hover:bg-background-hover hover:text-textcolor-text active:scale-110;
+    }
+    .sideBarNavigationActiveSub {
+        @apply flex  w-full cursor-pointer items-center rounded-l-full xl:ml-8 pl-3 ml-1 transition duration-300 ease-in-out py-1 my-1   bg-background-secondary text-textcolor-active active:scale-110;
+    }
+    .sideBarButton {
+        @apply px-1 py-3  my-auto rounded-r-full hover:text-white hover:bg-[#3094a1] border-[#3094a1] bg-white text-[#3094a1] border active:scale-110;
+    }
 
-  .toggle {
-    @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
-  }
-  .table {
-    @apply w-full text-sm text-left;
-  }
-  .table-title {
-    @apply w-full text-center text-textcolor-input bg-background-secondary border-b py-4 px-6 font-medium;
-  }
-  .table-row {
-    @apply bg-background-secondary border-b hover:bg-background-hover;
-  }
-  .table-header {
-    @apply text-textcolor-table py-4 px-6 font-medium whitespace-nowrap;
-  }
-  .table-data {
-    @apply text-textcolor-table py-4 px-6;
-  }
+    .toggle {
+        @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
+    }
+    .table {
+        @apply w-full text-sm text-left;
+    }
+    .table-title {
+        @apply w-full text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
+    }
+    .table-row {
+        @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active;
+    }
+    .table-header {
+        @apply text-textcolor-table  py-4 xl:px-6 font-medium whitespace-nowrap;
+    }
+    .table-data {
+        @apply text-textcolor-table py-4 xl:px-6;
+    }
 }
 
 .light-theme {
-  --bg-background-primary: #3094a1;
-  --bg-background-secondary: #f7fafc;
-  --bg-background-ternary: #e2e8f0;
-  --bg-background-hover: #f7fafc;
-  --text-content: #ffffff;
-  --text-background: #3094a1;
-  --text-active: #3094a1;
-  --text-input: #000000;
-  --text-table: #000000;
+    --bg-background-primary: #3094a1;
+    --bg-background-secondary: #f7fafc;
+    --bg-background-ternary: #b8f4f8;
+    --bg-background-hover: #f7fafc;
+    --text-content: #ffffff;
+    --text-background: #3094a1;
+    --text-active: #3094a1;
+    --text-input: #000000;
+    --text-table: #000000;
 }
 
 .dark-theme {
-  --bg-background-primary: #0d2438;
-  --bg-background-secondary: #102c44;
-  --bg-background-ternary: #c3c3c3;
-  --bg-background-hover: #102c44;
-  --text-content: #d6d3d3;
-  --text-background: #a9d712;
-  --text-active: #a9d712;
-  --text-input: #a9d712;
-  --text-table: #d6d3d3;
+    --bg-background-primary: #0d2438;
+    --bg-background-secondary: #102c44;
+    --bg-background-ternary: #424355;
+    --bg-background-hover: #102c44;
+    --text-content: #d6d3d3;
+    --text-background: #a9d712;
+    --text-active: #a9d712;
+    --text-input: #a9d712;
+    --text-table: #d6d3d3;
 }
 
 .body-color {
-  /*should be added to main container "app" to close the color gab between components and body*/
-  background-color: var(--bg-background-secondary);
+    /*should be added to main container "app" to close the color gab between components and body*/
+    background-color: var(--bg-background-secondary);
 }

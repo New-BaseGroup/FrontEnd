@@ -5,21 +5,7 @@
 			    v-for="item in navItems"
 			    :key="item"
 			>
-				<RouterLink
-				    v-if="!item.sublinks"
-				    :key="item.name"
-				    :to="item.link"
-				    class="sideBardNavigation"
-				    active-class="sideBarNavigationActive"
-				>
-					<span>
-						<font-awesome-icon :icon="item.icon" />
-					</span>
-					<span class="sideBarText">
-						{{ item.title }}
-					</span>
-					</RouterLink>
-					<div v-else>
+
 						<RouterLink
 						    :key="item.name"
 						    :to="item.link"
@@ -41,9 +27,9 @@
 							>
 								<router-link
 								    :key="sublink.name"
-								    :to="item.link + sublink.link"
-								    class="sideBardNavigation"
-								    active-class="sideBarNavigationActive"
+								    :to="sublink.link"
+								    class="sideBardNavigationSub"
+								    active-class="sideBarNavigationActiveSub"
 								>
 									<span>
 										<font-awesome-icon :icon="sublink.icon" />
@@ -51,7 +37,7 @@
 									<span class="sideBarText">{{ sublink.title }}</span>
 									</router-link>
 					</div>
-		</div>
+		
 	</div>
 	<ThemeToggle />
 	</div>
@@ -90,15 +76,16 @@ const navItems = [
         title: "Transaction",
         link: "/balance",
         sublinks: [
-            {
-                icon: "fa-solid fa-plus",
-                title: "Create",
-                link: "/create",
-            },
+           
             {
                 icon: "fa-solid fa-list",
                 title: "View",
-                link: "/view",
+                link: "/balance/view",
+            },
+			{
+                icon: "fa-solid fa-plus",
+                title: "Create",
+                link: "/balance/create",
             },
         ],
     },
@@ -107,15 +94,16 @@ const navItems = [
         title: "Budget",
         link: "/budget",
         sublinks: [
-            {
-                icon: "fa-solid fa-plus",
-                title: "Create",
-                link: "/create",
-            },
+           
             {
                 icon: "fa-solid fa-list",
                 title: "View",
-                link: "/view",
+                link: "/budget/view",
+            },
+			{
+                icon: "fa-solid fa-plus",
+                title: "Create",
+                link: "/budget/create",
             },
         ],
     },
