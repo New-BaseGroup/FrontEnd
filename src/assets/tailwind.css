@@ -44,7 +44,7 @@
 }
 @layer components {
 	.rootContainer {
-		@apply bg-background-secondary flex space-x-2 max-h-screen w-full transition-colors duration-150;
+		@apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-150;
 	}
 	.mainContainer {
 		@apply w-screen h-auto text-textcolor-content container;
@@ -60,7 +60,10 @@
 		@apply p-6 bg-background-primary rounded;
 	}
 	.sideBarContainer {
-		@apply transition-all bg-background-primary overflow-clip h-full duration-300 flex flex-col text-textcolor-content w-[50px] xl:w-36;
+		@apply bg-background-primary flex flex-row min-h-screen;
+	}
+	.sideBarContent {
+		@apply transition-all bg-background-primary overflow-clip max-h-screen duration-300 flex flex-col text-textcolor-content w-[50px] xl:w-36;
 	}
 	.sideBarText {
 		@apply ml-0 xl:ml-2 invisible xl:visible;

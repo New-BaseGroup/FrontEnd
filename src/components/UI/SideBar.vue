@@ -1,6 +1,6 @@
 <template>
-	<div class="flex flex-row">
-		<div class="sideBarContainer">
+	<div class="sideBarContainer">
+		<div class="sideBarContent">
 			<RouterLink
 				v-for="item in navItems"
 				:key="item.name"
