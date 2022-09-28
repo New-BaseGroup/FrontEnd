@@ -1,6 +1,7 @@
 <template>
     <div v-if="!siteStore.loading">
-        <table>
+        <h3 class="table-title">{{props.header}}</h3>
+        <table class="table">
             <tr class="table-row">
                 <th
                     class="table-header"
@@ -26,12 +27,13 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import { useSiteStore } from '../../stores/site';
+import { defineProps } from "vue";
+import { useSiteStore } from "../../stores/site";
 
 const siteStore = useSiteStore();
 
 const props = defineProps({
+    header: String,
     data: Array,
 });
 </script>

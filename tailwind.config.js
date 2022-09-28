@@ -23,6 +23,7 @@ module.exports = {
         content: "var(--text-content)",
         active: "var(--text-active)",
         input: "var(--text-input)",
+        table: "var(--text-table)"
       },
 
       inherit: colors.inherit,

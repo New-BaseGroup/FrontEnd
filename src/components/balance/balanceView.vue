@@ -13,8 +13,8 @@
                 v-for="budget in budgetStore.getBudget"
                 :key="budget"
             >
-                <h4>Balance changes in {{budget.name}}</h4>
                 <browserTable
+                    :header="'Balance changes in ' + budget.name"
                     :data="budgetStore.getBalance"
                     :key="table"
                 />

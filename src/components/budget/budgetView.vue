@@ -9,13 +9,13 @@
           <span class="font-mono">™</span>
         </h1>
       </div>
-      <h4>Budget Info</h4>
       <browserTable
+        :header="'Budget Info'"
         :data="budgetStore.getBudget"
         :key="table"
       />
-      <h4>Category Info</h4>
       <browserTable
+        :header="'Category Info'"
         :data="budgetStore.getBudgetCategories"
         :key="table"
       />

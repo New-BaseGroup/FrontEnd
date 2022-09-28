@@ -87,6 +87,21 @@
   .toggle {
     @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
   }
+  .table {
+    @apply w-full text-sm text-left;
+  }
+  .table-title {
+    @apply w-full text-center text-textcolor-input bg-background-secondary border-b py-4 px-6 font-medium;
+  }
+  .table-row {
+    @apply bg-background-secondary border-b hover:bg-background-hover;
+  }
+  .table-header {
+    @apply text-textcolor-table py-4 px-6 font-medium whitespace-nowrap;
+  }
+  .table-data {
+    @apply text-textcolor-table py-4 px-6;
+  }
 }
 
 .light-theme {
@@ -98,6 +113,7 @@
   --text-background: #3094a1;
   --text-active: #3094a1;
   --text-input: #000000;
+  --text-table: #000000;
 }
 
 .dark-theme {
@@ -109,6 +125,7 @@
   --text-background: #a9d712;
   --text-active: #a9d712;
   --text-input: #a9d712;
+  --text-table: #d6d3d3;
 }
 
 .body-color {
