@@ -117,8 +117,4 @@ export default {
 	},
 };
 </script>
-<style scoped>
-.inputWrapper {
-	margin: auto;
-}
-</style>
+

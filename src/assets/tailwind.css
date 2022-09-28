@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply overflow-y-scroll;
+  }
   label {
     @apply text-sm font-medium;
   }
@@ -44,17 +47,17 @@
 }
 @layer components {
   .rootContainer {
-    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700;
+    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700 bg-[url('src/assets/images/bg-light3.png')] bg-blend-multiply;
   }
   .mainContainer {
-    @apply w-screen h-auto text-textcolor-content container;
+    @apply w-screen h-auto text-textcolor-content container mt-14;
   }
 
   .inputButton {
     @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300;
   }
   .base-card {
-    @apply p-4 flex flex-col justify-center min-h-screen max-w-md mx-auto transition;
+    @apply p-4 flex flex-col justify-center  max-w-md mx-auto;
   }
   .base-card-Container {
     @apply p-6 bg-background-primary rounded;

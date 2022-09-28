@@ -17,6 +17,4 @@ const store = useStore();
 </script>
 <style>
 
-
-
 </style>
