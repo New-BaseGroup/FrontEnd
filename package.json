@@ -28,5 +28,16 @@
     "@vitejs/plugin-vue": "^3.0.1",
     "vite": "^3.0.4",
     "vue-cli-plugin-tailwind": "~3.0.0"
+  },
+  "prettier":{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "tabs": true,
+    "semi": true,
+    "singleQuote": false,
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always"
   }
 }

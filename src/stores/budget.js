@@ -19,7 +19,8 @@ export const useBudgetStore = defineStore('budget', () => {
 
     //Actions
     function setBudget(data){
-        budget.value = data.data.message;
+        budget.value = [data.data.message];
+        console.log(getBudget)
     }
     function setBudgetCategories (data) {
         budgetCategories.value = data.data.message.budgetCategories;
@@ -39,7 +40,7 @@ export const useBudgetStore = defineStore('budget', () => {
         .then(data => {
             console.log('loading data')
             setBudgetCategories(data);
-            setBalance(data)
+            setBalance(data);
             setBudget(data);
             siteStore.setLoading(false);
         });

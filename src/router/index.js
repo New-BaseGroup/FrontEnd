@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import register from "../views/Register.vue";
 import login from "../views/Login.vue";
-import balance from "../components/balance/balance.vue";
+import balance from "../views/Balance.vue";
+import balanceCreate from "../components/balance/balance.vue";
+import balanceView from "../components/balance/balanceView.vue";
 import budgetCreate from "../components/budget/Budget.vue";
 import budgetView from "../components/budget/budgetView.vue";
 import budget from "../views/Budget.vue";
@@ -33,6 +35,16 @@ const router = createRouter({
       path: "/balance",
       name: "balance",
       component: balance,
+      children: [
+        {
+          path: 'create',
+          component: balanceCreate,
+        },
+        {
+          path: 'view',
+          component: balanceView,
+        }
+      ]
     },
     {
       path: "/budget",
