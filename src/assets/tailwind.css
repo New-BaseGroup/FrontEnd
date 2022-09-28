@@ -44,7 +44,7 @@
 }
 @layer components {
   .rootContainer {
-    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-150;
+    @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700;
   }
   .mainContainer {
     @apply w-screen h-auto text-textcolor-content container;
@@ -54,7 +54,7 @@
     @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300;
   }
   .base-card {
-    @apply p-4 flex flex-col justify-center min-h-screen max-w-md mx-auto;
+    @apply p-4 flex flex-col justify-center min-h-screen max-w-md mx-auto transition;
   }
   .base-card-Container {
     @apply p-6 bg-background-primary rounded;

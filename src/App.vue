@@ -1,20 +1,22 @@
 <template>
-  <div class="rootContainer" :class="store.state.toggle">
-    <SideBar />
+	<div class="rootContainer" :class="store.state.toggle">
+		<SideBar />
 
-    <div class="mainContainer">
-      <transition
-        enter-active-class="animate__animated animate__fadeIn animate__slow"
-      >
-        <router-view />
-      </transition>
-    </div>
-  </div>
+		<div class="mainContainer">
+			<router-view v-slot="{ Component }">
+					<component :is="Component" />
+			</router-view>
+		</div>
+	</div>
 </template>
 <script setup>
-import { RouterView } from "vue-router";
-import SideBar from "./components/UI/SideBar.vue";
-import "animate.css";
-import { useStore } from "vuex";
+import { RouterView } from 'vue-router';
+import SideBar from './components/UI/SideBar.vue';
+import { useStore } from 'vuex';
 const store = useStore();
 </script>
+<style>
+
+
+
+</style>
