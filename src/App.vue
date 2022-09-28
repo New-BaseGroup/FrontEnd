@@ -1,13 +1,20 @@
 <template>
-	<div class="container min-h-screen flex space-x-2 h-max ">
+	<div class="rootContainer" :class="store.state.toggle">
 		<SideBar />
 
-		<div class="item w-full h-full bg-white-700">
-			<router-view />
+		<div class="mainContainer">
+			<router-view v-slot="{ Component }">
+					<component :is="Component" />
+			</router-view>
 		</div>
 	</div>
 </template>
 <script setup>
-import {RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import SideBar from './components/UI/SideBar.vue';
+import { useStore } from 'vuex';
+const store = useStore();
 </script>
+<style>
+
+</style>

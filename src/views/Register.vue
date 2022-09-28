@@ -1,14 +1,16 @@
 <template>
     <div class="base-card">
-        <div>
-            <h3 class="page-header-text">This is the register.</h3>
+        <div class="base-card-Container">
+			<div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+				<h1 class="tracking-wide">SkyBudget<span class="font-mono">™</span></h1>
+			</div>
             <div>
                 <form @submit.prevent="register">
                     <div class="input-wrapper">
-                        <label for="username">Username</label><br/>
+                        <label class="text-sm font-medium" for="username">Username</label><br/>
                         <input
                             id="username"
-                            class="input"
+                            class="baseInput"
                             type="text"
                             v-model="state.input.user"
                             placeholder="Username"
@@ -22,10 +24,10 @@
                         </div>
                     </div>
                     <div class="input-wrapper">
-                        <label for="password">Password</label><br/>
+                        <label class="text-sm font-medium" for="password">Password</label><br/>
                         <input
                             id="password"
-                            class="input"
+                            class="baseInput"
                             type="password"
                             v-model="state.input.password"
                             placeholder="Password"
@@ -39,10 +41,10 @@
                         </div>
                     </div>
                     <div class="input-wrapper">
-                        <label for="confirmpassword">Confirm password</label><br/>
+                        <label class="text-sm font-medium" for="confirmpassword">Confirm password</label><br/>
                         <input
                             id="confirmpassword"
-                            class="input"
+                            class="baseInput"
                             v-model="state.confirmpassword"
                             type="password"
                             placeholder="Confirm Password"
@@ -56,10 +58,10 @@
                         </div>
                     </div>
                     <div class="input-wrapper">
-                        <label for="email">Email</label><br/>
+                        <label class="text-sm font-medium" for="email">Email</label><br/>
                         <input
                             id="email"
-                            class="input"
+                            class="baseInput"
                             type="email"
                             v-model="state.input.email"
                             placeholder="Email"
@@ -73,7 +75,7 @@
                         </div>
                     </div>
                     <button
-                        class="submit-button"
+                        class="inputButton"
                         v-on:submit="register"
                         :disabled="this.v$.input.$invalid"
                     >Register</button>

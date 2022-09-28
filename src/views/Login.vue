@@ -1,15 +1,17 @@
 <template>
   <div class="base-card">
-    <div>
-      <h3 class="page-header-text">This is the login page.</h3>
+    <div class="base-card-Container">
+      <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+				<h1 class="tracking-wide">SkyBudget<span class="font-mono">™</span></h1>
+			</div>
       <div>
         <p v-if="userStore.getLoggedin">You're already logged in as '{{userStore.getUser}}'</p>
-        <form @submit.prevent="login">
+        <form @submit.prevent="login" class="flex flex-col justify-center">
           <div class="input-wrapper">
-            <label for="username">Username</label><br/>
+            <label class="text-sm font-medium" for="username">Username</label><br/>
             <input
               id="username"
-              class="input"
+              class="baseInput"
               type="text"
               v-model="state.input.user"
               placeholder="Username"
@@ -23,10 +25,10 @@
             </div>
           </div>
           <div class="input-wrapper">
-            <label for="password">Password</label><br/>
+            <label class="text-sm font-medium" for="password">Password</label><br/>
             <input
               id="password"
-              class="input"
+              class="baseInput"
               type="password"
               v-model="state.input.password"
               placeholder="Password"
@@ -40,7 +42,7 @@
             </div>
           </div>
           <button
-            class="submit-button"
+            class="inputButton"
             v-on:submit="login()"
             :disabled="this.v$.input.$invalid"
           >Login</button>

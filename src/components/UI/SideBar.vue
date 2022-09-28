@@ -1,9 +1,6 @@
 <template>
-	<div class="flex flex-row">
-		<div
-		    class="transition-all h-full duration-300 flex-col justify-between bg-[#3094a1] text-white"
-		    :class="{ 'w-[200px]': expanded, 'w-[50px]': !expanded }"
-		>
+	<div class="sideBarContainer">
+		<div class="sideBarContent">
 			<div
 			    v-for="item in navItems"
 			    :key="item"
@@ -57,10 +54,9 @@
 											<span v-if="expanded">{{ sublink.title }}</span>
 											</router-link>
 						</div>
-
+		</div>
 	</div>
-
-	</div>
+	<ThemeToggle />
 	</div>
 	<button
 	    @click="expand"
@@ -74,6 +70,7 @@
 
 <script setup>
 import { ref } from "vue";
+import ThemeToggle from "./ThemeToggle.vue";
 const expanded = ref(true);
 const activeSub = ref("");
 function expand() {
