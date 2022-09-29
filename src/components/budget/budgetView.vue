@@ -10,11 +10,11 @@
             <browserTable
                 :header="'Budget Info'"
                 :data="budgetStore.getBudget"
-                :key="table" />
+                :key="browserTable" />
             <browserTable
                 :header="'Category Info'"
                 :data="budgetStore.getBudgetCategories"
-                :key="table" />
+                :key="browserTable" />
         </div>
     </div>
 </template>

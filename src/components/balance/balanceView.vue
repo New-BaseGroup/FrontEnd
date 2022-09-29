@@ -15,7 +15,7 @@
                 <browserTable
                     :header="'Balance changes in ' + budget.name"
                     :data="budgetStore.getBalance"
-                    :key="table"
+                    :key="browserTable"
                 />
         </div>
         </div>
