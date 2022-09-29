@@ -1,46 +1,22 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
-  <div class="grid grid-cols-6 bg-[#FAFAFA]">
-    <SideBar />
-    <main :class="`h-screen  col-start-2 col-end-6 bg-[#FAFAFA] `">
-      <div>
-        <router-view />
-      </div>
-    </main>
-  </div>
+	<div
+	    class="rootContainer"
+	    :class="siteStore.getTheme"
+	>
+		<SideBar />
+
+		<div class="mainContainer">
+			<router-view v-slot="{ Component }">
+				<component :is="Component" />
+			</router-view>
+		</div>
+		</div>
 </template>
-<script>
+<script setup>
+import { RouterView } from "vue-router";
 import SideBar from "./components/UI/SideBar.vue";
-export default {
-  components: { SideBar },
-  data() {
-    return {
-      expandSideBar: true,
-      sideBarWidth: "",
-      rotateIcon: "",
-    };
-  },
-  methods: {
-    btoggle() {
-      this.expandSideBar = !this.expandSideBar;
-      if (this.expandSideBar) {
-        this.sideBarWidth = "";
-        this.rotateIcon = "";
-      } else {
-        this.sideBarWidth = "w-[80px]";
-        this.rotateIcon = "rotate-180";
-      }
-    },
-  },
-};
+import { useSiteStore } from "./stores/site";
+const siteStore = useSiteStore();
 </script>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 </style>

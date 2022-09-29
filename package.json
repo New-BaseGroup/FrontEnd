@@ -14,9 +14,11 @@
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@vuelidate/core": "^2.0.0-alpha.44",
     "@vuelidate/validators": "^2.0.0-alpha.31",
+    "animate.css": "^4.1.1",
     "autoprefixer": "^10",
     "axios": "^0.27.2",
     "googleapis": "^107.0.0",
+    "pinia": "^2.0.22",
     "postcss": "^8",
     "tailwindcss": "^3",
     "vue": "^3.2.37",
@@ -27,5 +29,16 @@
     "@vitejs/plugin-vue": "^3.0.1",
     "vite": "^3.0.4",
     "vue-cli-plugin-tailwind": "~3.0.0"
+  },
+  "prettier":{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "tabs": true,
+    "semi": true,
+    "singleQuote": false,
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always"
   }
 }
