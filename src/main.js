@@ -1,8 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "@/store";
 import "./assets/tailwind.css";
+import { createPinia } from 'pinia'
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -11,10 +11,10 @@ import { fas } from "@fortawesome/free-solid-svg-icons"; //all solid icons
 import { fab } from "@fortawesome/free-brands-svg-icons"; //all barnds icons
 
 library.add(far, fas, fab);
-
-const app = createApp(App) 
+const pinia = createPinia();
+const app = createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
-app.use(store);
+app.use(pinia);
 
 app.mount("#app");

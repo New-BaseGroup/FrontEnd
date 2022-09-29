@@ -1,66 +1,121 @@
 <template>
 	<div class="sideBarContainer">
 		<div class="sideBarContent">
-			<RouterLink
-				v-for="item in navItems"
-				:key="item.name"
-				:to="item.link"
-				class="sideBardNavigation"
-				active-class="sideBarNavigationActive"
+			<div
+			    v-for="item in navItems"
+			    :key="item"
 			>
-				<span>
-					<font-awesome-icon :icon="item.icon" />
-				</span>
-				<span class="sideBarText">
-					{{ item.title }}
-				</span>
-			</RouterLink>
-			<ThemeToggle />
-		</div>
 
-		<!-- <button @click="expand" class="sideBarButton">
-      <font-awesome-icon
-        :icon="expanded === true ? 'caret-left' : 'caret-right'"
-      />
-    </button> -->
+						<RouterLink
+						    :key="item.name"
+						    :to="item.link"
+						    class="sideBardNavigation"
+						    active-class="sideBarNavigationActive"
+						    @click="setActiveSublink(item)"
+						>
+							<span>
+								<font-awesome-icon :icon="item.icon" />
+							</span>
+							<span class="sideBarText">
+								{{ item.title }}
+							</span>
+							</RouterLink>
+							<div
+							    v-for="sublink in item.sublinks"
+							    :key="sublink"
+							    v-show="activeSub == item.title"
+							>
+								<router-link
+								    :key="sublink.name"
+								    :to="sublink.link"
+								    class="sideBardNavigationSub"
+								    active-class="sideBarNavigationActiveSub"
+								>
+									<span>
+										<font-awesome-icon :icon="sublink.icon" />
+									</span>
+									<span class="sideBarText">{{ sublink.title }}</span>
+									</router-link>
+					</div>
+		
+	</div>
+	<ThemeToggle />
+	</div>
+	<!-- <button
+	    @click="expand"
+	    class="sideBarButton"
+	>
+		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
+		</button> -->
+
 	</div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import ThemeToggle from './ThemeToggle.vue';
-
+import { ref } from "vue";
+import ThemeToggle from "./ThemeToggle.vue";
 const expanded = ref(true);
-
+const activeSub = ref("");
 function expand() {
-	expanded.value = !expanded.value;
+    expanded.value = !expanded.value;
 }
-
+function setActiveSublink(parent) {
+    this.activeSub == parent.title
+        ? (this.activeSub = "")
+        : (this.activeSub = parent.title);
+}
+const hover = ref(false);
 const navItems = [
-	{
-		icon: 'home',
-		title: 'Dashboard',
-		link: '/dashboard',
-	},
-	{
-		icon: 'notes-medical',
-		title: 'Transaction',
-		link: '/balance',
-	},
-	{
-		icon: 'wallet',
-		title: 'Budget',
-		link: '/budget',
-	},
-	{
-		icon: 'id-card',
-		title: 'Register',
-		link: '/register',
-	},
-	{
-		icon: 'eye',
-		title: 'Login',
-		link: '/login',
-	},
+    {
+        icon: "home",
+        title: "Dashboard",
+        link: "/dashboard",
+    },
+    {
+        icon: "notes-medical",
+        title: "Transaction",
+        link: "/balance",
+        sublinks: [
+           
+            {
+                icon: "fa-solid fa-list",
+                title: "View",
+                link: "/balance/view",
+            },
+			{
+                icon: "fa-solid fa-plus",
+                title: "Create",
+                link: "/balance/create",
+            },
+        ],
+    },
+    {
+        icon: "wallet",
+        title: "Budget",
+        link: "/budget",
+        sublinks: [
+           
+            {
+                icon: "fa-solid fa-list",
+                title: "View",
+                link: "/budget/view",
+            },
+			{
+                icon: "fa-solid fa-plus",
+                title: "Create",
+                link: "/budget/create",
+            },
+        ],
+    },
+    {
+        icon: "id-card",
+        title: "Register",
+        link: "/register",
+    },
+    {
+        icon: "eye",
+        title: "Login",
+        link: "/login",
+    },
 ];
 </script>

@@ -2,8 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import register from "../views/Register.vue";
 import login from "../views/Login.vue";
-import balance from "../components/balance/balance.vue";
-import budget from "../components/budget/Budget.vue";
+import balance from "../views/Balance.vue";
+import balanceCreate from "../components/balance/balance.vue";
+import balanceView from "../components/balance/balanceView.vue";
+import budgetCreate from "../components/budget/Budget.vue";
+import budgetView from "../components/budget/budgetView.vue";
+import budget from "../views/Budget.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -31,11 +35,33 @@ const router = createRouter({
       path: "/balance",
       name: "balance",
       component: balance,
+      redirect: '/balance/view',
+      children: [
+        {
+          path: '/balance/view',
+          component: balanceView,
+        },
+        {
+          path: '/balance/create',
+          component: balanceCreate,
+        },
+      ]
     },
     {
       path: "/budget",
       name: "budget",
       component: budget,
+      redirect: '/budget/view',
+      children: [
+        {
+          path: '/budget/view',
+          component: budgetView,
+        },
+        {
+          path: '/budget/create',
+          component: budgetCreate,
+        },
+      ]
     },
   ],
 });
