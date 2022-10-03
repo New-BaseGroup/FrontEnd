@@ -29,9 +29,10 @@ const budgetStore = useBudgetStore();
 const siteStore = useSiteStore();
 
 async function getData() {
+
     if (!budgetStore.getBudget) {
         await budgetStore.fetchBudget();
-    }
+    } 
 }
 
 getData();

@@ -2,10 +2,10 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import API_Service from "../API/API_Service.js";
 import { useSiteStore } from "./site.js";
-
+import { useUserStore } from "./user.js";
 export const useBudgetStore = defineStore("budget", () => {
     const siteStore = useSiteStore();
-
+    const userStore = useUserStore();
     //State
     const budget = ref();
     const budgetCategories = ref();
@@ -34,7 +34,8 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchBudget(store) {
         siteStore.setLoading(true);
-        await API_Service.GetService("Budget/1").then((data) => {
+        console.log(userStore.getToken);
+        await API_Service.GetService("Budget/1",userStore.getToken).then((data) => {
             console.log("loading data");
             setBudgetCategories(data);
             setBalance(data);
@@ -43,7 +44,7 @@ export const useBudgetStore = defineStore("budget", () => {
         });
     }
     async function fetchBalance(store) {
-        await API_Service.GetService("balance").then((data) => {
+        await API_Service.GetService("balance",userStore.getToken).then((data) => {
             setBalance(data);
         });
     }
