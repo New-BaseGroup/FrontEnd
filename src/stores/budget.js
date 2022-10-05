@@ -15,6 +15,7 @@ export const useBudgetStore = defineStore("budget", () => {
     const getBudget = computed(() => budget.value);
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
+    const getAmountUsed = computed(() => budget.value[0].totalAmount);
 
     //Actions
     function setBudget(data) {
@@ -36,6 +37,7 @@ export const useBudgetStore = defineStore("budget", () => {
         siteStore.setLoading(true);
         await API_Service.GetService("Budget/1").then((data) => {
             console.log("loading data");
+            console.log(data);
             setBudgetCategories(data);
             setBalance(data);
             setBudget(data);
@@ -55,6 +57,7 @@ export const useBudgetStore = defineStore("budget", () => {
         getBudget,
         getBudgetCategories,
         getBalance,
+        getAmountUsed,
         setBudget,
         setBudgetCategories,
         setBalance,

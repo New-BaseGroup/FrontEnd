@@ -108,6 +108,9 @@
     .table-data {
         @apply text-textcolor-table py-4 xl:px-6;
     }
+    .widget {
+        @apply bg-black rounded text-center;
+    }
 }
 
 .light-theme {
