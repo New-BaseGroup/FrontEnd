@@ -15,8 +15,27 @@ export const useBudgetStore = defineStore("budget", () => {
     const getBudget = computed(() => budget.value);
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
-    const getAmountUsed = computed(() => budget.value[0].totalAmount);
-
+    const getTotalAmount = computed(() => budget.value[0].totalAmount);
+    const getBudgetInfo = computed(
+        () => `${budget.value[0].name} ${budget.value[0].totalAmount}`
+    );
+    const getAmountUsed = computed(() =>
+        balance.value.map((b) => b.amount).reduce((a, b) => a + b)
+    );
+    const getLatestTransactions = computed(() =>
+        balance.value
+            .sort((a, b) => a.date - b.date)
+            .map((f) => f.title)
+            .slice(-10)
+    );
+    const getCategoryInfo = computed(() =>
+        budgetCategories.value.map(
+            (b) =>
+                `${b.customName} ${b.maxAmount} ${b.balanceChanges
+                    .map((b) => b.amount)
+                    .reduce((a, b) => a + b)}`
+        )
+    );
     //Actions
     function setBudget(data) {
         budget.value = [data.data.message];
@@ -58,6 +77,10 @@ export const useBudgetStore = defineStore("budget", () => {
         getBudgetCategories,
         getBalance,
         getAmountUsed,
+        getBudgetInfo,
+        getLatestTransactions,
+        getCategoryInfo,
+        getTotalAmount,
         setBudget,
         setBudgetCategories,
         setBalance,
