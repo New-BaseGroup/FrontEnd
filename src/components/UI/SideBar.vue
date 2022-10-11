@@ -1,59 +1,54 @@
 <template>
-	<div class="sideBarContainer">
-		<div class="sideBarContent">
-			<div
-			    v-for="item in navItems"
-			    :key="item"
-			>
-
-						<RouterLink
-						    :key="item.name"
-						    :to="item.link"
-						    class="sideBardNavigation"
-						    active-class="sideBarNavigationActive"
-						    @click="setActiveSublink(item)"
-						>
-							<span>
-								<font-awesome-icon :icon="item.icon" />
-							</span>
-							<span class="sideBarText">
-								{{ item.title }}
-							</span>
-							</RouterLink>
-							<div
-							    v-for="sublink in item.sublinks"
-							    :key="sublink"
-							    v-show="activeSub == item.title"
-							>
-								<router-link
-								    :key="sublink.name"
-								    :to="sublink.link"
-								    class="sideBardNavigationSub"
-								    active-class="sideBarNavigationActiveSub"
-								>
-									<span>
-										<font-awesome-icon :icon="sublink.icon" />
-									</span>
-									<span class="sideBarText">{{ sublink.title }}</span>
-									</router-link>
-					</div>
-		
-	</div>
-	<ThemeToggle />
-	</div>
-	<!-- <button
+    <div class="sideBarContainer">
+        <div class="sideBarContent">
+            <div v-for="item in navItems" :key="item">
+                <RouterLink
+                    :key="item.name"
+                    :to="item.link"
+                    class="sideBardNavigation"
+                    active-class="sideBarNavigationActive"
+                    @click="setActiveSublink(item)">
+                    <span>
+                        <font-awesome-icon :icon="item.icon" />
+                    </span>
+                    <span class="sideBarText">
+                        {{ item.title }}
+                    </span>
+                </RouterLink>
+                <div
+                    v-for="sublink in item.sublinks"
+                    :key="sublink"
+                    v-show="activeSub == item.title">
+                    <router-link
+                        :key="sublink.name"
+                        :to="sublink.link"
+                        class="sideBardNavigationSub"
+                        active-class="sideBarNavigationActiveSub">
+                        <span>
+                            <font-awesome-icon :icon="sublink.icon" />
+                        </span>
+                        <span class="sideBarText">{{ sublink.title }}</span>
+                    </router-link>
+                </div>
+            </div>
+            <div>
+                <button @click="logout">Logout</button>
+            </div>
+            <ThemeToggle />
+        </div>
+        <!-- <button
 	    @click="expand"
 	    class="sideBarButton"
 	>
 		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
 		</button> -->
-
-	</div>
+    </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import ThemeToggle from "./ThemeToggle.vue";
+import { useUserStore } from "../../stores/user.js";
 const expanded = ref(true);
 const activeSub = ref("");
 function expand() {
@@ -64,7 +59,10 @@ function setActiveSublink(parent) {
         ? (this.activeSub = "")
         : (this.activeSub = parent.title);
 }
-const hover = ref(false);
+const userStore = useUserStore();
+function logout() {
+    userStore.logOutUser();
+}
 const navItems = [
     {
         icon: "home",
@@ -76,13 +74,12 @@ const navItems = [
         title: "Transaction",
         link: "/balance",
         sublinks: [
-           
             {
                 icon: "fa-solid fa-list",
                 title: "View",
                 link: "/balance/view",
             },
-			{
+            {
                 icon: "fa-solid fa-plus",
                 title: "Create",
                 link: "/balance/create",
@@ -94,13 +91,12 @@ const navItems = [
         title: "Budget",
         link: "/budget",
         sublinks: [
-           
             {
                 icon: "fa-solid fa-list",
                 title: "View",
                 link: "/budget/view",
             },
-			{
+            {
                 icon: "fa-solid fa-plus",
                 title: "Create",
                 link: "/budget/create",
