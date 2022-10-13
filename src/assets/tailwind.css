@@ -109,7 +109,7 @@
         @apply text-textcolor-table py-4 xl:px-6;
     }
     .widget {
-        @apply bg-black rounded text-center;
+        @apply relative z-0 px-6 py-4 m-5 text-center transition-colors duration-200 transform bg-gray-700 rounded-lg dark:bg-gray-600 ;
     }
 }
 

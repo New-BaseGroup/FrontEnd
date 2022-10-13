@@ -9,26 +9,28 @@ export const useSiteStore = defineStore("site", () => {
     const widgets = ref([
         {
             id: 0,
-            header: "Test",
-            data: "String",
+            header: "Widget",
+            data: "Please select a setting",
         },
         {
             id: 1,
-            header: "Test 1",
-            data: "String",
+            header: "Widget 1",
+            data: "Please select a setting",
         },
         {
             id: 2,
-            header: "Test 2",
-            data: "String",
+            header: "Widget 2",
+            data: "Please select a setting",
         },
     ]);
+    const widgetLimit = ref(6);
 
     //Getters
     const getView = computed(() => view.value);
     const getLoading = computed(() => loading.value);
     const getTheme = computed(() => theme.value);
     const getWidgets = computed(() => widgets.value);
+    const getWidgetLimit = computed(() => widgetLimit.value);
 
     //Actions
     function setView(newView) {
@@ -40,17 +42,34 @@ export const useSiteStore = defineStore("site", () => {
     function setTheme() {
         theme.value = localStorage.getItem("theme");
     }
+    function addWidget() {
+        widgets.value.push({
+            id: widgets.value.length,
+            header: `Widget ${widgets.value.length}`,
+            data: "Please select a setting",
+        });
+    }
+    function removeWidget(id) {
+        const widgetIndex = widgets.value.findIndex(
+            (widget) => widget.id === id
+        );
+        widgets.value.splice(widgetIndex, 1);
+    }
     return {
         view,
         loading,
         theme,
         widgets,
+        widgetLimit,
         getView,
         getLoading,
         getTheme,
         getWidgets,
+        getWidgetLimit,
         setView,
         setLoading,
         setTheme,
+        addWidget,
+        removeWidget,
     };
 });
