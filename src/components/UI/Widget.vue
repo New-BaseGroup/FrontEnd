@@ -7,7 +7,7 @@
         />
         <ul
             v-if="openSetting"
-            class="absolute top-10 -left-20 z-10 bg-white rounded-lg border border-gray-200 w-2/3 text-gray-900"
+            class="absolute top-10 -left-10 bg-white rounded-lg border border-gray-200 w-2/3 text-gray-900"
         >
             <li
                 v-for="option in settings"
