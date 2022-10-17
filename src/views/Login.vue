@@ -95,7 +95,7 @@ async function login() {
         (response) => {
             console.log(response);
             if (response.status == "success") {
-                updateLoggedin(response.message);
+                updateLoggedin(response);
                 alert("Du är nu inloggad '" + response.message + "'");
             } else {
                 alert(response.message);
@@ -104,10 +104,12 @@ async function login() {
     );
 }
 
-function updateLoggedin(user) {
+function updateLoggedin(respons) {
     userStore.setLoggedin(true);
-    userStore.setUser(user);
+    userStore.setToken(respons.token)
+    userStore.setUser(respons.message);
     console.log(userStore.getUser);
+    console.log(userStore.getToken);
 }
 </script>
 <style></style>

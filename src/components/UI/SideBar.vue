@@ -5,7 +5,6 @@
                 v-for="item in navItems"
                 :key="item"
             >
-
                 <RouterLink
                     :key="item.name"
                     :to="item.link"
@@ -40,15 +39,17 @@
         </div>
 
     </div>
-    <ThemeToggle />
-    </div>
     <!-- <button
 	    @click="expand"
 	    class="sideBarButton"
 	>
 		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
 		</button> -->
-
+    <div v-if="userStore.getLoggedin">
+        <button @click="logout">Logout</button>
+    </div>
+    <ThemeToggle />
+    </div>
     </div>
 </template>
 
@@ -67,7 +68,9 @@ function setActiveSublink(parent) {
         ? (this.activeSub = "")
         : (this.activeSub = parent.title);
 }
-const hover = ref(false);
+function logout() {
+    userStore.logOutUser();
+}
 const navItems = [
     {
         icon: "home",
