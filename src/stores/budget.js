@@ -54,7 +54,7 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchBudget(store) {
         siteStore.setLoading(true);
-        await API_Service.GetService("Budget/1").then((data) => {
+        await API_Service.GetService("Budget/1",userStore.getToken).then((data) => {
             console.log("loading data");
             console.log(data);
             setBudgetCategories(data);
