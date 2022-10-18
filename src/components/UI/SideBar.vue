@@ -1,54 +1,63 @@
 <template>
     <div class="sideBarContainer">
         <div class="sideBarContent">
-            <div v-for="item in navItems" :key="item">
+            <div
+                v-for="item in navItems"
+                :key="item"
+            >
                 <RouterLink
                     :key="item.name"
                     :to="item.link"
                     class="sideBardNavigation"
                     active-class="sideBarNavigationActive"
-                    @click="setActiveSublink(item)">
+                    @click="setActiveSublink(item)"
+                    v-if="item.availability === 'all' || (item.availability === 'user' && userStore.getLoggedin)"
+                >
                     <span>
                         <font-awesome-icon :icon="item.icon" />
                     </span>
                     <span class="sideBarText">
                         {{ item.title }}
                     </span>
-                </RouterLink>
-                <div
-                    v-for="sublink in item.sublinks"
-                    :key="sublink"
-                    v-show="activeSub == item.title">
-                    <router-link
-                        :key="sublink.name"
-                        :to="sublink.link"
-                        class="sideBardNavigationSub"
-                        active-class="sideBarNavigationActiveSub">
-                        <span>
-                            <font-awesome-icon :icon="sublink.icon" />
-                        </span>
-                        <span class="sideBarText">{{ sublink.title }}</span>
-                    </router-link>
-                </div>
-            </div>
-            <div>
-                <button @click="logout">Logout</button>
-            </div>
-            <ThemeToggle />
+                    </RouterLink>
+                    <div
+                        v-for="sublink in item.sublinks"
+                        :key="sublink"
+                        v-show="activeSub == item.title"
+                    >
+                        <router-link
+                            :key="sublink.name"
+                            :to="sublink.link"
+                            class="sideBardNavigationSub"
+                            active-class="sideBarNavigationActiveSub"
+                        >
+                            <span>
+                                <font-awesome-icon :icon="sublink.icon" />
+                            </span>
+                            <span class="sideBarText">{{ sublink.title }}</span>
+                            </router-link>
         </div>
-        <!-- <button
+
+    </div>
+    <!-- <button
 	    @click="expand"
 	    class="sideBarButton"
 	>
 		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
 		</button> -->
+    <div v-if="userStore.getLoggedin">
+        <button @click="logout">Logout</button>
+    </div>
+    <ThemeToggle />
+    </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import ThemeToggle from "./ThemeToggle.vue";
-import { useUserStore } from "../../stores/user.js";
+import { useUserStore } from "../../stores/user";
+const userStore = useUserStore();
 const expanded = ref(true);
 const activeSub = ref("");
 function expand() {
@@ -59,7 +68,6 @@ function setActiveSublink(parent) {
         ? (this.activeSub = "")
         : (this.activeSub = parent.title);
 }
-const userStore = useUserStore();
 function logout() {
     userStore.logOutUser();
 }
@@ -68,11 +76,13 @@ const navItems = [
         icon: "home",
         title: "Dashboard",
         link: "/dashboard",
+        availability: "user",
     },
     {
         icon: "notes-medical",
         title: "Transaction",
         link: "/balance",
+        availability: "user",
         sublinks: [
             {
                 icon: "fa-solid fa-list",
@@ -90,6 +100,7 @@ const navItems = [
         icon: "wallet",
         title: "Budget",
         link: "/budget",
+        availability: "user",
         sublinks: [
             {
                 icon: "fa-solid fa-list",
@@ -107,11 +118,13 @@ const navItems = [
         icon: "id-card",
         title: "Register",
         link: "/register",
+        availability: "all",
     },
     {
         icon: "eye",
         title: "Login",
         link: "/login",
+        availability: "all",
     },
 ];
 </script>

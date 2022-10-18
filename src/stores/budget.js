@@ -15,7 +15,27 @@ export const useBudgetStore = defineStore("budget", () => {
     const getBudget = computed(() => budget.value);
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
-
+    const getTotalAmount = computed(() => budget.value[0].totalAmount);
+    const getBudgetInfo = computed(
+        () => `${budget.value[0].name} ${budget.value[0].totalAmount}`
+    );
+    const getAmountUsed = computed(() =>
+        balance.value.map((b) => b.amount).reduce((a, b) => a + b)
+    );
+    const getLatestTransactions = computed(() =>
+        balance.value
+            .sort((a, b) => a.date - b.date)
+            .map((f) => f.title)
+            .slice(-10)
+    );
+    const getCategoryInfo = computed(() =>
+        budgetCategories.value.map(
+            (b) =>
+                `${b.customName} ${b.maxAmount} ${b.balanceChanges
+                    .map((b) => b.amount)
+                    .reduce((a, b) => a + b)}`
+        )
+    );
     //Actions
     function setBudget(data) {
         budget.value = [data.data.message];
@@ -34,8 +54,9 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchBudget(store) {
         siteStore.setLoading(true);
-        const token = userStore.getToken;
-        await API_Service.GetService("Budget/1",token).then((data) => {
+        await API_Service.GetService("Budget/1",userStore.getToken).then((data) => {
+            console.log("loading data");
+            console.log(data);
             setBudgetCategories(data);
             setBalance(data);
             setBudget(data);
@@ -55,6 +76,11 @@ export const useBudgetStore = defineStore("budget", () => {
         getBudget,
         getBudgetCategories,
         getBalance,
+        getAmountUsed,
+        getBudgetInfo,
+        getLatestTransactions,
+        getCategoryInfo,
+        getTotalAmount,
         setBudget,
         setBudgetCategories,
         setBalance,

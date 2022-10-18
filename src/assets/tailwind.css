@@ -59,11 +59,17 @@
     .base-card {
         @apply p-4 flex flex-col justify-center  max-w-md mx-auto;
     }
+    .base-card-wide {
+        @apply p-4 flex flex-col justify-center mx-auto;
+    }
     .base-card-table {
         @apply p-4 flex flex-col justify-center mx-auto;
     }
     .base-card-Container {
         @apply p-6 bg-background-primary rounded;
+    }
+    .base-card-widgets {
+        @apply p-6 w-full grid grid-cols-3 bg-background-primary rounded;
     }
     .sideBarContainer {
         @apply bg-background-primary flex flex-row min-h-screen;
@@ -107,6 +113,9 @@
     }
     .table-data {
         @apply text-textcolor-table py-4 xl:px-6;
+    }
+    .widget {
+        @apply relative px-6 py-4 m-5 text-center transition ease-in-out duration-200 transform bg-gray-700 rounded-lg dark:bg-gray-600;
     }
 }
 
