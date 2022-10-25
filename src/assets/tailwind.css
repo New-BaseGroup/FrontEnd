@@ -103,13 +103,13 @@
         @apply w-full text-sm text-left;
     }
     .table-title {
-        @apply w-full text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
+        @apply  text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
     }
     .table-row {
         @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active;
     }
     .table-header {
-        @apply text-textcolor-table  py-4 xl:px-6 font-medium whitespace-nowrap;
+        @apply text-textcolor-table  py-4 xl:px-6 font-medium;
     }
     .table-data {
         @apply text-textcolor-table py-4 xl:px-6;

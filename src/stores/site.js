@@ -24,6 +24,7 @@ export const useSiteStore = defineStore("site", () => {
         },
     ]);
     const widgetLimit = ref(6);
+    const changesMade = ref(false);
 
     //Getters
     const getView = computed(() => view.value);

@@ -54,21 +54,32 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchBudget(store) {
         siteStore.setLoading(true);
-        await API_Service.GetService("Budget/1",userStore.getToken).then((data) => {
-            console.log("loading data");
-            console.log(data);
-            setBudgetCategories(data);
-            setBalance(data);
-            setBudget(data);
-            siteStore.setLoading(false);
-        });
+        await API_Service.GetService("Budget/1", userStore.getToken).then(
+            (data) => {
+                console.log("loading data");
+                console.log(data);
+                setBudgetCategories(data);
+                setBalance(data);
+                setBudget(data);
+                siteStore.setLoading(false);
+            }
+        );
     }
     async function fetchBalance(store) {
-        await API_Service.GetService("balance",userStore.getToken).then((data) => {
-            setBalance(data);
+        await API_Service.GetService("balance", userStore.getToken).then(
+            (data) => {
+                setBalance(data);
+            }
+        );
+    }
+    async function deleteObject(type, id) {
+        await API_Service.DeleteService(
+            `${type}/${id}`,
+            userStore.getToken
+        ).then((data) => {
+            console.log(data);
         });
     }
-
     return {
         budget,
         budgetCategories,
