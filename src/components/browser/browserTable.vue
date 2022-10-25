@@ -11,14 +11,14 @@
                         v-show="!Array.isArray(value)"
                         @click="sortTable(key)">
                         {{ key }}
-                        <!-- <font-awesome-icon
-                        v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'ASC' })"
+                         <font-awesome-icon
+                         v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'ASC' })"
                         icon="fa-arrow-up"
                     />
                     <font-awesome-icon
                         v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'DESC' })"
                         icon="fa-arrow-down"
-                    /> -->
+                    />
                     </th>
                 </tr>
             </thead>
@@ -63,7 +63,7 @@ const props = defineProps({
     header: String,
     data: Array,
 });
-let currentSort = reactive({
+let currentSort = ref({
     header: null,
     sort: null,
 });
@@ -72,17 +72,17 @@ const theObject = ref();
 const backupData = ref([...props.data]);
 function sortTable(header) {
     if (
-        JSON.stringify(currentSort) ===
+        JSON.stringify(currentSort.value) ===
         JSON.stringify({ header: header, sort: "ASC" })
     ) {
         backupData.value.reverse();
-        currentSort = { header: header, sort: "DESC" };
+        currentSort.value = { header: header, sort: "DESC" };
     } else {
         backupData.value = [...props.data];
         backupData.value.sort((a, b) => {
             return a[header] - b[header];
         });
-        currentSort = { header: header, sort: "ASC" };
+        currentSort.value = { header: header, sort: "ASC" };
     }
 }
 function openObject(object) {
