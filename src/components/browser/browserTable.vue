@@ -1,16 +1,16 @@
 <template>
     <div v-if="!siteStore.loading">
-        <h3 class="table-title">{{props.header}}</h3>
+        <h3 class="table-title">{{ props.header }}</h3>
         <table class="table">
             <thead>
                 <tr class="table-row">
                     <th
                         class="table-header"
-                        v-for=" (value,key) in backupData[0]"
+                        v-for="(value, key) in backupData[0]"
                         :key="key"
                         v-show="!Array.isArray(value)"
-                        @click="sortTable(key)"
-                    > {{key}}
+                        @click="sortTable(key)">
+                        {{ key }}
                         <!-- <font-awesome-icon
                         v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'ASC' })"
                         icon="fa-arrow-up"
@@ -19,39 +19,37 @@
                         v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'DESC' })"
                         icon="fa-arrow-down"
                     /> -->
-                        </th>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <tr
                     class="table-row"
                     v-for="(value, index) in Object.values(backupData)"
-                    :key="value"
-                >
+                    :key="value">
                     <td
                         class="table-data"
                         v-for="data in value"
                         :key="data"
-                        v-show="!Array.isArray(data)"
-                    >{{data}}</td>
-                        <td>
-                            <font-awesome-icon icon="fa-trash" />
-                        </td>
-                        <td>
-                            <font-awesome-icon
-                                icon="fa-edit"
-                                @click="openObject(props.data[index])"
-                            />
-                        </td>
-                        </tr>
+                        v-show="!Array.isArray(data)">
+                        {{ data }}
+                    </td>
+                    <td>
+                        <font-awesome-icon icon="fa-trash" />
+                    </td>
+                    <td>
+                        <font-awesome-icon
+                            icon="fa-edit"
+                            @click="openObject(props.data[index])" />
+                    </td>
+                </tr>
             </tbody>
         </table>
-        <div v-if="open">
-            <balanceVue :data="theObject.value" />
-            <font-awesome-icon
-                icon="fa-cross"
-                @click="open = false"
-            />
+        <div
+            v-if="open"
+            class="absolute top-0 bg-fuchsia-50 w-4/5 h-auto justify-self-center place-self-center">
+            <button @click="open = false">Close</button>
+            <balanceVue v-show="theObject != null" :data="theObject" />
         </div>
     </div>
 </template>
@@ -88,10 +86,8 @@ function sortTable(header) {
     }
 }
 function openObject(object) {
-    console.log(object);
     theObject.value = object;
     open.value = true;
 }
 </script>
-<style>
-</style>
+<style></style>
