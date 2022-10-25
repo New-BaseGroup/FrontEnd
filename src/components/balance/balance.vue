@@ -18,10 +18,10 @@
                         id="balance-category"
                         v-model="state.balanceChangeDTO.budgetCategoryID"
                         @blur="v$.balanceChangeDTO.budgetCategoryID.$touch()">
+                        
                         <option value="" hidden>Select Balance category</option>
-                        <option value="1">Food</option>
-                        <option value="2">Car</option>
-                        <option value="3">Other</option>
+                        <option v-for="item in budgetStore.getBalanceCategories" :value="item.categoryID">{{item.name}}</option>
+
                     </select>
                     <label for="title">Balance name:</label>
                     <input
@@ -69,7 +69,8 @@
 import useValidate from "@vuelidate/core";
 import { required, numeric } from "@vuelidate/validators";
 import { reactive, computed, defineProps, ref } from "vue";
-
+import { useBudgetStore } from "../../stores/budget";
+const budgetStore = useBudgetStore();
 const header = ref("Add a new balance change");
 const buttonText = ref("Create");
 
@@ -86,6 +87,12 @@ let state = reactive({
         description: "",
     },
 });
+async function GetCategetories() {
+    if (!budgetStore.getBalanceCategories) {
+        await budgetStore.fetchCategories();
+    } 
+}
+GetCategetories();
 
 const rules = computed(() => {
     return {
@@ -101,7 +108,7 @@ const rules = computed(() => {
 
 const v$ = useValidate(rules, state);
 
-if (props) {
+if (props.data) {
     header.value = "Update a balance change";
     buttonText.value = "Update";
     state.balanceChangeDTO = {
@@ -113,14 +120,10 @@ if (props) {
     };
 }
 
-function submitBalance() {
-    this.v$.$validate();
-}
+// function submitBalance() {
+//     this.v$.$validate();
+// }
 
-function addBalance() {
-    console.log(this.v$.balanceChangeDTO.amount.$error);
-    console.log(this.state.balanceChangeDTO);
-}
 </script>
 
 <style scoped></style>
