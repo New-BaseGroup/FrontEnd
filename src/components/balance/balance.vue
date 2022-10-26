@@ -1,8 +1,7 @@
 <template>
     <div class="base-card">
         <div class="base-card-Container">
-            <div
-                class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+            <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
                 <h1 class="tracking-wide">
                     SkyBudget
                     <span class="font-mono">™</span>
@@ -17,47 +16,56 @@
                         name="balance-category"
                         id="balance-category"
                         v-model="state.balanceChangeDTO.budgetCategoryID"
-                        @blur="v$.balanceChangeDTO.budgetCategoryID.$touch()">
-                        
-                        <option value="" hidden>Select Balance category</option>
-                        <option v-for="item in budgetStore.getBalanceCategories" :value="item.categoryID">{{item.name}}</option>
-
-                    </select>
-                    <label for="title">Balance name:</label>
-                    <input
-                        required
-                        type="text"
-                        name="title"
-                        v-model="state.balanceChangeDTO.title"
-                        @blur="v$.balanceChangeDTO.title.$touch()" />
-
-                    <label for="balance-amount">Balance:</label>
-                    <input
-                        required
-                        type="text"
-                        name="balance-amount"
-                        v-model="state.balanceChangeDTO.amount"
-                        @blur="v$.balanceChangeDTO.amount.$touch()" />
-
-                    <label for="date">Balance Date & Time</label>
-                    <input
-                        required
-                        type="date"
-                        id="date"
-                        name="date"
-                        v-model="state.balanceChangeDTO.date"
-                        @blur="v$.balanceChangeDTO.date.$touch()" />
-
-                    <label for="description"
-                        >Describe the Balance details</label
+                        @blur="v$.balanceChangeDTO.budgetCategoryID.$touch()"
                     >
-                    <textarea
-                        name="description"
-                        id="description"
-                        cols="30"
-                        rows="3"
-                        placeholder="Optional"
-                        v-model="state.balanceChangeDTO.description"></textarea>
+
+                        <option
+                            value=""
+                            hidden
+                        >Select Balance category</option>
+                            <option
+                                v-for="item in budgetStore.getBalanceCategories"
+                                :value="item.categoryID"
+                            >{{item.name}}</option>
+
+                                </select>
+                                <label for="title">Balance name:</label>
+                                <input
+                                    required
+                                    type="text"
+                                    name="title"
+                                    v-model="state.balanceChangeDTO.title"
+                                    @blur="v$.balanceChangeDTO.title.$touch()"
+                                />
+
+                                <label for="balance-amount">Balance:</label>
+                                <input
+                                    required
+                                    type="text"
+                                    name="balance-amount"
+                                    v-model="state.balanceChangeDTO.amount"
+                                    @blur="v$.balanceChangeDTO.amount.$touch()"
+                                />
+
+                                <label for="date">Balance Date & Time</label>
+                                <input
+                                    required
+                                    type="date"
+                                    id="date"
+                                    name="date"
+                                    v-model="state.balanceChangeDTO.date"
+                                    @blur="v$.balanceChangeDTO.date.$touch()"
+                                />
+
+                                <label for="description">Describe the Balance details</label>
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    cols="30"
+                                    rows="3"
+                                    placeholder="Optional"
+                                    v-model="state.balanceChangeDTO.description"
+                                ></textarea>
                 </div>
                 <button @click="addBalance">{{ buttonText }}</button>
             </form>
@@ -90,7 +98,7 @@ let state = reactive({
 async function GetCategetories() {
     if (!budgetStore.getBalanceCategories) {
         await budgetStore.fetchCategories();
-    } 
+    }
 }
 GetCategetories();
 
@@ -123,7 +131,6 @@ if (props.data) {
 // function submitBalance() {
 //     this.v$.$validate();
 // }
-
 </script>
 
 <style scoped></style>

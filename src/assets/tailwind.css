@@ -109,10 +109,10 @@
         @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active;
     }
     .table-header {
-        @apply text-textcolor-table  py-4 xl:px-6 font-medium;
+        @apply text-textcolor-table  py-4 mx-6 xl:px-6 font-medium;
     }
     .table-data {
-        @apply text-textcolor-table py-4 xl:px-6;
+        @apply text-textcolor-table py-4 mx-6 xl:px-6;
     }
     .widget {
         @apply relative px-6 py-4 m-5 text-center transition ease-in-out duration-200 transform bg-gray-700 rounded-lg dark:bg-gray-600;
