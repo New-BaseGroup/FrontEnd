@@ -25,20 +25,19 @@ const API_Service = {
     },
     async PostService(endpoint, body, token = null) {
         try {
-          let customHeader = "";
-          if (token != null) {
-            customHeader = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-            };
-        }
+            let customHeader = "";
+            if (token != null) {
+                customHeader = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + token,
+                    },
+                };
+            }
             const result = await axios.post(
                 `http://localhost:7151/api/${endpoint}`,
                 body,
-                customHeader,
-                
+                customHeader
             );
             if (result.status === 200) {
                 return result.data;
@@ -49,15 +48,15 @@ const API_Service = {
     },
     async PutService(endpoint, body, token = null) {
         try {
-          let customHeader = "";
-          if (token != null) {
-            customHeader = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-            };
-        }
+            let customHeader = "";
+            if (token != null) {
+                customHeader = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + token,
+                    },
+                };
+            }
             const result = await axios.put(
                 `http://localhost:7151/api/${endpoint}`,
                 body,
@@ -70,20 +69,19 @@ const API_Service = {
             console.log(e);
         }
     },
-    async DeleteService(endpoint, body, token = null) {
+    async DeleteService(endpoint, token = null) {
         try {
-          let customHeader = "";
-          if (token != null) {
-            customHeader = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-            };
-        }
+            let customHeader = "";
+            if (token != null) {
+                customHeader = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + token,
+                    },
+                };
+            }
             const result = await axios.delete(
                 `http://localhost:7151/api/${endpoint}`,
-                body,
                 customHeader
             );
             if (result.status === 200) {

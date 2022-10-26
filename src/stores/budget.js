@@ -10,6 +10,8 @@ export const useBudgetStore = defineStore("budget", () => {
     const budget = ref();
     const budgetCategories = ref();
     const balance = ref();
+    const balanceCategories = ref();
+    const changesMade = ref(false);
 
     //Getters
     const getBudget = computed(() => budget.value);
@@ -19,6 +21,7 @@ export const useBudgetStore = defineStore("budget", () => {
     const getBudgetInfo = computed(
         () => `${budget.value[0].name} ${budget.value[0].totalAmount}`
     );
+    const getBalanceCategories = computed(() => balanceCategories.value);
     const getAmountUsed = computed(() =>
         balance.value.map((b) => b.amount).reduce((a, b) => a + b)
     );
@@ -37,6 +40,9 @@ export const useBudgetStore = defineStore("budget", () => {
         )
     );
     //Actions
+    function setbalanceCategories(data) {
+        balanceCategories.value = data.data.message;
+    }
     function setBudget(data) {
         budget.value = [data.data.message];
     }
@@ -52,27 +58,63 @@ export const useBudgetStore = defineStore("budget", () => {
         });
         balance.value = BalanceChanges;
     }
-    async function fetchBudget(store) {
+    async function fetchCategories(store) {
         siteStore.setLoading(true);
-        await API_Service.GetService("Budget/1",userStore.getToken).then((data) => {
-            console.log("loading data");
-            console.log(data);
-            setBudgetCategories(data);
-            setBalance(data);
-            setBudget(data);
+        await API_Service.GetService(
+            "Budget/GetCategory",
+            userStore.getToken
+        ).then((data) => {
+            setbalanceCategories(data);
             siteStore.setLoading(false);
         });
     }
+    async function fetchBudget(store) {
+        siteStore.setLoading(true);
+        await API_Service.GetService("Budget/1", userStore.getToken).then(
+            (data) => {
+                console.log("loading data");
+                console.log(data);
+                setBudgetCategories(data);
+                setBalance(data);
+                setBudget(data);
+                setChangesMade(false);
+                siteStore.setLoading(false);
+            }
+        );
+    }
     async function fetchBalance(store) {
-        await API_Service.GetService("balance",userStore.getToken).then((data) => {
-            setBalance(data);
+        await API_Service.GetService("balance", userStore.getToken).then(
+            (data) => {
+                setBalance(data);
+            }
+        );
+    }
+    async function deleteObject(type, id) {
+        setChangesMade(true);
+        await API_Service.DeleteService(
+            `${type}?id=${id}`,
+            userStore.getToken
+        ).then((data) => {
+            console.log(data);
         });
     }
-
+    async function updateObject(type, object) {
+        setChangesMade(true);
+        await API_Service.PutService(type, object, userStore.getToken).then(
+            (data) => {
+                console.log(data);
+            }
+        );
+    }
+    async function setChangesMade(bool) {
+        changesMade.value = bool;
+        if (changesMade.value === true) await fetchBudget();
+    }
     return {
         budget,
         budgetCategories,
         balance,
+        changesMade,
         getBudget,
         getBudgetCategories,
         getBalance,
@@ -81,10 +123,15 @@ export const useBudgetStore = defineStore("budget", () => {
         getLatestTransactions,
         getCategoryInfo,
         getTotalAmount,
+        getBalanceCategories,
         setBudget,
         setBudgetCategories,
         setBalance,
         fetchBudget,
         fetchBalance,
+        fetchCategories,
+        updateObject,
+        deleteObject,
+        setChangesMade,
     };
 });
