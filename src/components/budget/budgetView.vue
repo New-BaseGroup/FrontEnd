@@ -10,6 +10,7 @@
                     <span class="font-mono">™</span>
                 </h1>
             </div>
+            </div>
             <browserTable
                 :header="'Budget Info'"
                 :data="budgetStore.getBudget"
@@ -20,7 +21,6 @@
                 :data="budgetStore.getBudgetCategories"
                 :key="browserTable"
             />
-        </div>
         </div>
 </template>
 <script setup>

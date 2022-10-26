@@ -36,13 +36,7 @@
     focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
     }
     select {
-        @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-    bg-background-secondary
-    focus:outline-none
-    focus:border-sky-500
-    focus:ring-1
-    focus:ring-sky-500
-    focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
+        @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 bg-background-secondary focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
     }
 }
 @layer components {
@@ -144,6 +138,6 @@
 }
 
 .body-color {
-    /*should be added to main container "app" to close the color gab between components and body*/
     background-color: var(--bg-background-secondary);
 }
+
