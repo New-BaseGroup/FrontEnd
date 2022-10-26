@@ -9,67 +9,97 @@
                         v-for="(value, key) in backupData[0]"
                         :key="key"
                         v-show="!Array.isArray(value)"
-                        @click="sortTable(key)">
+                        @click="sortTable(key)"
+                    >
                         {{ key }}
-                         <font-awesome-icon
-                         v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'ASC' })"
-                        icon="fa-arrow-up"
-                    />
-                    <font-awesome-icon
-                        v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'DESC' })"
-                        icon="fa-arrow-down"
-                    />
-                    </th>
+                        <font-awesome-icon
+                            v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'ASC' })"
+                            icon="fa-arrow-up"
+                        />
+                        <font-awesome-icon
+                            v-show="JSON.stringify(currentSort) === JSON.stringify({header: key, sort: 'DESC' })"
+                            icon="fa-arrow-down"
+                        />
+                        </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody
+                v-for="(value, index) in Object.values(backupData)"
+                :key="value"
+            >
                 <tr
                     class="table-row"
-                    v-for="(value, index) in Object.values(backupData)"
-                    :key="value">
+                    v-if="edittingRow.data === backupData[index]"
+                >
                     <td
                         class="table-data"
-                        v-for="data in value"
+                        v-for="(data, key) in value"
                         :key="data"
-                        v-show="!Array.isArray(data)">
-                        {{ data }}
-                    </td>
-                    <td>
-                        <font-awesome-icon icon="fa-trash" />
-                    </td>
-                    <td>
-                        <font-awesome-icon
-                            icon="fa-edit"
-                            @click="openObject(props.data[index])" />
-                    </td>
-                </tr>
-            </tbody>
+                        v-show="!Array.isArray(data)"
+                    >
+                        <input
+                            v-model="edittingRow.data[key]"
+                            v-if="!key.includes('ID')"
+                        />
+                        <span v-else>{{data}}</span>
+                        </td>
+                        <td class="table-data">
+                            <font-awesome-icon
+                                icon="fa-check"
+                                @click="updateRow(edittingRow.data)"
+                            />
+                        </td>
+                        <td class="table-data">
+                            <font-awesome-icon
+                                icon="fa-trash"
+                                @click="deleteRow(value)"
+                            />
+                        </td>
+
+                        </tr>
+                        <tr
+                            class="table-row"
+                            v-else
+                        >
+                            <td
+                                class="table-data"
+                                v-for="data in value"
+                                :key="data"
+                                v-show="!Array.isArray(data)"
+                            >
+                                <span>{{data}}</span>
+                                </td>
+                                <td class="table-data">
+                                    <font-awesome-icon
+                                        icon="fa-edit"
+                                        @click="edittingRow.data = backupData[index]"
+                                    />
+                                </td>
+                                </tr>
+                                </tbody>
         </table>
-        <div
-            v-if="open"
-            class="absolute top-0 bg-fuchsia-50 w-4/5 h-auto justify-self-center place-self-center">
-            <button @click="open = false">Close</button>
-            <balanceVue v-show="theObject != null" :data="theObject" />
-        </div>
     </div>
 </template>
 
 <script setup>
 import { defineProps, ref, reactive } from "vue";
 import { useSiteStore } from "../../stores/site";
-import balanceVue from "../balance/balance.vue";
+import { useBudgetStore } from "../../stores/budget";
 const siteStore = useSiteStore();
+const budgetStore = useBudgetStore();
 const props = defineProps({
     header: String,
     data: Array,
+    type: String,
 });
 let currentSort = ref({
     header: null,
     sort: null,
 });
-const open = ref(false);
-const theObject = ref();
-const backupData = ref([...props.data]);
+const edittingRow = ref({
+    data: null,
+});
+let backupData = ref([...props.data]);
 function sortTable(header) {
     if (
         JSON.stringify(currentSort.value) ===
@@ -78,16 +108,33 @@ function sortTable(header) {
         backupData.value.reverse();
         currentSort.value = { header: header, sort: "DESC" };
     } else {
-        backupData.value = [...props.data];
+        updateTable();
         backupData.value.sort((a, b) => {
             return a[header] - b[header];
         });
         currentSort.value = { header: header, sort: "ASC" };
     }
 }
-function openObject(object) {
-    theObject.value = object;
-    open.value = true;
+function updateRow(object) {
+    const tempObject = { ...object };
+    let type = props.type.toLocaleLowerCase();
+    type === "balance" ? (type = "change") : "";
+    tempObject["id"] = tempObject[type + "ID"];
+    delete tempObject[type + "ID"];
+    budgetStore.updateObject(props.type, tempObject);
+    updateTable();
+}
+function deleteRow(object) {
+    let type = props.type.toLocaleLowerCase();
+    type === "balance" ? (type = "change") : "";
+    budgetStore.deleteObject(props.type, object[type + "ID"]);
+    updateTable();
+}
+function updateTable() {
+    backupData.value = [...props.data];
+}
+function checking(item) {
+    console.log(item);
 }
 </script>
 <style></style>

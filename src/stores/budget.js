@@ -11,6 +11,7 @@ export const useBudgetStore = defineStore("budget", () => {
     const budgetCategories = ref();
     const balance = ref();
     const balanceCategories = ref();
+    const changesMade = ref(false);
 
     //Getters
     const getBudget = computed(() => budget.value);
@@ -59,13 +60,13 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchCategories(store) {
         siteStore.setLoading(true);
-        await API_Service.GetService("Budget/GetCategory", userStore.getToken).then(
-            (data) => {
-              
-                setbalanceCategories(data);
-                siteStore.setLoading(false);
-            }
-        );
+        await API_Service.GetService(
+            "Budget/GetCategory",
+            userStore.getToken
+        ).then((data) => {
+            setbalanceCategories(data);
+            siteStore.setLoading(false);
+        });
     }
     async function fetchBudget(store) {
         siteStore.setLoading(true);
@@ -76,6 +77,7 @@ export const useBudgetStore = defineStore("budget", () => {
                 setBudgetCategories(data);
                 setBalance(data);
                 setBudget(data);
+                setChangesMade(false);
                 siteStore.setLoading(false);
             }
         );
@@ -88,17 +90,31 @@ export const useBudgetStore = defineStore("budget", () => {
         );
     }
     async function deleteObject(type, id) {
+        setChangesMade(true);
         await API_Service.DeleteService(
-            `${type}/${id}`,
+            `${type}?id=${id}`,
             userStore.getToken
         ).then((data) => {
             console.log(data);
         });
     }
+    async function updateObject(type, object) {
+        setChangesMade(true);
+        await API_Service.PutService(type, object, userStore.getToken).then(
+            (data) => {
+                console.log(data);
+            }
+        );
+    }
+    async function setChangesMade(bool) {
+        changesMade.value = bool;
+        if (changesMade.value === true) await fetchBudget();
+    }
     return {
         budget,
         budgetCategories,
         balance,
+        changesMade,
         getBudget,
         getBudgetCategories,
         getBalance,
@@ -114,5 +130,8 @@ export const useBudgetStore = defineStore("budget", () => {
         fetchBudget,
         fetchBalance,
         fetchCategories,
+        updateObject,
+        deleteObject,
+        setChangesMade,
     };
 });

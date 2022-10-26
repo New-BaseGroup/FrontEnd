@@ -14,6 +14,7 @@
             <browserTable
                 :header="'Budget Info'"
                 :data="budgetStore.getBudget"
+                :type="'Budget'"
                 :key="browserTable"
             />
             <browserTable
