@@ -13,7 +13,7 @@
                         v-model="budgetDTO.budgetName"
                         required />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="BudgetName"
                         >Budget Name:</label
                     >
@@ -28,7 +28,7 @@
                         required
                         v-model="budgetDTO.startDate" />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="start-date"
                         >Start date:</label
                     >
@@ -43,7 +43,7 @@
                         required
                         v-model="budgetDTO.endDate" />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="end-date"
                         >Start date:</label
                     >
@@ -57,7 +57,7 @@
                         placeholder=" "
                         v-model="budgetDTO.description" />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="BudgetDescription"
                         >Description:</label
                     >
@@ -79,7 +79,7 @@
                         v-model="budgetDTO.budgetAmount"
                         required />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="budgetAmount"
                         >Total budget amount:</label
                     >
@@ -117,7 +117,7 @@
                         name="CustomName"
                         v-model="object.CustomName" />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="CustomName"
                         >Custom name:</label
                     >
@@ -132,7 +132,7 @@
                         v-model="object.MaxAmount"
                         required />
                     <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        class="peer-focus:font-medium absolute text-sm text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         for="MaxAmount"
                         >Max Amount:</label
                     >
@@ -153,7 +153,7 @@
                 Add new Category
             </button>
         </div>
-        <p class="my-2 text-gray-500 dark:text-gray-400 transition-transform">Amount left to assign to categories:  <span>{{totalSum.toFixed(0)}}</span></p>
+        <p class="my-2 text-gray-200 dark:text-gray-400 transition-transform">Amount left to assign to categories:  <span>{{calculateUsedAmount.toFixed(0)}}</span></p>
         </div>
 
         <div class="mt-2">
@@ -193,28 +193,15 @@ const budgetDTO = ref({
 });
 const totalSum = ref(0);
 
-watch(() => budgetDTO.value.budgetAmount, (n) =>{
-    gsap.to(this, { duration: 0.5, totalSum: Number(n) || 0 })
-})
 
-// const calculateUsedAmount = computed(() => {
-//     let leftAmount = budgetDTO.value.budgetAmount;
-//     categories.value.forEach(item => {
-//         leftAmount -= item.MaxAmount;
-//     })
-//     gsap.to(this, { duration: 0.5, calculateUsedAmount: Number(leftAmount) || 0 })
 
-//     return leftAmount;
-// });
-
-function animation(){
-    numberAnimation.value = true;
-    setTimeout(() => {
-        numberAnimation.value = false
-      }, 1500)
-}
-const numberAnimation = ref(false);
-
+ const calculateUsedAmount = computed(() => {
+     let leftAmount = budgetDTO.value.budgetAmount;
+     categories.value.forEach(item => {
+         leftAmount -= item.MaxAmount;
+     })
+     return leftAmount;
+});
 const stateCounter = ref(1);
 function submitBudget(submitEvent) {
     nextPage();
@@ -230,7 +217,7 @@ function removeCategory(obj) {
     if (categories.value.includes(obj)) {
         categories.value = categories.value.filter((c) => c !== obj);
     }
-    console.log(obj.MaxAmount);
+ 
 }
 
 function nextPage() {

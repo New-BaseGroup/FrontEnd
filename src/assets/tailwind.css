@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply overflow-y-scroll;
+        @apply overflow-y-scroll min-h-screen;
     }
     label {
         @apply text-sm font-medium;
@@ -41,7 +41,7 @@
 }
 @layer components {
     .rootContainer {
-        @apply bg-background-secondary flex space-x-2 min-h-screen w-full transition-colors duration-700 bg-[url('@/assets/images/bg-light3.png')] bg-blend-multiply;
+        @apply  flex space-x-2 min-h-screen w-full transition-colors duration-700 ;
     }
     .mainContainer {
         @apply w-screen h-auto text-textcolor-content container mt-14;
@@ -137,7 +137,5 @@
     --text-table: #d6d3d3;
 }
 
-.body-color {
-    background-color: var(--bg-background-secondary);
-}
+
 

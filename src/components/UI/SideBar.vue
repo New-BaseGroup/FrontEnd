@@ -45,8 +45,11 @@
 	>
 		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
 		</button> -->
-    <div v-if="userStore.getLoggedin">
-        <button @click="logout">Logout</button>
+        <div v-if="userStore.getLoggedin">
+        <div class="toggle" @click="logout"><font-awesome-icon
+		    icon="fa-solid fa-arrow-right-from-bracket"
+		    class="text-xl text-[#fff] hover:text-[#2b2b2b] mr-2"
+		/>Logout</div>
     </div>
     <ThemeToggle />
     </div>
