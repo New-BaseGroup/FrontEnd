@@ -109,27 +109,26 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     function findObjectAndChange(object, type, change) {
         const smallType = type.toLowerCase();
+        let foundIndex = null;
+        let path = null;
         if (type === "Balance") {
-            const foundObject = balance.value.findIndex(
-                (obj) => obj["changeID"] === object[smallType + "id"]
+            foundIndex = balance.value.findIndex(
+                (obj) => obj["changeID"] === object["changeID"]
             );
-            if (change === "update") balance.value[foundObject] = object;
-            else if (change === "delete") balance.value[foundObject] = null;
+            path = balance.value;
         } else if (type === "Budget") {
-            const foundObject = budget.value.findIndex(
-                (obj) => obj["budgetID"] === object[smallType + "id"]
+            foundIndex = budget.value.findIndex(
+                (obj) => obj["budgetID"] === object["budgetID"]
             );
-            if (change === "update") budget.value[foundObject] = object;
-            else if (change === "delete") budget.value[foundObject] = null;
+            path = budget.value;
         } else if (type === "budgetCategories") {
-            const foundObject = budgetCategories.value.findIndex(
-                (obj) => obj["budgetCategoryID"] === object[smallType + "id"]
+            foundIndex = budgetCategories.value.findIndex(
+                (obj) => obj["budgetCategoryID"] === object["budgetCategoryID"]
             );
-            if (change === "update")
-                budgetCategories.value[foundObject] = object;
-            else if (change === "delete")
-                budgetCategories.value[foundObject] = null;
+            path = budgetCategories.value;
         }
+        if (change === "update") path[foundIndex] = object;
+        else if (change === "delete") path.splice(foundIndex, 1);
     }
     return {
         budget,
