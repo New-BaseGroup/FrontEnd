@@ -41,17 +41,17 @@ export const useBudgetStore = defineStore("budget", () => {
     );
     //Actions
     function setbalanceCategories(data) {
-        balanceCategories.value = data.data.message;
+        balanceCategories.value = data;
     }
     function setBudget(data) {
-        budget.value = [data.data.message];
+        budget.value = [data];
     }
     function setBudgetCategories(data) {
-        budgetCategories.value = data.data.message.budgetCategories;
+        budgetCategories.value = data.budgetCategories;
     }
     function setBalance(data) {
         let BalanceChanges = [];
-        data.data.message.budgetCategories.forEach((x) => {
+        data.budgetCategories.forEach((x) => {
             x.balanceChanges.forEach((y) => {
                 BalanceChanges.push(y);
             });
@@ -64,7 +64,7 @@ export const useBudgetStore = defineStore("budget", () => {
             "Budget/GetCategory",
             userStore.getToken
         ).then((data) => {
-            setbalanceCategories(data);
+            setbalanceCategories(data.data.message);
             siteStore.setLoading(false);
         });
     }
@@ -74,10 +74,9 @@ export const useBudgetStore = defineStore("budget", () => {
             (data) => {
                 console.log("loading data");
                 console.log(data);
-                setBudgetCategories(data);
-                setBalance(data);
-                setBudget(data);
-                setChangesMade(false);
+                setBudgetCategories(data.data.message);
+                setBalance(data.data.message);
+                setBudget(data.data.message);
                 siteStore.setLoading(false);
             }
         );
@@ -89,8 +88,9 @@ export const useBudgetStore = defineStore("budget", () => {
             }
         );
     }
-    async function deleteObject(type, id) {
-        setChangesMade(true);
+    async function deleteObject(type, object, id) {
+        // setChangesMade(true);
+        findObjectAndChange(object, type, "delete");
         await API_Service.DeleteService(
             `${type}?id=${id}`,
             userStore.getToken
@@ -99,16 +99,36 @@ export const useBudgetStore = defineStore("budget", () => {
         });
     }
     async function updateObject(type, object) {
-        setChangesMade(true);
+        // setChangesMade(true);
+        findObjectAndChange(object, type, "update");
         await API_Service.PutService(type, object, userStore.getToken).then(
             (data) => {
                 console.log(data);
             }
         );
     }
-    async function setChangesMade(bool) {
-        changesMade.value = bool;
-        if (changesMade.value === true) await fetchBudget();
+    function findObjectAndChange(object, type, change) {
+        const smallType = type.toLowerCase();
+        let foundIndex = null;
+        let path = null;
+        if (type === "Balance") {
+            foundIndex = balance.value.findIndex(
+                (obj) => obj["changeID"] === object["changeID"]
+            );
+            path = balance.value;
+        } else if (type === "Budget") {
+            foundIndex = budget.value.findIndex(
+                (obj) => obj["budgetID"] === object["budgetID"]
+            );
+            path = budget.value;
+        } else if (type === "budgetCategories") {
+            foundIndex = budgetCategories.value.findIndex(
+                (obj) => obj["budgetCategoryID"] === object["budgetCategoryID"]
+            );
+            path = budgetCategories.value;
+        }
+        if (change === "update") path[foundIndex] = object;
+        else if (change === "delete") path.splice(foundIndex, 1);
     }
     return {
         budget,
@@ -132,6 +152,5 @@ export const useBudgetStore = defineStore("budget", () => {
         fetchCategories,
         updateObject,
         deleteObject,
-        setChangesMade,
     };
 });
