@@ -3,7 +3,7 @@
         <h3 class="table-title">{{ props.header }}</h3>
         <table class="table">
             <thead>
-                <tr class="table-row">
+                <tr>
                     <th
                         class="table-header"
                         v-for="(value, key) in backupData[0]"
@@ -28,7 +28,7 @@
                 :key="value"
             >
                 <tr
-                    class="table-row"
+                    class="table-row bg-[#adadad80]"
                     v-if="edittingRow.data === backupData[index]"
                 >
                     <td
@@ -55,10 +55,10 @@
                                 @click="deleteRow(value)"
                             />
                         </td>
-
                         </tr>
                         <tr
                             class="table-row"
+                            :class="{'bg-[#8df5b080]': (props.type === 'Balance' && value['amount'] >= 0), 'bg-[#f58a8a77]': (props.type === 'Balance' && value['amount'] < 0)}"
                             v-else
                         >
                             <td
@@ -74,6 +74,8 @@
                                         icon="fa-edit"
                                         @click="edittingRow.data = backupData[index]"
                                     />
+                                </td>
+                                <td class="table-data">
                                 </td>
                                 </tr>
                                 </tbody>
@@ -92,14 +94,18 @@ const props = defineProps({
     data: Array,
     type: String,
 });
+
 let currentSort = ref({
     header: null,
     sort: null,
 });
+
 const edittingRow = ref({
     data: null,
 });
+
 let backupData = ref([...props.data]);
+
 function sortTable(header) {
     if (
         JSON.stringify(currentSort.value) ===
@@ -107,14 +113,20 @@ function sortTable(header) {
     ) {
         backupData.value.reverse();
         currentSort.value = { header: header, sort: "DESC" };
-    } else {
+    } else if (
+        JSON.stringify(currentSort.value) ===
+        JSON.stringify({ header: header, sort: "DESC" })
+    ) {
         updateTable();
+        currentSort.value = { header: null, sort: null };
+    } else {
         backupData.value.sort((a, b) => {
             return a[header] - b[header];
         });
         currentSort.value = { header: header, sort: "ASC" };
     }
 }
+
 function updateRow(object) {
     const tempObject = { ...object };
     let type = props.type.toLocaleLowerCase();
@@ -124,15 +136,19 @@ function updateRow(object) {
     budgetStore.updateObject(props.type, tempObject);
     updateTable();
 }
+
 function deleteRow(object) {
     let type = props.type.toLocaleLowerCase();
     type === "balance" ? (type = "change") : "";
-    budgetStore.deleteObject(props.type, object[type + "ID"]);
+    budgetStore.deleteObject(props.type, object, object[type + "ID"]);
     updateTable();
 }
+
 function updateTable() {
+    edittingRow.value.data = null;
     backupData.value = [...props.data];
 }
+
 function checking(item) {
     console.log(item);
 }

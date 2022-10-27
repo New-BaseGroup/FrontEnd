@@ -103,7 +103,7 @@
         @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active w-full;
     }
     .table-header {
-        @apply text-textcolor-table  py-4 mx-6 xl:px-6 font-medium;
+        @apply text-textcolor-table border-b py-4 mx-10 xl:px-6 font-medium;
     }
     .table-data {
         @apply text-textcolor-table py-4 mx-6 xl:px-6;
