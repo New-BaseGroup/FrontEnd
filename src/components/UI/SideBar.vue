@@ -1,75 +1,101 @@
 <template>
     <div class="sideBarContainer">
         <div class="sideBarContent">
-            <div
-                v-for="item in navItems"
-                :key="item"
-            >
+            <div v-for="item in navItems" :key="item">
                 <RouterLink
                     :key="item.name"
                     :to="item.link"
                     class="sideBardNavigation"
                     active-class="sideBarNavigationActive"
                     @click="setActiveSublink(item)"
-                    v-if="item.availability === 'all' || (item.availability === 'user' && userStore.getLoggedin)"
-                >
-                    <span>
+                    v-if="
+                        item.availability === 'all' ||
+                        (item.availability === 'user' && userStore.getLoggedin)
+                    ">
+                    <template v-if="isLoading && activeSub == item.title">
+                        <orbit-spinner
+                            v-if="isLoading"
+                            :animation-duration="2000"
+                            :size="20"
+                            :color="
+                                siteStore.getTheme === 'light-theme'
+                                    ? '#3094a1'
+                                    : '#a9d712'
+                            " />
+                    </template>
+                    <span v-else>
                         <font-awesome-icon :icon="item.icon" />
                     </span>
-                    <span class="sideBarText">
+                    <p class="sideBarText">
                         {{ item.title }}
-                    </span>
-                    </RouterLink>
-                    <div
-                        v-for="sublink in item.sublinks"
-                        :key="sublink"
-                        v-show="activeSub == item.title"
-                    >
-                        <router-link
-                            :key="sublink.name"
-                            :to="sublink.link"
-                            class="sideBardNavigationSub"
-                            active-class="sideBarNavigationActiveSub"
-                        >
-                            <span>
-                                <font-awesome-icon :icon="sublink.icon" />
-                            </span>
-                            <span class="sideBarText">{{ sublink.title }}</span>
-                            </router-link>
-        </div>
-
-    </div>
-    <!-- <button
+                    </p>
+                </RouterLink>
+                <div
+                    v-for="sublink in item.sublinks"
+                    :key="sublink"
+                    v-show="activeSub == item.title">
+                    <router-link
+                        :key="sublink.name"
+                        :to="sublink.link"
+                        class="sideBardNavigationSub"
+                        active-class="sideBarNavigationActiveSub"
+                        @click="loading">
+                        <orbit-spinner
+                            v-if="isLoading"
+                            :animation-duration="2000"
+                            :size="15" />
+                        <span v-else>
+                            <font-awesome-icon :icon="sublink.icon" />
+                        </span>
+                        <span class="sideBarText">{{ sublink.title }}</span>
+                    </router-link>
+                </div>
+            </div>
+            <!-- <button
 	    @click="expand"
 	    class="sideBarButton"
 	>
 		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
 		</button> -->
-    <div v-if="userStore.getLoggedin">
-        <button @click="logout">Logout</button>
-    </div>
-    <ThemeToggle />
-    </div>
+            <div v-if="userStore.getLoggedin">
+                <button @click="logout">Logout</button>
+            </div>
+            <ThemeToggle />
+        </div>
     </div>
 </template>
 
 <script setup>
+import { useSiteStore } from "../../stores/site";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import ThemeToggle from "./ThemeToggle.vue";
+import { OrbitSpinner } from "epic-spinners";
 import { useUserStore } from "../../stores/user";
+const siteStore = useSiteStore();
 const userStore = useUserStore();
+const router = useRouter();
 const expanded = ref(true);
+const isLoading = ref(false);
 const activeSub = ref("");
 function expand() {
     expanded.value = !expanded.value;
 }
+function loading() {
+    isLoading.value = true;
+    setTimeout(function () {
+        isLoading.value = false;
+    }, 1000);
+}
 function setActiveSublink(parent) {
+    loading();
     this.activeSub == parent.title
         ? (this.activeSub = "")
         : (this.activeSub = parent.title);
 }
 function logout() {
     userStore.logOutUser();
+    router.push({ name: "login" });
 }
 const navItems = [
     {
