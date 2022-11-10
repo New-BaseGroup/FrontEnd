@@ -5,7 +5,7 @@
             <div class="max-w-md mx-auto">
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         id="BudgetName"
                         placeholder=" "
                         type="text"
@@ -20,7 +20,7 @@
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         type="date"
                         id="start-date"
                         name="start-date"
@@ -35,7 +35,7 @@
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         type="date"
                         id="end-date"
                         name="end-date"
@@ -50,7 +50,7 @@
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         name="BudgetDescription"
                         type="text"
                         id="BudgetDescription"
@@ -71,7 +71,7 @@
             <div class="max-w-md mx-auto">
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         id="budgetAmount"
                         placeholder=" "
                         type="number"
@@ -89,7 +89,7 @@
                     v-for="object in categories"
                     class="my-2 pb-8 border-neutral-700 border-b-2">
                     <label
-                        class="block my-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                        class="block my-2 text-sm font-medium text-white dark:text-gray-400"
                         for="selectedBudgetCat"
                         >Select Budget category:</label
                     >
@@ -108,7 +108,7 @@
                     </select>
                     <div class="relative z-0 mb-6 w-full group">
                         <input
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             id="CustomName"
                             placeholder=" "
                             type="text"
@@ -122,7 +122,7 @@
                     </div>
                     <div class="relative z-0 mb-6 w-full group">
                         <input
-                            class="py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             id="MaxAmount"
                             placeholder=" "
                             type="number"
@@ -160,10 +160,17 @@
         </div>
 
         <template v-if="stateCounter === 4">
-            <p class="text-center">
+            <p class="text-center py-4">
+                Name: {{ budgetDTO.budgetName }}
+            </p>
+            <p class="text-center py-4">
                 Total Budget Amount: {{ budgetDTO.budgetAmount }}
             </p>
+           
             <createBudgetChart :testData="testData1" />
+            <p class="text-center py-4">
+                Date from {{ budgetDTO.startDate }} to {{ budgetDTO.endDate }}
+            </p>
             <h3 class="text-2xl my-4 text-center">
                 Do you want to save this budget?
             </h3>
@@ -174,6 +181,7 @@
                 <span>{{ calculateUsedAmount.toFixed(0) }}</span>
             </p>
         <div class="mt-2">
+            
             <button
                 type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium mx-auto rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
