@@ -36,13 +36,7 @@
     focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
     }
     select {
-        @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-    bg-background-secondary
-    focus:outline-none
-    focus:border-sky-500
-    focus:ring-1
-    focus:ring-sky-500
-    focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
+        @apply mb-3 px-2 py-1.5 mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 bg-background-secondary focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:invalid:border-red-500 focus:invalid:ring-red-500 text-textcolor-input;
     }
 }
 @layer components {
@@ -59,11 +53,17 @@
     .base-card {
         @apply p-4 flex flex-col justify-center  max-w-md mx-auto;
     }
+    .base-card-wide {
+        @apply p-4 flex flex-col justify-center mx-auto;
+    }
     .base-card-table {
         @apply p-4 flex flex-col justify-center mx-auto;
     }
     .base-card-Container {
         @apply p-6 bg-background-primary rounded;
+    }
+    .base-card-widgets {
+        @apply p-6 w-full grid grid-cols-3 bg-background-primary rounded;
     }
     .sideBarContainer {
         @apply bg-background-primary flex flex-row min-h-screen;
@@ -94,19 +94,22 @@
         @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
     }
     .table {
-        @apply w-full text-sm text-left;
+        @apply w-full text-sm text-left bg-background-secondary;
     }
     .table-title {
-        @apply w-full text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
+        @apply  text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
     }
     .table-row {
-        @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active;
+        @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active w-full;
     }
     .table-header {
-        @apply text-textcolor-table  py-4 xl:px-6 font-medium whitespace-nowrap;
+        @apply text-textcolor-table border-b py-4 mx-10 xl:px-6 font-medium;
     }
     .table-data {
-        @apply text-textcolor-table py-4 xl:px-6;
+        @apply text-textcolor-table py-4 mx-6 xl:px-6;
+    }
+    .widget {
+        @apply relative px-6 py-4 m-5 text-center transition ease-in-out duration-200 transform bg-gray-700 rounded-lg dark:bg-gray-600;
     }
 }
 
@@ -135,6 +138,6 @@
 }
 
 .body-color {
-    /*should be added to main container "app" to close the color gab between components and body*/
     background-color: var(--bg-background-secondary);
 }
+

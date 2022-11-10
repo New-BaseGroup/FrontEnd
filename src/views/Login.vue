@@ -53,7 +53,11 @@
                         </div>
                     </div>
                     <button class="inputButton" v-on:submit="login()">
-                        Login
+                        <orbit-spinner
+                            v-if="isLoading"
+                            :animation-duration="2000"
+                            :size="25" />
+                        <p v-if="!isLoading">Login</p>
                     </button>
                 </form>
             </div>
@@ -62,13 +66,18 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import API_Service from "../API/API_Service.js";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
 import { useUserStore } from "../stores/user.js";
+import { OrbitSpinner } from "epic-spinners";
 const userStore = useUserStore();
 
+const router = useRouter();
+const isLoading = ref(false);
 const state = reactive({
     input: {
         user: "",
@@ -84,19 +93,19 @@ const rules = computed(() => {
         },
     };
 });
-
 const v$ = useValidate(rules, state);
-
 async function login() {
+    isLoading.value = true;
     const isFormCorrect = await v$.value.$validate();
     if (!isFormCorrect) return;
 
     await API_Service.PostService("Account/login", state.input).then(
         (response) => {
-            console.log(response);
+            isLoading.value = false;
             if (response.status == "success") {
-                updateLoggedin(response.message);
+                updateLoggedin(response);
                 alert("Du är nu inloggad '" + response.message + "'");
+                router.push({ name: "dashboard" });
             } else {
                 alert(response.message);
             }
@@ -104,10 +113,10 @@ async function login() {
     );
 }
 
-function updateLoggedin(user) {
+function updateLoggedin(respons) {
     userStore.setLoggedin(true);
-    userStore.setUser(user);
-    console.log(userStore.getUser);
+    userStore.setToken(respons.token);
+    userStore.setUser(respons.message);
 }
 </script>
 <style></style>
