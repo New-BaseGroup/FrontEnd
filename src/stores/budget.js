@@ -85,6 +85,14 @@ export const useBudgetStore = defineStore("budget", () => {
             );
         }
     }
+    async function postNewBudget(newBudget) {
+        if(userStore.loggedin) {
+             await API_Service.PostService("Budget",newBudget,userStore.getToken).then(
+                (result) => {
+                    return result;
+           })
+         }
+    }
     async function fetchBalance(store) {
         await API_Service.GetService("balance", userStore.getToken).then(
             (data) => {
@@ -133,5 +141,7 @@ export const useBudgetStore = defineStore("budget", () => {
         fetchBalance,
         fetchCategories,
         findObjectAndChange,
+        fetchBudget,
+        postNewBudget,
     };
 });

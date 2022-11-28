@@ -86,7 +86,7 @@
                 </div>
 
                 <div
-                    v-for="object in categories"
+                    v-for="object in budgetCategories"
                     class="my-2 pb-8 border-neutral-700 border-b-2">
                     <label
                         class="block my-2 text-sm font-medium text-white dark:text-gray-400"
@@ -135,38 +135,33 @@
                             >Max Amount:</label
                         >
                         <button
-                        type="button"
-                        class="mb-8 text-white  bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center dark:bg-red-900 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                        @click="removeCategory(object)">
-                        <font-awesome-icon
-                            icon="xmark"
-                            class="text-xl text-[#fff]" />
-                    </button>
+                            type="button"
+                            class="mb-8 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center dark:bg-red-900 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                            @click="removeCategory(object)">
+                            <font-awesome-icon
+                                icon="xmark"
+                                class="text-xl text-[#fff]" />
+                        </button>
                     </div>
-
-                    
                 </div>
-                
             </div>
             <div>
-                <button v-if="stateCounter === 2"
+                <button
+                    v-if="stateCounter === 2"
                     type="button"
                     class="mb-8 first-letter:text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     @click="addCategory">
                     Add new Category
                 </button>
-           
-        </div>
+            </div>
         </div>
 
-        <template v-if="stateCounter === 4">
-            <p class="text-center py-4">
-                Name: {{ budgetDTO.budgetName }}
-            </p>
+        <template v-if="stateCounter === 3">
+            <p class="text-center py-4">Name: {{ budgetDTO.budgetName }}</p>
             <p class="text-center py-4">
                 Total Budget Amount: {{ budgetDTO.budgetAmount }}
             </p>
-           
+
             <createBudgetChart :testData="testData1" />
             <p class="text-center py-4">
                 Date from {{ budgetDTO.startDate }} to {{ budgetDTO.endDate }}
@@ -175,19 +170,18 @@
                 Do you want to save this budget?
             </h3>
         </template>
-        <p v-if="stateCounter === 2"
-                class="my-2 text-center mx-5 text-gray-200 dark:text-gray-400 transition-transform">
-                Amount left to assign to categories:
-                <span>{{ calculateUsedAmount.toFixed(0) }}</span>
-            </p>
+        <p
+            v-if="stateCounter === 2"
+            class="my-2 text-center mx-5 text-gray-200 dark:text-gray-400 transition-transform">
+            Amount left to assign to categories:
+            <span>{{ calculateUsedAmount.toFixed(0) }}</span>
+        </p>
         <div class="mt-2">
-            
             <button
                 type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium mx-auto rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                {{ stateCounter != 4 ? "Next Step" : "save" }}
+                {{ stateCounter != 3 ? "Next Step" : "save" }}
             </button>
-            
         </div>
     </form>
 </template>
@@ -196,6 +190,7 @@
 import createBudgetChart from "./createBudgetChart.vue";
 import { ref, watch, watchEffect, computed } from "vue";
 import { useBudgetStore } from "../../stores/budget";
+import API_Service from "../../API/API_Service.js";
 const budgetStore = useBudgetStore();
 const testData1 = ref({
     labels: [],
@@ -222,9 +217,9 @@ async function GetCategetories() {
     }
 }
 GetCategetories();
-const categories = ref([
+const budgetCategories = ref([
     {
-        CatergoriID: "",
+        categoryID: "",
         CustomName: "",
         MaxAmount: 0,
     },
@@ -239,39 +234,62 @@ const budgetDTO = ref({
 });
 const totalSum = ref(0);
 const calculateUsedAmount = computed(() => {
-    let leftAmount = budgetDTO.value.budgetAmount;
-    categories.value.forEach((item) => {
+    if(stateCounter.value > 1) {
+        let leftAmount = budgetDTO.value.budgetAmount;
+    budgetCategories.value.forEach((item) => {
         leftAmount -= item.MaxAmount;
     });
     return leftAmount;
+    }
+    return 0;
 });
 const stateCounter = ref(1);
 function submitBudget(submitEvent) {
+    if(stateCounter.value === 3 && calculateUsedAmount.value === 0)
+    {
+        let formatedBudgetData = {
+        budgetName: budgetDTO.value.budgetName,
+        totalAmount: budgetDTO.value.budgetAmount,
+        startDate: budgetDTO.value.startDate,
+        endDate: budgetDTO.value.endDate,
+        description: budgetDTO.value.description,
+        userId: 0,
+        budgetCategories:  budgetCategories.value,
+        }
+        let result = budgetStore.postNewBudget(formatedBudgetData)
+        console.log(result.message);
+        if(result != null) {
+            router.push({ name: "budget" });
+        }
+    }
+    else
     nextPage();
 }
+
 function addCategory() {
-    categories.value.push({
+    budgetCategories.value.push({
         categoryID: "",
         CustomName: "",
         MaxAmount: 0,
     });
 }
 function removeCategory(obj) {
-    if (categories.value.includes(obj)) {
-        categories.value = categories.value.filter((c) => c !== obj);
+    if (budgetCategories.value.includes(obj)) {
+        budgetCategories.value = budgetCategories.value.filter((c) => c !== obj);
     }
 }
 function nextPage() {
-    if (stateCounter.value < 3) stateCounter.value = stateCounter.value + 1;
-    if (stateCounter.value === 3) {
-        categories.value.forEach((cat) => {
+    console.log(calculateUsedAmount.value + "  " + stateCounter.value);
+    if (stateCounter.value === 1) stateCounter.value = 2;
+    else if (stateCounter.value === 2 && calculateUsedAmount.value === 0) {
+        budgetCategories.value.forEach((cat) => {
             let filtered = budgetStore.getBalanceCategories.filter(
                 (val) => val.categoryID === cat.categoryID
             );
             testData1.value.labels.push(filtered[0].name);
             testData1.value.datasets[0].data.push(cat.MaxAmount);
         });
-        stateCounter.value = 4;
+        stateCounter.value = 3;
     }
 }
 function addBudget() {}
