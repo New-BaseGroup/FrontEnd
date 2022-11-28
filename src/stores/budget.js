@@ -17,22 +17,24 @@ export const useBudgetStore = defineStore("budget", () => {
     const getBudget = computed(() => budget.value);
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
-    const getTotalAmount = computed(() => budget.value[0].totalAmount);
+
+    //widget getters
+    const getTotalAmount = computed(() => budget.value[0]?.totalAmount);
     const getBudgetInfo = computed(
-        () => `${budget.value[0].name} ${budget.value[0].totalAmount}`
+        () => `${budget.value[0]?.name} ${budget.value[0]?.totalAmount}`
     );
     const getBalanceCategories = computed(() => balanceCategories.value);
     const getAmountUsed = computed(() =>
-        balance.value.map((b) => b.amount).reduce((a, b) => a + b)
+        balance.value?.map((b) => b.amount).reduce((a, b) => a + b)
     );
     const getLatestTransactions = computed(() =>
         balance.value
-            .sort((a, b) => a.date - b.date)
+            ?.sort((a, b) => a.date - b.date)
             .map((f) => f.title)
             .slice(-10)
     );
     const getCategoryInfo = computed(() =>
-        budgetCategories.value.map(
+        budgetCategories.value?.map(
             (b) =>
                 `${b.customName} ${b.maxAmount} ${b.balanceChanges
                     .map((b) => b.amount)
@@ -69,17 +71,19 @@ export const useBudgetStore = defineStore("budget", () => {
         });
     }
     async function fetchBudget(store) {
-        siteStore.setLoading(true);
-        await API_Service.GetService("Budget/1", userStore.getToken).then(
-            (data) => {
-                console.log("loading data");
-                console.log(data);
-                setBudgetCategories(data.data.message);
-                setBalance(data.data.message);
-                setBudget(data.data.message);
-                siteStore.setLoading(false);
-            }
-        );
+        if (userStore.loggedin) {
+            siteStore.setLoading(true);
+            await API_Service.GetService("Budget/1", userStore.getToken).then(
+                (data) => {
+                    console.log("loading data");
+                    console.log(data);
+                    setBudgetCategories(data.data.message);
+                    setBalance(data.data.message);
+                    setBudget(data.data.message);
+                    siteStore.setLoading(false);
+                }
+            );
+        }
     }
     async function fetchBalance(store) {
         await API_Service.GetService("balance", userStore.getToken).then(
@@ -88,47 +92,25 @@ export const useBudgetStore = defineStore("budget", () => {
             }
         );
     }
-    async function deleteObject(type, object, id) {
-        // setChangesMade(true);
-        findObjectAndChange(object, type, "delete");
-        await API_Service.DeleteService(
-            `${type}?id=${id}`,
-            userStore.getToken
-        ).then((data) => {
-            console.log(data);
-        });
-    }
-    async function updateObject(type, object) {
-        // setChangesMade(true);
-        findObjectAndChange(object, type, "update");
-        await API_Service.PutService(type, object, userStore.getToken).then(
-            (data) => {
+    async function findObjectAndChange(change, path, object, key, type) {
+        const foundIndex = path.findIndex((obj) => obj[key] === object[key]);
+
+        if (change === "update") {
+            path[object[key - 1]] = object;
+            await API_Service.PutService(type, object, userStore.getToken).then(
+                (data) => {
+                    console.log(data);
+                }
+            );
+        } else if (change === "delete") {
+            path.splice(object[key - 1], 1);
+            await API_Service.DeleteService(
+                `${type}?id=${object[key - 1]}`,
+                userStore.getToken
+            ).then((data) => {
                 console.log(data);
-            }
-        );
-    }
-    function findObjectAndChange(object, type, change) {
-        const smallType = type.toLowerCase();
-        let foundIndex = null;
-        let path = null;
-        if (type === "Balance") {
-            foundIndex = balance.value.findIndex(
-                (obj) => obj["changeID"] === object["changeID"]
-            );
-            path = balance.value;
-        } else if (type === "Budget") {
-            foundIndex = budget.value.findIndex(
-                (obj) => obj["budgetID"] === object["budgetID"]
-            );
-            path = budget.value;
-        } else if (type === "budgetCategories") {
-            foundIndex = budgetCategories.value.findIndex(
-                (obj) => obj["budgetCategoryID"] === object["budgetCategoryID"]
-            );
-            path = budgetCategories.value;
+            });
         }
-        if (change === "update") path[foundIndex] = object;
-        else if (change === "delete") path.splice(foundIndex, 1);
     }
     return {
         budget,
@@ -150,7 +132,6 @@ export const useBudgetStore = defineStore("budget", () => {
         fetchBudget,
         fetchBalance,
         fetchCategories,
-        updateObject,
-        deleteObject,
+        findObjectAndChange,
     };
 });

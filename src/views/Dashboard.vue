@@ -1,5 +1,7 @@
 <template>
-    <div class="base-card-wide" v-if="!siteStore.loading">
+    <div
+        class="base-card-wide"
+        v-if="!siteStore.loading && budgetStore.getBudget">
         <div class="base-card-widgets">
             <div v-for="widget in siteStore.getWidgets" :key="widget.id">
                 <Widget

@@ -1,10 +1,8 @@
 <template>
-    <div
-        v-if="!siteStore.loading"
-        class="base-card-table"
-    >
+    <div v-if="!siteStore.loading" class="base-card-table">
         <div class="base-card-Container">
-            <div class="flex items-center justify-center text-4xl font-black text-background-text m-3">
+            <div
+                class="flex items-center justify-center text-4xl font-black text-background-text m-3">
                 <h1 class="tracking-wide">
                     SkyBudget
                     <span class="font-mono">™</span>
@@ -14,16 +12,17 @@
             <browserTable
                 :header="'Budget Info'"
                 :data="budgetStore.getBudget"
-                :type="'Budget'"
-                :key="browserTable"
-            />
+                type="Budget"
+                primary-key="budgetID"
+                :key="browserTable" />
             <browserTable
                 :header="'Category Info'"
                 :data="budgetStore.getBudgetCategories"
-                :key="browserTable"
-            />
+                type="budgetCategories"
+                primary-key="categoriID"
+                :key="browserTable" />
         </div>
-        </div>
+    </div>
 </template>
 <script setup>
 import { useBudgetStore } from "../../stores/budget.js";
