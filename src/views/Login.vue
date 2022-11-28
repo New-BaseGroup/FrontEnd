@@ -104,7 +104,6 @@ async function login() {
             isLoading.value = false;
             if (response.status == "success") {
                 updateLoggedin(response);
-                alert("Du är nu inloggad '" + response.message + "'");
                 router.push({ name: "dashboard" });
             } else {
                 alert(response.message);
