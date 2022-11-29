@@ -93,11 +93,12 @@
     .toggle {
         @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
     }
+    /* tablen till budgetView */
     .table {
         @apply w-full text-sm text-left bg-background-secondary table-auto;
     }
     .table-title {
-        @apply  text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
+        @apply text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
     }
     .table-row {
         @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active w-full m-10;
@@ -109,7 +110,7 @@
         @apply text-textcolor-table text-center p-4 m-6 xl:px-6;
     }
     .table-icon {
-        @apply text-textcolor-table p-2 m-5
+        @apply text-textcolor-table p-2 m-5;
     }
     .widget {
         @apply relative px-6 py-4 m-5 text-center transition ease-in-out duration-200 transform bg-gray-700 rounded-lg dark:bg-gray-600;
@@ -143,4 +144,3 @@
 .body-color {
     background-color: var(--bg-background-secondary);
 }
-

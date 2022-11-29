@@ -51,18 +51,14 @@
                     </router-link>
                 </div>
             </div>
-            <!-- <button
-	    @click="expand"
-	    class="sideBarButton"
-	>
-		<font-awesome-icon :icon="expanded === true ? 'caret-left' : 'caret-right'" />
-		</button> -->
-        <div v-if="userStore.getLoggedin">
-        <div class="toggle" @click="logout"><font-awesome-icon
-		    icon="fa-solid fa-arrow-right-from-bracket"
-		    class="text-xl text-[#fff] hover:text-[#2b2b2b] mr-2"
-		/>Logout</div>
-    </div>
+            <div v-if="userStore.getLoggedin">
+                <div class="toggle" @click="logout">
+                    <font-awesome-icon
+                        icon="fa-solid fa-arrow-right-from-bracket"
+                        class="text-xl text-[#fff] hover:text-[#2b2b2b] mr-2" />
+                    <p class="sideBarText">Logout</p>
+                </div>
+            </div>
             <ThemeToggle />
         </div>
     </div>
@@ -78,12 +74,8 @@ import { useUserStore } from "../../stores/user";
 const siteStore = useSiteStore();
 const userStore = useUserStore();
 const router = useRouter();
-const expanded = ref(true);
 const isLoading = ref(false);
 const activeSub = ref("");
-function expand() {
-    expanded.value = !expanded.value;
-}
 function loading() {
     isLoading.value = true;
     setTimeout(function () {
