@@ -30,10 +30,12 @@
                         {{ item.title }}
                     </p>
                 </RouterLink>
-                <div
+                        <div
                     v-for="sublink in item.sublinks"
                     :key="sublink"
-                    v-show="activeSub == item.title">
+                    v-show="activeSub == item.title"
+                    >
+                    <template v-if="sublink.availability === 'user' && userStore.getLoggedin">
                     <router-link
                         :key="sublink.name"
                         :to="sublink.link"
@@ -49,7 +51,9 @@
                         </span>
                         <span class="sideBarText">{{ sublink.title }}</span>
                     </router-link>
+                </template>
                 </div>
+        
             </div>
             <div v-if="userStore.getLoggedin">
                 <div class="toggle" @click="logout">
@@ -90,6 +94,7 @@ function setActiveSublink(parent) {
 }
 function logout() {
     userStore.logOutUser();
+    activeSub.value = "login";
     router.push({ name: "login" });
 }
 const navItems = [
@@ -109,11 +114,13 @@ const navItems = [
                 icon: "fa-solid fa-list",
                 title: "View",
                 link: "/balance/view",
+                availability: "user",
             },
             {
                 icon: "fa-solid fa-plus",
                 title: "Create",
                 link: "/balance/create",
+                availability: "user",
             },
         ],
     },
@@ -127,11 +134,13 @@ const navItems = [
                 icon: "fa-solid fa-list",
                 title: "View",
                 link: "/budget/view",
+                availability: "user",
             },
             {
                 icon: "fa-solid fa-plus",
                 title: "Create",
                 link: "/budget/create",
+                availability: "user",
             },
         ],
     },
