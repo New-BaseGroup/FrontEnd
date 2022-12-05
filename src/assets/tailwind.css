@@ -88,15 +88,17 @@
     }
 
     .toggle {
-        @apply w-full flex items-center text-textcolor-content  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
+        @apply w-full flex items-center text-textcolor-active  pl-3 cursor-pointer transition duration-300 ease-in-out ml-1 mt-auto py-4 my-1;
     }
     .toggle-login {
-        @apply px-7  bg-slate-900  text-slate-400 cursor-pointer transition duration-300 ease-in-out flex hover:bg-slate-700 ;
+        @apply px-7  bg-slate-900  text-slate-400 cursor-pointer transition duration-300 ease-in-out flex hover:bg-slate-700;
+    }
+    .toggle-name {
+        @apply px-7  text-slate-400 flex;
     }
     .toggle-register {
         @apply px-7   bg-orange-500  text-black font-bold  cursor-pointer transition duration-300 ease-in-out flex hover:bg-orange-300;
     }
-    /* tablen till budgetView */
     .table {
         @apply w-full text-sm text-left bg-background-secondary table-auto;
     }
@@ -138,13 +140,13 @@
 
 .dark-theme {
     --bg-background-primary: #0d2438;
-    --bg-background-secondary: #102c44;
+    --bg-background-secondary: #1a3b59;
     --bg-background-ternary: #424355;
     --bg-background-hover: #102c44;
     --text-content: #d6d3d3;
-    --text-background: #a9d712;
-    --text-active: #a9d712;
-    --text-input: #a9d712;
+    --text-background: #94a3b8;
+    --text-active: white;
+    --text-input: #94a3b8;
     --text-table: #d6d3d3;
 }
 
