@@ -7,6 +7,10 @@ export const useUserStore = defineStore("user", () => {
     const loggedin = ref(false);
     const token = ref("");
 
+    const persist = () => {
+        true;
+    };
+
     //Getters
     const getUser = computed(() => user.value);
     const getLoggedin = computed(() => loggedin.value);
@@ -20,13 +24,25 @@ export const useUserStore = defineStore("user", () => {
     function setLoggedin(bool) {
         loggedin.value = bool;
     }
-    function logOutUser(){ 
+    function logOutUser() {
         loggedin.value = false;
         token.value = "";
         user.value = "";
     }
-    function setToken(newToken){
+    function setToken(newToken) {
         token.value = newToken;
     }
-    return { user, loggedin,token, getUser, getLoggedin,getToken, setLoggedin,setToken, setUser,logOutUser };
+    return {
+        user,
+        loggedin,
+        token,
+        getUser,
+        getLoggedin,
+        getToken,
+        setLoggedin,
+        setToken,
+        setUser,
+        logOutUser,
+        // persist
+    };
 });
