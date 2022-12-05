@@ -75,8 +75,6 @@ export const useBudgetStore = defineStore("budget", () => {
             siteStore.setLoading(true);
             await API_Service.GetService("Budget/1", userStore.getToken).then(
                 (data) => {
-                    console.log("loading data");
-                    console.log(data);
                     setBudgetCategories(data.data.message);
                     setBalance(data.data.message);
                     setBudget(data.data.message);
@@ -86,12 +84,15 @@ export const useBudgetStore = defineStore("budget", () => {
         }
     }
     async function postNewBudget(newBudget) {
-        if(userStore.loggedin) {
-             await API_Service.PostService("Budget",newBudget,userStore.getToken).then(
-                (result) => {
-                    return result;
-           })
-         }
+        if (userStore.loggedin) {
+            await API_Service.PostService(
+                "Budget",
+                newBudget,
+                userStore.getToken
+            ).then((result) => {
+                return result;
+            });
+        }
     }
     async function fetchBalance(store) {
         await API_Service.GetService("balance", userStore.getToken).then(
