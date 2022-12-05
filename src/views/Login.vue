@@ -108,8 +108,8 @@ async function login() {
 
 function updateLoggedin(respons) {
     userStore.setLoggedin(true);
-    userStore.setToken(respons.token);
     userStore.setUser(respons.message);
+    userStore.setToken(respons.token);
 }
 </script>
 <style></style>
