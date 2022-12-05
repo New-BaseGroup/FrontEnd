@@ -25,5 +25,4 @@ const props = defineProps({
     backupData: Object,
     mobile: Boolean,
 });
-console.log(props);
 </script>

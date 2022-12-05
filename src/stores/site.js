@@ -51,8 +51,6 @@ export const useSiteStore = defineStore("site", () => {
             `Account/Widgets`,
             userStore.getToken
         ).then((data) => {
-            console.log("loading data");
-            console.log(data.data.message);
             if (data.data.message > 0) {
                 widgets.value = data.data.message;
             } else {

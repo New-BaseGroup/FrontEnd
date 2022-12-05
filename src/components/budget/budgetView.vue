@@ -1,8 +1,6 @@
 <template>
     <div v-if="!siteStore.loading" class="base-card-table">
         <div class="base-card-Container">
-           
-
             <browserTable
                 :header="'Budget Info'"
                 :data="budgetStore.getBudget"
@@ -28,7 +26,6 @@ const siteStore = useSiteStore();
 async function getData() {
     if (!budgetStore.getBudget) {
         await budgetStore.fetchBudget(1);
-        console.log(budgetStore.getAmountUsed);
     }
 }
 

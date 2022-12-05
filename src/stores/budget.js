@@ -100,7 +100,6 @@ export const useBudgetStore = defineStore("budget", () => {
                 "Budget/budgetList",
                 userStore.getToken
             ).then((data) => {
-                console.log("loading data");
                 setBudgetList(data.data.message);
                 siteStore.setLoading(false);
             });
@@ -129,19 +128,13 @@ export const useBudgetStore = defineStore("budget", () => {
 
         if (change === "update") {
             path[object[key - 1]] = object;
-            await API_Service.PutService(type, object, userStore.getToken).then(
-                (data) => {
-                    console.log(data);
-                }
-            );
+            await API_Service.PutService(type, object, userStore.getToken);
         } else if (change === "delete") {
             path.splice(object[key - 1], 1);
             await API_Service.DeleteService(
                 `${type}?id=${object[key - 1]}`,
                 userStore.getToken
-            ).then((data) => {
-                console.log(data);
-            });
+            );
         }
     }
     return {

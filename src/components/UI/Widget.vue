@@ -39,7 +39,6 @@ import { useBudgetStore } from "../../stores/budget";
 const budgetStore = useBudgetStore();
 const openSetting = ref(false);
 const siteStore = useSiteStore();
-console.log(siteStore["getTheme"]);
 const props = defineProps({
     id: Number,
     header: String,

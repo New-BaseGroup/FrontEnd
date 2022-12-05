@@ -20,7 +20,7 @@
             </template>
             <div
                 v-for="empty in siteStore.getWidgetLimit -
-                siteStore.getWidgets.length"
+                siteStore.getWidgets?.length"
                 :key="empty"
                 class="widget-btn">
                 <button @click="siteStore.addWidget" class="m-auto">
