@@ -61,7 +61,7 @@
     }
 
     .base-card-widgets {
-        @apply p-6 w-full grid grid-cols-3 bg-background-primary rounded;
+        @apply p-6 w-full max-w-screen-xl self-center flex flex-wrap flex-row bg-background-primary rounded;
     }
 
     .sideBarContent {
@@ -115,7 +115,10 @@
         @apply text-textcolor-table p-2 m-5;
     }
     .widget {
-        @apply relative px-6 py-4 m-5 text-center transition ease-in-out duration-200 transform bg-gray-700 rounded-lg dark:bg-gray-600;
+        @apply relative p-6 m-auto my-5 text-center self-center transition ease-in-out duration-200 transform min-w-350 bg-gray-700 rounded-lg dark:bg-gray-600;
+    }
+    .widget-btn {
+        @apply min-w-350 m-auto my-5 self-center justify-self-center place-self-center;
     }
 }
 
