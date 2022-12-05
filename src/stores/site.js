@@ -13,6 +13,7 @@ export const useSiteStore = defineStore("site", () => {
     const widgets = ref();
     const widgetLimit = ref(6);
     const changesMade = ref(false);
+    const widgetEdit = ref(false);
 
     //Getters
     const getView = computed(() => view.value);
@@ -20,10 +21,14 @@ export const useSiteStore = defineStore("site", () => {
     const getTheme = computed(() => theme.value);
     const getWidgets = computed(() => widgets.value);
     const getWidgetLimit = computed(() => widgetLimit.value);
+    const getEditState = computed(() => widgetEdit.value);
 
     //Actions
     function setView(newView) {
         view.value = newView;
+    }
+    function SetwidgetEdit() {
+        widgetEdit.value = !widgetEdit.value;
     }
     function setLoading(bool) {
         loading.value = bool;
@@ -114,5 +119,7 @@ export const useSiteStore = defineStore("site", () => {
         changesMade,
         saveWidgets,
         setChangesMade,
+        getEditState,
+        SetwidgetEdit,
     };
 });

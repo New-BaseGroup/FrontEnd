@@ -1,6 +1,6 @@
 <template>
     <div
-        class="base-card-wide"
+        class="base-card-widgets-container "
         v-if="!siteStore.loading && budgetStore.getBudget">
         <div class="base-card-widgets">
             <template v-for="widget in siteStore.getWidgets" :key="widget.id">
@@ -27,6 +27,7 @@
                     Add Widget
                 </button>
             </div>
+           
         </div>
         <button
             v-show="siteStore.changesMade"
@@ -34,6 +35,10 @@
             class="m-auto">
             Save Widgets
         </button>
+        <button class="m-auto" @click="siteStore.SetwidgetEdit()">
+                    Edit Widgets
+        </button>
+            
     </div>
 </template>
 

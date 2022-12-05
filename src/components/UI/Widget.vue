@@ -1,8 +1,9 @@
 <template>
     <div class="widget">
         <font-awesome-icon
+        v-if="siteStore.getEditState"
             icon="fa-gear"
-            class="float-left text-xl text-[#fff] hover:text-[#2b2b2b]"
+            class="float-left text-xl text-black hover:text-[#2b2b2b]"
             @click="openSetting = !openSetting" />
         <ul
             v-if="openSetting"
@@ -20,10 +21,11 @@
             </li>
         </ul>
         <font-awesome-icon
+        v-if="siteStore.getEditState"
             icon="fa-xmark"
-            class="float-right text-xl text-[#fff] hover:text-[#2b2b2b]"
+            class="float-right text-xl text-[#000] hover:text-[#2b2b2b]"
             @click="siteStore.removeWidget(props.id)" />
-        <h3 class="mt-2 text-3xl font-semibold text-gray-100">
+        <h3 class="mt-2 text-3xl font-semibold text-black">
             {{ props.header }}
         </h3>
         <span v-if="!Array.isArray(budgetStore[props.data])">{{
