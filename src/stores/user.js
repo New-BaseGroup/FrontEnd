@@ -20,13 +20,24 @@ export const useUserStore = defineStore("user", () => {
     function setLoggedin(bool) {
         loggedin.value = bool;
     }
-    function logOutUser(){ 
+    function logOutUser() {
         loggedin.value = false;
         token.value = "";
         user.value = "";
     }
-    function setToken(newToken){
+    function setToken(newToken) {
         token.value = newToken;
     }
-    return { user, loggedin,token, getUser, getLoggedin,getToken, setLoggedin,setToken, setUser,logOutUser };
+    return {
+        user,
+        loggedin,
+        token,
+        getUser,
+        getLoggedin,
+        getToken,
+        setLoggedin,
+        setToken,
+        setUser,
+        logOutUser,
+    };
 });

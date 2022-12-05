@@ -26,8 +26,10 @@
         <h3 class="mt-2 text-3xl font-semibold text-gray-100">
             {{ props.header }}
         </h3>
-        <span v-if="!Array.isArray(props.data)">{{ props.data }}</span>
-        <p v-else v-for="x in props.data">{{ x }}</p>
+        <span v-if="!Array.isArray(budgetStore[props.data])">{{
+            budgetStore[props.data]
+        }}</span>
+        <p v-else v-for="x in budgetStore[props.data]">{{ x }}</p>
     </div>
 </template>
 <script setup>
@@ -37,6 +39,7 @@ import { useBudgetStore } from "../../stores/budget";
 const budgetStore = useBudgetStore();
 const openSetting = ref(false);
 const siteStore = useSiteStore();
+console.log(siteStore["getTheme"]);
 const props = defineProps({
     id: Number,
     header: String,
@@ -45,19 +48,19 @@ const props = defineProps({
 const settings = ref([
     {
         title: "Latest Transaction",
-        getter: budgetStore.getLatestTransactions,
+        getter: "getLatestTransactions",
     },
     {
         title: "Budget Info",
-        getter: budgetStore.getBudgetInfo,
+        getter: "getBudgetInfo",
     },
     {
         title: "Budget amount used / total amount",
-        getter: `${budgetStore.getAmountUsed} / ${budgetStore.getTotalAmount}`,
+        getter: `getUsedAndTotal`,
     },
     {
         title: "Category usage",
-        getter: budgetStore.getCategoryInfo,
+        getter: "getCategoryInfo",
     },
 ]);
 </script>

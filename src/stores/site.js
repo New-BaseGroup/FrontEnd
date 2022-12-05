@@ -11,7 +11,7 @@ export const useSiteStore = defineStore("site", () => {
     const theme = ref("light-theme");
     const isMobile = ref(false);
     const widgets = ref();
-    const widgetLimit = ref(!isMobile.value ? 8 : 6);
+    const widgetLimit = ref(6);
     const changesMade = ref(false);
 
     //Getters
@@ -70,11 +70,6 @@ export const useSiteStore = defineStore("site", () => {
                     {
                         id: 2,
                         header: "Widget 3",
-                        data: "Please select a setting",
-                    },
-                    {
-                        id: 3,
-                        header: "Widget 4",
                         data: "Please select a setting",
                     },
                 ];

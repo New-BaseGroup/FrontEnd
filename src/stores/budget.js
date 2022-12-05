@@ -43,6 +43,9 @@ export const useBudgetStore = defineStore("budget", () => {
                     .reduce((a, b) => a + b)} / ${b.maxAmount}`
         )
     );
+    const getUsedAndTotal = computed(
+        () => `${getAmountUsed} / ${getTotalAmount}`
+    );
     //Actions
     function setbalanceCategories(data) {
         balanceCategories.value = data;
@@ -157,6 +160,7 @@ export const useBudgetStore = defineStore("budget", () => {
         getCategoryInfo,
         getTotalAmount,
         getBalanceCategories,
+        getUsedAndTotal,
         setBudget,
         setBudgetCategories,
         setBalance,

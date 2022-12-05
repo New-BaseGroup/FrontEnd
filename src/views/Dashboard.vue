@@ -47,7 +47,7 @@ const isLoading = ref(null);
 const siteStore = useSiteStore();
 const budgetStore = useBudgetStore();
 function changeWidget(id, option) {
-    const widget = siteStore.getWidgets.find((widget) => widget.id == id);
+    const widget = siteStore.getWidgets?.find((widget) => widget.id == id);
     isLoading.value = widget;
     widget.data = option.getter;
     widget.header = option.title;

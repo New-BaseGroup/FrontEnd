@@ -63,7 +63,7 @@
         @apply p-6 bg-background-primary rounded;
     }
     .base-card-widgets {
-        @apply p-6 w-full flex flex-wrap flex-row bg-background-primary rounded;
+        @apply p-6 w-full max-w-screen-xl self-center flex flex-wrap flex-row bg-background-primary rounded;
     }
     .sideBarContainer {
         @apply bg-background-primary flex flex-row min-h-screen;
