@@ -1,6 +1,6 @@
 <template>
     <div
-        class="base-card-wide"
+        class="base-card-widgets-container "
         v-if="!siteStore.loading && budgetStore.getBudget">
         <div class="base-card-widgets">
             <template v-for="widget in siteStore.getWidgets" :key="widget.id">
