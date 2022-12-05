@@ -86,8 +86,6 @@ export const useBudgetStore = defineStore("budget", () => {
                 `Budget/${id}`,
                 userStore.getToken
             ).then((data) => {
-                console.log("loading data");
-                console.log(data);
                 setBudgetCategories(data.data.message);
                 setBalance(data.data.message);
                 setBudget(data.data.message);

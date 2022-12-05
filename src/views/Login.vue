@@ -5,6 +5,9 @@
                 <p v-if="userStore.getLoggedin">
                     You're already logged in as '{{ userStore.getUser }}'
                 </p>
+                <p v-if="responseMessage" class="bg-red-600">
+                    Wrong username or password!
+                </p>
                 <form
                     @submit.prevent="login"
                     class="flex flex-col justify-center">
@@ -87,6 +90,7 @@ const rules = computed(() => {
         },
     };
 });
+const responseMessage = ref(false);
 const v$ = useValidate(rules, state);
 async function login() {
     isLoading.value = true;
@@ -97,10 +101,11 @@ async function login() {
         (response) => {
             isLoading.value = false;
             if (response.status == "success") {
+                responseMessage.value = false;
                 updateLoggedin(response);
                 router.push({ name: "dashboard" });
             } else {
-                alert(response.message);
+                responseMessage.value = true;
             }
         }
     );
