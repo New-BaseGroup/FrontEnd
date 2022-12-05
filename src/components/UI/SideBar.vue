@@ -1,5 +1,9 @@
 <template>
-    <div class="sideBarContainer">
+     <nav class="flex w-72 h-full">
+        <template  v-if="
+                        
+                        userStore.getLoggedin
+                    ">
         <div class="sideBarContent">
             <div v-for="item in navItems" :key="item">
                 <RouterLink
@@ -8,10 +12,7 @@
                     class="sideBardNavigation"
                     active-class="sideBarNavigationActive"
                     @click="setActiveSublink(item)"
-                    v-if="
-                        item.availability === 'all' ||
-                        (item.availability === 'user' && userStore.getLoggedin)
-                    ">
+                   >
                     <template v-if="isLoading && activeSub == item.title">
                         <orbit-spinner
                             v-if="isLoading"
@@ -65,7 +66,8 @@
             </div>
             <ThemeToggle />
         </div>
-    </div>
+    </template>
+    </nav>
 </template>
 
 <script setup>
@@ -144,17 +146,6 @@ const navItems = [
             },
         ],
     },
-    {
-        icon: "id-card",
-        title: "Register",
-        link: "/register",
-        availability: "all",
-    },
-    {
-        icon: "eye",
-        title: "Login",
-        link: "/login",
-        availability: "all",
-    },
+
 ];
 </script>

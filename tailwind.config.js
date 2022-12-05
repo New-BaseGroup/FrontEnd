@@ -18,6 +18,7 @@ module.exports = {
         secondary: "var(--bg-background-secondary)",
         ternary: "var(--bg-background-ternary)",
         hover: "var(--bg-background-hover)",
+        sidebar: "var(--bg-background-sidebar)",
       },
       textcolor: {
         text: "var(--text-background)",

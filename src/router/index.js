@@ -8,6 +8,7 @@ import balanceView from "../components/balance/balanceView.vue";
 import budgetCreate from "../components/budget/Budget.vue";
 import budgetView from "../components/budget/budgetView.vue";
 import budget from "../views/Budget.vue";
+import splashPage from "../components/splashScreen/splash.vue";
 import { useUserStore } from "../stores/user";
 
 const router = createRouter({
@@ -16,7 +17,7 @@ const router = createRouter({
         {
             path: "/",
             name: "home",
-            component: Dashboard,
+            component:splashPage,
         },
         {
             path: "/dashboard",

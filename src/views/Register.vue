@@ -1,12 +1,7 @@
 <template>
     <div class="base-card">
         <div class="base-card-Container">
-            <div
-                class="flex items-center justify-center text-4xl font-black text-background-text m-3">
-                <h1 class="tracking-wide">
-                    SkyBudget<span class="font-mono">™</span>
-                </h1>
-            </div>
+
             <div>
                 <form @submit.prevent="register">
                     <div class="input-wrapper">

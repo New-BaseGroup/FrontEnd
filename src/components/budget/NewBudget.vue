@@ -1,11 +1,12 @@
 <template>
+    <div class="base-container">
     <form @submit.prevent="submitBudget" class="max-w-md mx-auto">
-        <div class="transition-all" v-if="stateCounter === 1">
+        <div class="transition-all p-7" v-if="stateCounter === 1">
             <h3 class="text-2xl my-4 text-center">Create a new budget</h3>
             <div class="max-w-md mx-auto">
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         id="BudgetName"
                         placeholder=" "
                         type="text"
@@ -20,7 +21,7 @@
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         type="date"
                         id="start-date"
                         name="start-date"
@@ -35,7 +36,7 @@
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         type="date"
                         id="end-date"
                         name="end-date"
@@ -50,7 +51,7 @@
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         name="BudgetDescription"
                         type="text"
                         id="BudgetDescription"
@@ -71,7 +72,7 @@
             <div class="max-w-md mx-auto">
                 <div class="relative z-0 mb-6 w-full group">
                     <input
-                        class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         id="budgetAmount"
                         placeholder=" "
                         type="number"
@@ -89,7 +90,7 @@
                     v-for="object in budgetCategories"
                     class="my-2 pb-8 border-neutral-700 border-b-2">
                     <label
-                        class="block my-2 text-sm font-medium text-white dark:text-gray-400"
+                        class="block my-2 text-sm font-medium text-black dark:text-gray-400"
                         for="selectedBudgetCat"
                         >Select Budget category:</label
                     >
@@ -108,7 +109,7 @@
                     </select>
                     <div class="relative z-0 mb-6 w-full group">
                         <input
-                            class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             id="CustomName"
                             placeholder=" "
                             type="text"
@@ -122,7 +123,7 @@
                     </div>
                     <div class="relative z-0 mb-6 w-full group">
                         <input
-                            class="py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="py-2.5 px-0 text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             id="MaxAmount"
                             placeholder=" "
                             type="number"
@@ -136,7 +137,7 @@
                         >
                         <button
                             type="button"
-                            class="mb-8 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center dark:bg-red-900 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                            class="mb-8 text-black bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center dark:bg-red-900 dark:hover:bg-red-700 dark:focus:ring-red-800"
                             @click="removeCategory(object)">
                             <font-awesome-icon
                                 icon="xmark"
@@ -149,7 +150,7 @@
                 <button
                     v-if="stateCounter === 2"
                     type="button"
-                    class="mb-8 first-letter:text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="mb-8  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     @click="addCategory">
                     Add new Category
                 </button>
@@ -179,11 +180,12 @@
         <div class="mt-2">
             <button
                 type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium mx-auto rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium mx-auto rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 {{ stateCounter != 3 ? "Next Step" : "save" }}
             </button>
         </div>
     </form>
+</div>
 </template>
 
 <script setup>
