@@ -27,6 +27,7 @@
                     Add Widget
                 </button>
             </div>
+           
         </div>
         <button
             v-show="siteStore.changesMade"
@@ -34,6 +35,10 @@
             class="m-auto">
             Save Widgets
         </button>
+        <button class="m-auto" @click="siteStore.SetwidgetEdit()">
+                    Edit Widgets
+        </button>
+            
     </div>
 </template>
 

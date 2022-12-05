@@ -1,6 +1,7 @@
 <template>
     <div class="widget">
         <font-awesome-icon
+        v-if="siteStore.getEditState"
             icon="fa-gear"
             class="float-left text-xl text-black hover:text-[#2b2b2b]"
             @click="openSetting = !openSetting" />
@@ -20,6 +21,7 @@
             </li>
         </ul>
         <font-awesome-icon
+        v-if="siteStore.getEditState"
             icon="fa-xmark"
             class="float-right text-xl text-[#000] hover:text-[#2b2b2b]"
             @click="siteStore.removeWidget(props.id)" />
