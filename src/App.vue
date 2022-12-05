@@ -20,7 +20,7 @@
 				<component :is="Component" />
 			</router-view>
 	  </main>
-      <nav v-if="$route.name != 'home'" class="flex w-72 h-full ">
+      <nav v-if="$route.name != 'home'" class="sidebar-right">
         <div class="w-full flex mx-auto px-6 py-8">
           <div class="w-full h-full flex items-center justify-center text-gray-900 text-xl "></div>
         </div>

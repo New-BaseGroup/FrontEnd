@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex w-72 h-full">
+    <nav class="sidebar-left">
         <template v-if="userStore.getLoggedin">
             <div class="sideBarContent">
                 <div v-for="item in navItems" :key="item">
