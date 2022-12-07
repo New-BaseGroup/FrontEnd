@@ -40,7 +40,7 @@ export const useSiteStore = defineStore("site", () => {
         widgets.value.push({
             id: widgets.value.length,
             header: `Widget ${widgets.value.length}`,
-            data: "Please select a setting",
+            data: "WidgetStandard",
         });
         changesMade.value = true;
     }
@@ -56,24 +56,25 @@ export const useSiteStore = defineStore("site", () => {
             `Account/Widgets`,
             userStore.getToken
         ).then((data) => {
-            if (data.data.message > 0) {
+            if (data) {
+                console.log(data);
                 widgets.value = data.data.message;
             } else {
                 widgets.value = [
                     {
-                        id: 0,
+                        position: 0,
                         header: "Widget 1",
-                        data: "Please select a setting",
+                        data: "WidgetStandard",
                     },
                     {
-                        id: 1,
+                        position: 1,
                         header: "Widget 2",
-                        data: "Please select a setting",
+                        data: "WidgetStandard",
                     },
                     {
-                        id: 2,
+                        position: 2,
                         header: "Widget 3",
-                        data: "Please select a setting",
+                        data: "WidgetStandard",
                     },
                 ];
             }

@@ -7,7 +7,7 @@
                     v-for="[key, value] in Object.entries(
                         budgetStore.getBudgetList
                     )"
-                    @click="budgetStore.fetchBudget(key)">
+                    @click="budgetStore.setCurrentBudgetID(key)">
                     {{ value }}
                 </option>
             </select>
@@ -142,13 +142,13 @@
                     @click="page = backupData.length - 1" />
             </div>
             <div class="basis-1/5">
-                <label> rows per page:</label>
                 <select
                     @change="backupData = [...sliceIntoChunks(props.data)]"
                     v-model="rows">
-                    <option :value="5">5</option>
-                    <option :value="10">10</option>
-                    <option :value="1">1</option>
+                    <option value="" disabled selected>rows per page</option>
+                    <option :value="5">5 Rows</option>
+                    <option :value="10">10 Rows</option>
+                    <option :value="100">100 Rows</option>
                 </select>
             </div>
         </div>

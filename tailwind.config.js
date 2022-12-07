@@ -1,32 +1,32 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./public/**/*.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  presets: [],
-  darkMode: "media", // or 'class'
-  theme: {
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-      "3xl": "1792px",
-    },
-    colors: ({ colors }) => ({
-      background: {
-        primary: "var(--bg-background-primary)",
-        secondary: "var(--bg-background-secondary)",
-        ternary: "var(--bg-background-ternary)",
-        hover: "var(--bg-background-hover)",
-        sidebar: "var(--bg-background-sidebar)",
-      },
-      textcolor: {
-        text: "var(--text-background)",
-        content: "var(--text-content)",
-        active: "var(--text-active)",
-        input: "var(--text-input)",
-        table: "var(--text-table)"
-      },
+    content: ["./public/**/*.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    presets: [],
+    darkMode: "media", // or 'class'
+    theme: {
+        screens: {
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            "2xl": "1536px",
+            "3xl": "1792px",
+        },
+        colors: ({ colors }) => ({
+            background: {
+                primary: "var(--bg-background-primary)",
+                secondary: "var(--bg-background-secondary)",
+                ternary: "var(--bg-background-ternary)",
+                hover: "var(--bg-background-hover)",
+                sidebar: "var(--bg-background-sidebar)",
+            },
+            textcolor: {
+                text: "var(--text-background)",
+                content: "var(--text-content)",
+                active: "var(--text-active)",
+                input: "var(--text-input)",
+                table: "var(--text-table)",
+            },
 
             inherit: colors.inherit,
             current: colors.current,
@@ -662,6 +662,7 @@ module.exports = {
         maxWidth: ({ theme, breakpoints }) => ({
             none: "none",
             0: "0rem",
+            350: "350px",
             xs: "20rem",
             sm: "24rem",
             md: "28rem",
@@ -955,6 +956,7 @@ module.exports = {
             min: "min-content",
             max: "max-content",
             fit: "fit-content",
+            350: "350px",
         }),
         willChange: {
             auto: "auto",

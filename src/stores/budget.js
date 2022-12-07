@@ -13,9 +13,12 @@ export const useBudgetStore = defineStore("budget", () => {
     const balanceCategories = ref();
     const changesMade = ref(false);
     const budgetList = ref();
+    const currentBudgetID = ref();
 
     //Getters
-    const getBudget = computed(() => budget.value);
+    const getBudget = computed(() =>
+        budget.value?.find((budget) => budget.BudgetID === currentBudgetID)
+    );
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
     const getBudgetList = computed(() => budgetList.value);
@@ -46,6 +49,7 @@ export const useBudgetStore = defineStore("budget", () => {
     const getUsedAndTotal = computed(
         () => `${getAmountUsed} / ${getTotalAmount}`
     );
+    const WidgetStandard = computed(() => "Please select a setting");
     //Actions
     function setbalanceCategories(data) {
         balanceCategories.value = data;
@@ -79,18 +83,23 @@ export const useBudgetStore = defineStore("budget", () => {
         });
     }
     async function fetchBudget(id) {
+        console.log(id);
         if (userStore.loggedin) {
             siteStore.setLoading(true);
             await fetchBudgetList();
-            await API_Service.GetService(
-                `Budget/${id}`,
-                userStore.getToken
-            ).then((data) => {
-                setBudgetCategories(data.data.message);
-                setBalance(data.data.message);
-                setBudget(data.data.message);
-                siteStore.setLoading(false);
-            });
+            const findBudget = budget.value.find((budget) => budget.id === id);
+            console.log(findBudget);
+            if (!findBudget) {
+                await API_Service.GetService(
+                    `Budget/${id}`,
+                    userStore.getToken
+                ).then((data) => {
+                    setBudgetCategories(data.data.message);
+                    setBalance(data.data.message);
+                    setBudget(data.data.message);
+                    siteStore.setLoading(false);
+                });
+            }
         }
     }
     async function fetchBudgetList(store) {
@@ -137,6 +146,10 @@ export const useBudgetStore = defineStore("budget", () => {
             );
         }
     }
+    async function setCurrentBudgetID(id) {
+        console.log(id);
+        currentBudgetID.value = id;
+    }
     return {
         budget,
         budgetCategories,
@@ -162,5 +175,7 @@ export const useBudgetStore = defineStore("budget", () => {
         fetchBudget,
         postNewBudget,
         getBudgetList,
+        WidgetStandard,
+        setCurrentBudgetID,
     };
 });

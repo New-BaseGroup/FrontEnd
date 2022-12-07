@@ -1,8 +1,19 @@
 <template>
     <div
-        class="base-card-widgets-container "
+        class="base-card-widgets-container relative justify-evenly"
         v-if="!siteStore.loading && budgetStore.getBudget">
-        <div class="base-card-widgets">
+        <div class="absolute flex flex-row mx-5 top-5 right-0">
+            <button
+                v-show="siteStore.changesMade"
+                @click="siteStore.saveWidgets()"
+                class="m-auto">
+                Save
+            </button>
+            <button class="m-auto" @click="siteStore.SetwidgetEdit()">
+                Edit
+            </button>
+        </div>
+        <div class="base-card-widgets justify-items-center">
             <template v-for="widget in siteStore.getWidgets" :key="widget.id">
                 <Widget
                     v-if="isLoading != widget"
@@ -27,18 +38,7 @@
                     Add Widget
                 </button>
             </div>
-           
         </div>
-        <button
-            v-show="siteStore.changesMade"
-            @click="siteStore.saveWidgets()"
-            class="m-auto">
-            Save Widgets
-        </button>
-        <button class="m-auto" @click="siteStore.SetwidgetEdit()">
-                    Edit Widgets
-        </button>
-            
     </div>
 </template>
 
@@ -62,7 +62,7 @@ function changeWidget(id, option) {
 }
 async function getData() {
     isLoading.value = true;
-    if (!budgetStore.getBudget) await budgetStore.fetchBudget(1);
+    // if (!budgetStore.getBudget) await budgetStore.fetchBudget(1);
     if (!siteStore.getWidgets) await siteStore.loadWidgets();
     setTimeout(function () {
         isLoading.value = false;

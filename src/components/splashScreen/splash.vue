@@ -1,32 +1,32 @@
 <template>
-    <div class="parallax img3 text-center text-textcolor-input">
+    <div class="parallax img3 text-center text-textcolor-input drop-shadow-lg">
         <h1 class="font-mono p-10 text-9xl font-bold drop-shadow-xl">
-            SkyBudget<span class="font-mono text-white-400">™</span>
+            SkyBudget
         </h1>
         <h1 class="font-mono text-2xl font-semibold drop-shadow-xl">
             The budget app for you.
         </h1>
     </div>
-    <div
-        class="w-full flex m-auto place-items-center bg-white h-72 place-content-center">
-        <img
-            src="../../assets/images/hardly working.jpg"
-            alt="Italian Trulli"
-            class="w-50 h-4/5 rounded-xl" />
-        <h4 class="font-mono text-5xl m-5 p-5 font-semibold h-1/3">
-            Meet the team.
-        </h4>
-        <button class="h-1/6">
-            <font-awesome-icon icon="fa-angles-right" @click="" />
-        </button>
+    <div class="bg-purple-400 w-full text-center h-80">
+        <video
+            class="h-full m-auto"
+            autoplay
+            loop
+            :muted="mutedVideo"
+            @click="mutedVideo = !mutedVideo">
+            <font-awesome-icon icon="fa-angle-right" @click="" />
+            <source
+                src="../../assets/videos/character-explainer-ad-copy.mp4"
+                type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
     </div>
-    <div class="parallax img1"></div>
+    <div class="parallax img3 brightness-75"></div>
     <div class="bg-blue-300 w-full text-center h-80">
         <h2 class="font-mono p-5 text-xl font-semibold">
-            Section 1.10.32 of "de Finibus Bonorum et Malorum", written by
-            Cicero in 45 BC "
+            Why we recommend it:
         </h2>
-        <p class="font-mono p-20 text-sm font-semibold">
+        <p class="font-mono p-20 text-m font-semibold">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
@@ -43,8 +43,23 @@
             pariatur?"
         </p>
     </div>
-    <div class="parallax img2"></div>
-    <div class="bg-white w-full flex m-10 h-80">
+    <div class="parallax img1"></div>
+    <div
+        class="w-full flex m-auto place-items-center bg-white h-72 place-content-center">
+        <img
+            src="../../assets/images/hardly working.jpg"
+            alt="Italian Trulli"
+            class="w-50 h-4/5 rounded-xl" />
+        <h4 class="font-mono text-5xl m-5 p-5 font-semibold h-1/3">
+            Meet the team.
+        </h4>
+        <button class="h-1/6">
+            <font-awesome-icon icon="fa-angles-right" @click="" />
+        </button>
+    </div>
+
+    <div class="parallax img2 brightness-75"></div>
+    <!-- <div class="bg-white w-full flex h-80">
         <h4 class="font-mono m-10 text-5xl font-semibold">
             "Best working budget app in the business." - Albert Einstein
         </h4>
@@ -52,18 +67,34 @@
             src="../../assets/images/team power.jpg"
             alt="Italian Trulli"
             class="w-50 h-4/5 justify-self-center rounded-xl" />
+    </div> -->
+    <div class="bg-light py-4 w-full flex h-80">
+        <div class="container text-center">
+            <p class="font-mono text-muted mb-0 py-2">
+                © 2022 SkyBudget All rights reserved.
+            </p>
+        </div>
     </div>
 </template>
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+const mutedVideo = ref(true);
+</script>
 <style>
 .img1 {
     background-image: url("../../assets/images/calc.jpg");
+    filter: brightness(0);
+    filter: blur(1px);
 }
 .img2 {
     background-image: url("../../assets/images/notes.jpg");
+    filter: brightness(0.75);
+    filter: blur(1px);
 }
 .img3 {
     background-image: url("../../assets/images/working.jpg");
+    filter: brightness(50%);
+    filter: blur(1px);
 }
 .parallax {
     min-height: 500px;
