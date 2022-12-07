@@ -1,7 +1,15 @@
 <template>
-    <div class="base-card">
+    <div
+        class="base-card"
+        data-aos="slide-down"
+        data-aos-ease="ease"
+        data-aos-duration="1500"
+        data-aos-delay="500">
+        <img
+            class="w-96"
+            src="https://res.cloudinary.com/dsderm9xw/image/upload/v1622028085/3D%20Illustrations/3d-illustration2_ykuua3.png"
+            alt="3d illustration of boy sitting with legs crossed" />
         <div class="base-card-Container">
-
             <div>
                 <form @submit.prevent="register">
                     <div class="input-wrapper">

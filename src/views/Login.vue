@@ -1,5 +1,14 @@
 <template>
-    <div class="base-card">
+    <div
+        class="base-card"
+        data-aos="slide-down"
+        data-aos-ease="ease"
+        data-aos-duration="1500"
+        data-aos-delay="500">
+        <img
+            class="w-96"
+            src="https://res.cloudinary.com/dsderm9xw/image/upload/v1622028057/3D%20Illustrations/3d-illustration1_j06j0a.png"
+            alt="3d illustration of boy with laptop sitting" />
         <div class="base-card-Container">
             <p v-if="userStore.getLoggedin">
                 You're already logged in as '{{ userStore.getUser }}'
