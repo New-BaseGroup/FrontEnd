@@ -1,224 +1,89 @@
 <template>
-    <div class="relative mt-16 bg-deep-purple-accent-400">
-        <svg
-            class="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400"
-            preserveAspectRatio="none"
-            viewBox="0 0 1440 54">
-            <path
-                fill="currentColor"
-                d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"></path>
-        </svg>
-        <div
-            class="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-            <div class="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
-                <div class="md:max-w-md lg:col-span-2">
-                    <a
-                        href="/"
-                        aria-label="Go home"
-                        title="Company"
-                        class="inline-flex items-center">
-                        <svg
-                            class="w-8 text-teal-accent-400"
-                            viewBox="0 0 24 24"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-miterlimit="10"
-                            stroke="currentColor"
-                            fill="none">
-                            <rect x="3" y="1" width="7" height="12"></rect>
-                            <rect x="3" y="17" width="7" height="6"></rect>
-                            <rect x="14" y="1" width="7" height="6"></rect>
-                            <rect x="14" y="11" width="7" height="12"></rect>
-                        </svg>
-                        <span
-                            class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase"
-                            >Company</span
-                        >
-                    </a>
-                    <div class="mt-4 lg:max-w-sm">
-                        <p class="text-sm text-deep-purple-50">
-                            Sed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam.
-                        </p>
-                        <p class="mt-4 text-sm text-deep-purple-50">
-                            Eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo.
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
-                    <div>
-                        <p
-                            class="font-semibold tracking-wide text-teal-accent-400">
-                            Category
-                        </p>
-                        <ul class="mt-2 space-y-2">
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >News</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >World</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Games</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >References</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p
-                            class="font-semibold tracking-wide text-teal-accent-400">
-                            Cherry
-                        </p>
-                        <ul class="mt-2 space-y-2">
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Web</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >eCommerce</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Business</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Entertainment</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Portfolio</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p
-                            class="font-semibold tracking-wide text-teal-accent-400">
-                            Apples
-                        </p>
-                        <ul class="mt-2 space-y-2">
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Media</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Brochure</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Nonprofit</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Educational</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Projects</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p
-                            class="font-semibold tracking-wide text-teal-accent-400">
-                            Business
-                        </p>
-                        <ul class="mt-2 space-y-2">
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Infopreneur</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Personal</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Wiki</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                                    >Forum</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
+    <div
+        class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="sm:col-span-2">
+                <a
+                    href="/"
+                    aria-label="Go home"
+                    title="Company"
+                    class="inline-flex items-center">
+                    <svg
+                        class="w-8 text-deep-purple-accent-400"
+                        viewBox="0 0 24 24"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-miterlimit="10"
+                        stroke="currentColor"
+                        fill="none">
+                        <rect x="3" y="1" width="7" height="12"></rect>
+                        <rect x="3" y="17" width="7" height="6"></rect>
+                        <rect x="14" y="1" width="7" height="6"></rect>
+                        <rect x="14" y="11" width="7" height="12"></rect>
+                    </svg>
+                    <span
+                        class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
+                        >Company</span
+                    >
+                </a>
+                <div class="mt-6 lg:max-w-sm">
+                    <p class="text-sm text-gray-800">
+                        Sed ut perspiciatis unde omnis iste natus error sit
+                        voluptatem accusantium doloremque laudantium, totam rem
+                        aperiam.
+                    </p>
+                    <p class="mt-4 text-sm text-gray-800">
+                        Eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo.
+                    </p>
                 </div>
             </div>
-            <div
-                class="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
-                <p class="text-sm text-gray-100">
-                    © Copyright 2020 Lorem Inc. All rights reserved.
+            <div class="space-y-2 text-sm">
+                <p class="text-base font-bold tracking-wide text-gray-900">
+                    Contacts
                 </p>
-                <div class="flex items-center mt-4 space-x-4 sm:mt-0">
+                <div class="flex">
+                    <p class="mr-1 text-gray-800">Phone:</p>
+                    <a
+                        href="tel:850-123-5021"
+                        aria-label="Our phone"
+                        title="Our phone"
+                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                        >850-123-5021</a
+                    >
+                </div>
+                <div class="flex">
+                    <p class="mr-1 text-gray-800">Email:</p>
+                    <a
+                        href="mailto:info@lorem.mail"
+                        aria-label="Our email"
+                        title="Our email"
+                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                        >info@lorem.mail</a
+                    >
+                </div>
+                <div class="flex">
+                    <p class="mr-1 text-gray-800">Address:</p>
+                    <a
+                        href="https://www.google.com/maps"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Our address"
+                        title="Our address"
+                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
+                        312 Lovely Street, NY
+                    </a>
+                </div>
+            </div>
+            <div>
+                <span class="text-base font-bold tracking-wide text-gray-900"
+                    >Social</span
+                >
+                <div class="flex items-center mt-1 space-x-3">
                     <a
                         href="/"
-                        class="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
+                        class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
                         <svg
                             viewBox="0 0 24 24"
                             fill="currentColor"
@@ -229,7 +94,7 @@
                     </a>
                     <a
                         href="/"
-                        class="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
+                        class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
                         <svg
                             viewBox="0 0 30 30"
                             fill="currentColor"
@@ -241,7 +106,7 @@
                     </a>
                     <a
                         href="/"
-                        class="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
+                        class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
                         <svg
                             viewBox="0 0 24 24"
                             fill="currentColor"
@@ -251,7 +116,41 @@
                         </svg>
                     </a>
                 </div>
+                <p class="mt-4 text-sm text-gray-500">
+                    Bacon ipsum dolor amet short ribs pig sausage prosciutto
+                    chicken spare ribs salami.
+                </p>
             </div>
+        </div>
+        <div
+            class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
+            <p class="text-sm text-gray-600">
+                © Copyright 2020 Lorem Inc. All rights reserved.
+            </p>
+            <ul
+                class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+                <li>
+                    <a
+                        href="/"
+                        class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                        >F.A.Q</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="/"
+                        class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                        >Privacy Policy</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="/"
+                        class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                        >Terms &amp; Conditions</a
+                    >
+                </li>
+            </ul>
         </div>
     </div>
 </template>

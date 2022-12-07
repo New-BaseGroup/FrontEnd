@@ -1,7 +1,10 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import { GetCookie, DeleteCookie } from "../Service/Cookie.js";
+import { useRouter } from "vue-router";
+
 export const useUserStore = defineStore("user", () => {
+    const router = useRouter();
     //State
     const user = ref("");
     const loggedin = ref(false);
@@ -40,6 +43,7 @@ export const useUserStore = defineStore("user", () => {
         user.value = "";
         DeleteCookie("token");
         DeleteCookie("user");
+        router.push({ name: "home" });
     }
     function setToken(newToken) {
         token.value = newToken;

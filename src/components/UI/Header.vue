@@ -11,6 +11,7 @@
                 v-if="!userStore.getLoggedin"
                 class="flex align-middle min-h-full">
                 <div class="toggle-login" @click="login"> 
+                    <p class="my-auto">Log In</p>
                 </div>
                 <div class="toggle-register" @click="register">
                     <p class="my-auto">Start Your Free Trail</p>
@@ -41,7 +42,7 @@ function register() {
 
 function logout() {
     userStore.logOutUser();
-    router.push({ name: "login" });
+    router.push({ name: "home" });
 }
 
 function home() {

@@ -62,7 +62,7 @@ function changeWidget(id, option) {
 }
 async function getData() {
     isLoading.value = true;
-    if (!budgetStore.getBudget) await budgetStore.fetchBudgetList();
+    if (budgetStore.getBudget.length === 0) await budgetStore.fetchBudgetList();
     if (!siteStore.getWidgets) await siteStore.loadWidgets();
     setTimeout(function () {
         isLoading.value = false;

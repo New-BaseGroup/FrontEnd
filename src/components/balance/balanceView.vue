@@ -20,8 +20,9 @@ const budgetStore = useBudgetStore();
 const siteStore = useSiteStore();
 
 async function getData() {
-    if (!budgetStore.getBudget) {
-        console.log("b2");
+    if (budgetStore.getBudget.length === 0) {
+        console.log(budgetStore.getBudget);
+        console.log("b1");
         await budgetStore.fetchBudgetList();
     }
 }

@@ -32,27 +32,42 @@
             </video>
         </div>
         <div class="parallax img3 brightness-75"></div>
-        <div class="bg-blue-300 w-full text-center h-80 snap-start">
+        <div class="bg-blue-300 w-full text-center snap-start">
             <h2 class="font-mono p-5 text-xl font-semibold">
-                Why we recommend it:
+                EFFECTPLAN REVOLUTIONIZES YOUR BUDGETING AND FORECASTING
+                PROCESSES
             </h2>
             <p class="font-mono p-20 text-m font-semibold">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi
-                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-                sit amet, consectetur, adipisci velit, sed quia non numquam eius
-                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                voluptatem. Ut enim ad minima veniam, quis nostrum
-                exercitationem ullam corporis suscipit laboriosam, nisi ut
-                aliquid ex ea commodi consequatur? Quis autem vel eum iure
-                reprehenderit qui in ea voluptate velit esse quam nihil
-                molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                voluptas nulla pariatur?"
+                Preparing, maintaining and compiling budgets often requires a
+                lot of time and manual work. Forecasts may be overplayed before
+                they are completed, and new plans are needed as operations
+                change. Effectplan takes your organization from traditional
+                budget processes to proactive business planning based on current
+                data.
             </p>
+            <ul>
+                Benefits
+                <li>Effective planning and budget work on a new level</li>
+                <li>
+                    No hassle with Excel and time-consuming organization of data
+                </li>
+                <li>
+                    Clear overview of the economy with dynamically updated
+                    reports
+                </li>
+                <li>
+                    Access to accurate ongoing forecasts for better
+                    decision-making
+                </li>
+                <li>
+                    Time saving and reduced risk of mistakes due to the human
+                    factor
+                </li>
+                <li>
+                    Improved decision-making with real-time access to key
+                    figures
+                </li>
+            </ul>
         </div>
         <div class="parallax img1"></div>
         <div

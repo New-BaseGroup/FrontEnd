@@ -17,10 +17,12 @@ export const useBudgetStore = defineStore("budget", () => {
 
     //Getters
     const getBudget = computed(() => {
-        if (budget.value == null) return null;
-        return budget.value?.find(
-            (budget) => budget.BudgetID === currentBudgetID
-        );
+        if (budget.value.length > 0) {
+            return budget.value.find(
+                (budget) => budget.budgetID === currentBudgetID.value
+            );
+        }
+        return [];
     });
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
@@ -53,11 +55,13 @@ export const useBudgetStore = defineStore("budget", () => {
         () => `${getAmountUsed} / ${getTotalAmount}`
     );
     const WidgetStandard = computed(() => "Please select a setting");
+    const getCurrentBudgetID = computed(() => currentBudgetID.value);
     //Actions
     function setbalanceCategories(data) {
         balanceCategories.value = data;
     }
     function addBudget(data) {
+        console.log("test1");
         budget.value.push(data);
     }
     function setBudgetCategories(data) {
@@ -88,7 +92,9 @@ export const useBudgetStore = defineStore("budget", () => {
     async function fetchBudget(id) {
         if (userStore.loggedin) {
             siteStore.setLoading(true);
-            const findBudget = budget.value?.find((budget) => budget.id === id);
+            const findBudget = budget.value?.find(
+                (budget) => budget.budgetID === id
+            );
             if (!findBudget) {
                 await API_Service.GetService(
                     `Budget/${id}`,
@@ -104,6 +110,7 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchBudgetList(store) {
         if (userStore.loggedin) {
+            console.log("HEHE");
             siteStore.setLoading(true);
             await API_Service.GetService(
                 "Budget/budgetList",
@@ -180,5 +187,6 @@ export const useBudgetStore = defineStore("budget", () => {
         WidgetStandard,
         setCurrentBudgetID,
         fetchBudgetList,
+        getCurrentBudgetID,
     };
 });
