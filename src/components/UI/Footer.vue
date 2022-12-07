@@ -213,7 +213,7 @@
             <div
                 class="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
                 <p class="text-sm text-gray-100">
-                    Â© Copyright 2020 Lorem Inc. All rights reserved.
+                    © Copyright 2020 Lorem Inc. All rights reserved.
                 </p>
                 <div class="flex items-center mt-4 space-x-4 sm:mt-0">
                     <a

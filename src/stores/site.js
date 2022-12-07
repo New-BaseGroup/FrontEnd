@@ -88,7 +88,10 @@ export const useSiteStore = defineStore("site", () => {
                 userStore.getToken
             ).then((result) => {
                 changesMade.value = false;
-                return result;
+                if (data) {
+                    widgets.value = data.data.message;
+                }
+                return true;
             });
         }
     }

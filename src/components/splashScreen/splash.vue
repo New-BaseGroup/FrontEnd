@@ -31,7 +31,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <div class="parallax img3 brightness-75 snap-start"></div>
+        <div class="parallax img3 brightness-75"></div>
         <div class="bg-blue-300 w-full text-center h-80 snap-start">
             <h2 class="font-mono p-5 text-xl font-semibold">
                 Why we recommend it:
@@ -54,7 +54,7 @@
                 voluptas nulla pariatur?"
             </p>
         </div>
-        <div class="parallax img1 snap-start"></div>
+        <div class="parallax img1"></div>
         <div
             class="w-full flex m-auto place-items-center bg-white h-72 place-content-center snap-start">
             <img
@@ -69,7 +69,7 @@
             </button>
         </div>
 
-        <div class="parallax img2 brightness-75 snap-start"></div>
+        <div class="parallax img2 brightness-75"></div>
         <!-- <div class="bg-white w-full flex h-80">
         <h4 class="font-mono m-10 text-5xl font-semibold">
             "Best working budget app in the business." - Albert Einstein

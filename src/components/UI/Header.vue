@@ -10,8 +10,7 @@
             <div
                 v-if="!userStore.getLoggedin"
                 class="flex align-middle min-h-full">
-                <div class="toggle-login" @click="login">
-                    <p class="my-auto">Log In</p>
+                <div class="toggle-login" @click="login"> 
                 </div>
                 <div class="toggle-register" @click="register">
                     <p class="my-auto">Start Your Free Trail</p>
