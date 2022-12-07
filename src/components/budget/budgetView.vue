@@ -1,9 +1,11 @@
 <template>
-    <div v-if="!siteStore.loading" class="base-card-table">
-        <div class="base-card-Container">
+    <div
+        v-if="!siteStore.loading"
+        class="base-card-table">
+                <div class="base-card-Container">
             <browserTable
                 :header="'Budget Info'"
-                :data="budgetStore.getBudget"
+                :data="[budgetStore.getBudget]"
                 type="Budget"
                 primary-key="budgetID"
                 :key="browserTable" />
@@ -24,8 +26,7 @@ const budgetStore = useBudgetStore();
 const siteStore = useSiteStore();
 
 async function getData() {
-    if (budgetStore.getBudget.length === 0) {
-        console.log("b2");
+    if (budgetStore.getBudget?.length === 0) {
         await budgetStore.fetchBudgetList();
     }
 }

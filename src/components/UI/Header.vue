@@ -14,7 +14,7 @@
                     <p class="my-auto">Log In</p>
                 </div>
                 <div class="toggle-register" @click="register">
-                    <p class="my-auto">Start Your Free Trail</p>
+                    <p class="my-auto">Start Your Free Trial</p>
                 </div>
             </div>
             <div v-else class="flex align-middle min-h-full">

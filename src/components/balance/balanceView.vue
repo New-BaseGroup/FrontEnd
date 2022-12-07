@@ -1,14 +1,14 @@
 <template>
-    <div v-if="!siteStore.loading" class="base-card-table">
+    <div
+        v-if="!siteStore.loading"
+        class="base-card-table">
         <div class="base-card-Container">
-            <div v-for="budget in budgetStore.getBudget" :key="budget">
-                <browserTable
-                    :header="'Balance changes in ' + budget.name"
-                    :data="budgetStore.getBalance"
-                    type="Balance"
-                    primary-key="changeID"
-                    :key="browserTable" />
-            </div>
+            <browserTable
+                :header="'Balance changes in ' + budgetStore.getBudget.name"
+                :data="budgetStore.getBalance"
+                type="Balance"
+                primary-key="changeID"
+                :key="browserTable" />
         </div>
     </div>
 </template>
@@ -20,9 +20,7 @@ const budgetStore = useBudgetStore();
 const siteStore = useSiteStore();
 
 async function getData() {
-    if (budgetStore.getBudget.length === 0) {
-        console.log(budgetStore.getBudget);
-        console.log("b1");
+    if (budgetStore.getBudget?.length === 0) {
         await budgetStore.fetchBudgetList();
     }
 }

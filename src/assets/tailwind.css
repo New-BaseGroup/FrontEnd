@@ -51,7 +51,7 @@
         @apply px-4 py-1.5 rounded-md shadow-lg bg-sky-800 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300;
     }
     .base-card {
-        @apply py-7 flex w-full  items-center bg-background-ternary justify-center shadow-md mx-auto;
+        @apply py-7 flex w-full  items-center bg-background-ternary justify-center shadow-md mx-auto transition-colors duration-700;
     }
     .base-card-widgets-container {
         @apply py-7 flex-col w-full  items-center bg-background-ternary justify-center shadow-md mx-auto;

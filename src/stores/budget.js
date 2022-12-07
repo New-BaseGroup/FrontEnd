@@ -17,15 +17,30 @@ export const useBudgetStore = defineStore("budget", () => {
 
     //Getters
     const getBudget = computed(() => {
-        if (budget.value.length > 0) {
-            return budget.value.find(
-                (budget) => budget.budgetID === currentBudgetID.value
-            );
-        }
-        return [];
+        const index = budget.value.findIndex((object) => {
+            return object.budgetID === currentBudgetID.value;
+        });
+        if (index === -1) {
+            return [];
+        } else return budget.value[index];
     });
     const getBudgetCategories = computed(() => budgetCategories.value);
-    const getBalance = computed(() => balance.value);
+    const getBalance = computed(() => {
+        const index = budget.value.findIndex((object) => {
+            return object.budgetID === currentBudgetID.value;
+        });
+        if (index === -1) {
+            return [];
+        } else {
+            let BalanceChanges = [];
+            budget.value[index].budgetCategories.forEach((x) => {
+                x.balanceChanges.forEach((y) => {
+                    BalanceChanges.push(y);
+                });
+            });
+            return BalanceChanges;
+        }
+    });
     const getBudgetList = computed(() => budgetList.value);
 
     //widget getters
@@ -61,8 +76,12 @@ export const useBudgetStore = defineStore("budget", () => {
         balanceCategories.value = data;
     }
     function addBudget(data) {
-        console.log("test1");
-        budget.value.push(data);
+        const index = budget.value.findIndex((object) => {
+            return object.budgetID === data.budgetID;
+        });
+        if (index === -1) {
+            budget.value.push(data);
+        } else budget.value[index] = data;
     }
     function setBudgetCategories(data) {
         budgetCategories.value = data.budgetCategories;
@@ -89,6 +108,15 @@ export const useBudgetStore = defineStore("budget", () => {
             siteStore.setLoading(false);
         });
     }
+    function resetAll() {
+        budget.value = [];
+        budgetCategories.value = null;
+        balance.value = null;
+        balanceCategories.value = null;
+        changesMade.value = false;
+        budgetList.value = null;
+        currentBudgetID.value = null;
+    }
     async function fetchBudget(id) {
         if (userStore.loggedin) {
             siteStore.setLoading(true);
@@ -106,6 +134,7 @@ export const useBudgetStore = defineStore("budget", () => {
                     siteStore.setLoading(false);
                 });
             }
+            siteStore.setLoading(false);
         }
     }
     async function fetchBudgetList(store) {
@@ -116,8 +145,7 @@ export const useBudgetStore = defineStore("budget", () => {
                 "Budget/budgetList",
                 userStore.getToken
             ).then((data) => {
-                currentBudgetID.value = Object.keys(data.data.message)[0];
-                fetchBudget(currentBudgetID.value);
+                setCurrentBudgetID(Object.keys(data.data.message)[0]);
                 setBudgetList(data.data.message);
                 siteStore.setLoading(false);
             });
@@ -155,9 +183,11 @@ export const useBudgetStore = defineStore("budget", () => {
             );
         }
     }
-    async function setCurrentBudgetID(id) {
-        console.log(id);
-        currentBudgetID.value = id;
+    function setCurrentBudgetID(id) {
+        currentBudgetID.value = parseInt(id);
+        if (getBudget.budgetID == null) {
+            fetchBudget(currentBudgetID.value);
+        }
     }
     return {
         budget,
@@ -188,5 +218,6 @@ export const useBudgetStore = defineStore("budget", () => {
         setCurrentBudgetID,
         fetchBudgetList,
         getCurrentBudgetID,
+        resetAll,
     };
 });

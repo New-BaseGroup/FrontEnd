@@ -1,16 +1,16 @@
 <template>
     <div
-        class="flex h-screen bg-background-secondary"
+        class="flex h-screen bg-background-secondary transition-colors duration-700"
         :class="siteStore.getTheme">
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col">
             <Header />
-            <div class="flex h-full">
+            <div class="flex min-h-screen">
                 <template v-if="$route.name != 'home'">
                     <SideBar />
                 </template>
                 <main
                     class="flex flex-col w-full overflow-x-hidden overflow-y-auto mb-14"
-                    v-if="$route.name != 'home'">
+                    v-if="($route.name != 'home')">
                     <div class="flex w-full mx-auto px-6 py-8">
                         <div class="flex flex-col w-full h-full">
                             <router-view v-slot="{ Component }">

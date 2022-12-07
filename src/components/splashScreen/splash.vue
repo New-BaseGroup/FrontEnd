@@ -1,7 +1,7 @@
 <template>
     <div class="snap-y snap-mandatory h-screen overflow-scroll">
         <div
-            class="parallax img3 text-center text-textcolor-input drop-shadow-lg snap-start">
+            class="parallax img4 text-center text-textcolor-input drop-shadow-lg snap-start">
             <h1
                 class="font-mono p-10 text-9xl font-bold drop-shadow-xl"
                 data-aos="zoom-in"
@@ -31,13 +31,15 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <div class="parallax img3 brightness-75"></div>
-        <div class="bg-blue-300 w-full text-center snap-start">
-            <h2 class="font-mono p-5 text-xl font-semibold">
+        <div class="parallax img3 mb-1 brightness-75"></div>
+        <div class="bg-blue-300 w-full p-12 snap-start">
+            <h2 class="font-mono p-5 text-3xl font-semibold">
                 EFFECTPLAN REVOLUTIONIZES YOUR BUDGETING AND FORECASTING
                 PROCESSES
             </h2>
-            <p class="font-mono p-20 text-m font-semibold">
+            <p
+                class="font-mono p-20 text-2xl font-semibold"
+                data-aos="fade-left">
                 Preparing, maintaining and compiling budgets often requires a
                 lot of time and manual work. Forecasts may be overplayed before
                 they are completed, and new plans are needed as operations
@@ -45,7 +47,9 @@
                 budget processes to proactive business planning based on current
                 data.
             </p>
-            <ul>
+            <ul
+                class="font-mono p-20 text-2xl font-semibold"
+                data-aos="fade-right">
                 Benefits
                 <li>Effective planning and budget work on a new level</li>
                 <li>
@@ -57,7 +61,7 @@
                 </li>
                 <li>
                     Access to accurate ongoing forecasts for better
-                    decision-making
+                    decision-making heheh
                 </li>
                 <li>
                     Time saving and reduced risk of mistakes due to the human
@@ -94,13 +98,6 @@
             alt="Italian Trulli"
             class="w-50 h-4/5 justify-self-center rounded-xl" />
     </div> -->
-        <div class="bg-light py-4 w-full flex h-80 snap-start">
-            <div class="container text-center">
-                <p class="font-mono text-muted mb-0 py-2">
-                    © 2022 SkyBudget All rights reserved.
-                </p>
-            </div>
-        </div>
     </div>
 </template>
 <script setup>
@@ -122,6 +119,9 @@ const mutedVideo = ref(true);
     background-image: url("../../assets/images/working.jpg");
     filter: brightness(50%);
     filter: blur(1px);
+}
+.img4 {
+    background-image: url("../../assets/images/businessmen-working-strategic-planning.jpg");
 }
 .parallax {
     min-height: 500px;

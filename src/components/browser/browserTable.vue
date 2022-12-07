@@ -7,7 +7,8 @@
                     v-for="[key, value] in Object.entries(
                         budgetStore.getBudgetList
                     )"
-                    @click="budgetStore.setCurrentBudgetID(key)">
+                    @click=updateTables(key);
+                    :selected="(key === budgetStore.getBudget.budgetID)">
                     {{ value }}
                 </option>
             </select>
@@ -156,7 +157,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, defineEmits } from "vue";
+import { defineProps, ref, defineEmits, reactive ,onMounted} from "vue";
 import { useSiteStore } from "../../stores/site";
 import { useBudgetStore } from "../../stores/budget";
 import browserEditVue from "./browserEdit.vue";
@@ -180,7 +181,13 @@ const edittingRow = ref({
 
 const page = ref(0);
 const rows = ref(5);
-let backupData = ref([...sliceIntoChunks(props.data)]);
+let backupData = ref([]);
+function updateTables(key) {
+    budgetStore.setCurrentBudgetID(key);
+}
+onMounted(() => {
+    backupData = [...sliceIntoChunks(props.data)];
+})
 
 function sortTable(header) {
     currentSort.value.header = header;
@@ -232,7 +239,8 @@ function deleteRow(object) {
     }
 }
 
-function updateTable() {
+function updateTable(key) {
+    budgetStore.setCurrentBudgetID(key)
     backupData.value = [...sliceIntoChunks(props.data)];
 }
 

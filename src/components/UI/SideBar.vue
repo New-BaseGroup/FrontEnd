@@ -1,5 +1,10 @@
 <template>
-    <nav class="sidebar-left">
+    <nav
+        class="sidebar-left"
+        data-aos="slide-right"
+        data-aos-ease="ease"
+        data-aos-duration="900"
+        data-aos-delay="50">
         <template v-if="userStore.getLoggedin">
             <div class="sideBarContent">
                 <div v-for="item in navItems" :key="item">

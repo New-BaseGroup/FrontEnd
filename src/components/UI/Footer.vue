@@ -1,12 +1,12 @@
 <template>
     <div
-        class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        class="px-1 mx-auto pt-16sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
             <div class="sm:col-span-2">
                 <a
                     href="/"
                     aria-label="Go home"
-                    title="Company"
+                    title="SkyBudget"
                     class="inline-flex items-center">
                     <svg
                         class="w-8 text-deep-purple-accent-400"
@@ -24,18 +24,16 @@
                     </svg>
                     <span
                         class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
-                        >Company</span
+                        >SkyBudget</span
                     >
                 </a>
                 <div class="mt-6 lg:max-w-sm">
                     <p class="text-sm text-gray-800">
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium, totam rem
-                        aperiam.
+                        A Budget that Gives You Real Results
                     </p>
                     <p class="mt-4 text-sm text-gray-800">
-                        Eaque ipsa quae ab illo inventore veritatis et quasi
-                        architecto beatae vitae dicta sunt explicabo.
+                        On average, new budgeters save $600 in their first two
+                        months and more than $6,000 their first year.
                     </p>
                 </div>
             </div>
@@ -46,21 +44,21 @@
                 <div class="flex">
                     <p class="mr-1 text-gray-800">Phone:</p>
                     <a
-                        href="tel:850-123-5021"
+                        href="tel:+46 70-423 98 54"
                         aria-label="Our phone"
                         title="Our phone"
                         class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
-                        >850-123-5021</a
+                        >+46 70-423 98 54</a
                     >
                 </div>
                 <div class="flex">
                     <p class="mr-1 text-gray-800">Email:</p>
                     <a
-                        href="mailto:info@lorem.mail"
+                        href="mailto:info@skybudget.se"
                         aria-label="Our email"
                         title="Our email"
                         class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
-                        >info@lorem.mail</a
+                        >info@skybudget.se</a
                     >
                 </div>
                 <div class="flex">
@@ -72,7 +70,7 @@
                         aria-label="Our address"
                         title="Our address"
                         class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
-                        312 Lovely Street, NY
+                        Örebro vägen, Dalarna
                     </a>
                 </div>
             </div>
@@ -117,8 +115,8 @@
                     </a>
                 </div>
                 <p class="mt-4 text-sm text-gray-500">
-                    Bacon ipsum dolor amet short ribs pig sausage prosciutto
-                    chicken spare ribs salami.
+                    Follow SkyBudget to get support and lots of great ideas on
+                    budgeting.
                 </p>
             </div>
         </div>
