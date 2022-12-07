@@ -17,12 +17,11 @@ export const useBudgetStore = defineStore("budget", () => {
 
     //Getters
     const getBudget = computed(() => {
-        if (budget.value.length > 0) {
+        if (currentBudgetID.value)
             return budget.value.find(
-                (budget) => budget.budgetID === currentBudgetID.value
+                (budget) => budget.budgetID == currentBudgetID.value
             );
-        }
-        return [];
+        else return budget.value;
     });
     const getBudgetCategories = computed(() => budgetCategories.value);
     const getBalance = computed(() => balance.value);
@@ -61,7 +60,6 @@ export const useBudgetStore = defineStore("budget", () => {
         balanceCategories.value = data;
     }
     function addBudget(data) {
-        console.log("test1");
         budget.value.push(data);
     }
     function setBudgetCategories(data) {
@@ -110,7 +108,6 @@ export const useBudgetStore = defineStore("budget", () => {
     }
     async function fetchBudgetList(store) {
         if (userStore.loggedin) {
-            console.log("HEHE");
             siteStore.setLoading(true);
             await API_Service.GetService(
                 "Budget/budgetList",
@@ -156,7 +153,6 @@ export const useBudgetStore = defineStore("budget", () => {
         }
     }
     async function setCurrentBudgetID(id) {
-        console.log(id);
         currentBudgetID.value = id;
     }
     return {
