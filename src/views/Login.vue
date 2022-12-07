@@ -3,8 +3,8 @@
         class="base-card"
         data-aos="slide-down"
         data-aos-ease="ease"
-        data-aos-duration="900"
-        data-aos-delay="50">
+        data-aos-duration="350"
+        data-aos-delay="5">
         <img
             class="w-96"
             src="https://res.cloudinary.com/dsderm9xw/image/upload/v1622028057/3D%20Illustrations/3d-illustration1_j06j0a.png"

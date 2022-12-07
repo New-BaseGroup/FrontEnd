@@ -4,20 +4,18 @@
             class="parallax img4 text-center text-textcolor-input drop-shadow-lg snap-start">
             <h1
                 class="font-mono p-10 text-9xl font-bold drop-shadow-xl"
-                data-aos="zoom-in"
-                data-aos-duration="1500"
-                data-aos-delay="500">
+                data-aos="fade-up"
+               >
                 SkyBudget
             </h1>
             <h1
                 class="font-mono text-2xl font-semibold drop-shadow-xl"
                 data-aos="zoom-in"
-                data-aos-duration="1500"
-                data-aos-delay="500">
+ >
                 The budget app for you.
             </h1>
         </div>
-        <div class="bg-purple-400 w-full text-center h-80 snap-start">
+        <div class="bg-purple-400 w-full text-center h-80 snap-start" >
             <video
                 class="h-full m-auto"
                 autoplay
@@ -32,14 +30,17 @@
             </video>
         </div>
         <div class="parallax img3 mb-1 brightness-75"></div>
-        <div class="bg-blue-300 w-full p-12 snap-start">
-            <h2 class="font-mono p-5 text-3xl font-semibold">
+        <div  class="bg-blue-300 w-full p-12 snap-start text-black">
+            <h2 class="font-mono p-5 text-3xl font-semibold" 
+        >
                 EFFECTPLAN REVOLUTIONIZES YOUR BUDGETING AND FORECASTING
                 PROCESSES
             </h2>
+            
             <p
-                class="font-mono p-20 text-2xl font-semibold"
-                data-aos="fade-left">
+                class="text-black font-mono p-20 text-2xl font-semibold"
+                
+               >
                 Preparing, maintaining and compiling budgets often requires a
                 lot of time and manual work. Forecasts may be overplayed before
                 they are completed, and new plans are needed as operations
@@ -47,9 +48,9 @@
                 budget processes to proactive business planning based on current
                 data.
             </p>
+   
             <ul
-                class="font-mono p-20 text-2xl font-semibold"
-                data-aos="fade-right">
+                class="font-mono p-20 text-2xl font-semibold text-black">
                 Benefits
                 <li>Effective planning and budget work on a new level</li>
                 <li>
@@ -74,8 +75,9 @@
             </ul>
         </div>
         <div class="parallax img1"></div>
-        <div
-            class="w-full flex m-auto place-items-center bg-white h-72 place-content-center snap-start">
+        <div 
+            class="w-full flex m-auto place-items-center bg-white h-72 place-content-center snap-start"
+            >
             <img
                 src="../../assets/images/hardly working.jpg"
                 alt="Italian Trulli"

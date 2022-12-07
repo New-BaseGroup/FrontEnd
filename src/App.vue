@@ -4,7 +4,7 @@
         :class="siteStore.getTheme">
         <div class="flex-1 flex flex-col">
             <Header />
-            <div class="flex min-h-screen">
+            <div class="flex">
                 <template v-if="$route.name != 'home'">
                     <SideBar />
                 </template>
@@ -33,7 +33,7 @@
                     </div>
                 </nav>
             </div>
-            <Footer />
+            <Footer v-if="$route.name != 'home'" />
         </div>
     </div>
 </template>
