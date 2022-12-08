@@ -7,44 +7,81 @@ export const useBudgetStore = defineStore("budget", () => {
     const siteStore = useSiteStore();
     const userStore = useUserStore();
     //State
-    const budget = ref();
+    const budget = ref([]);
     const budgetCategories = ref();
     const balance = ref();
     const balanceCategories = ref();
     const changesMade = ref(false);
+    const budgetList = ref();
+    const currentBudgetID = ref();
 
     //Getters
-    const getBudget = computed(() => budget.value);
+    const getBudget = computed(() => {
+        const index = budget.value.findIndex((object) => {
+            return object.budgetID === currentBudgetID.value;
+        });
+        if (index === -1) {
+            return null;
+        } else return budget.value[index];
+    });
     const getBudgetCategories = computed(() => budgetCategories.value);
-    const getBalance = computed(() => balance.value);
-    const getTotalAmount = computed(() => budget.value[0].totalAmount);
+    const getBalance = computed(() => {
+        const index = budget.value.findIndex((object) => {
+            return object.budgetID === currentBudgetID.value;
+        });
+        if (index === -1) {
+            return [];
+        } else {
+            let BalanceChanges = [];
+            budget.value[index].budgetCategories.forEach((x) => {
+                x.balanceChanges.forEach((y) => {
+                    BalanceChanges.push(y);
+                });
+            });
+            return BalanceChanges;
+        }
+    });
+    const getBudgetList = computed(() => budgetList.value);
+
+    //widget getters
+    const getTotalAmount = computed(() => budget.value[0]?.totalAmount);
     const getBudgetInfo = computed(
-        () => `${budget.value[0].name} ${budget.value[0].totalAmount}`
+        () => `${budget.value[0]?.name} ${budget.value[0]?.totalAmount}`
     );
     const getBalanceCategories = computed(() => balanceCategories.value);
     const getAmountUsed = computed(() =>
-        balance.value.map((b) => b.amount).reduce((a, b) => a + b)
+        balance.value?.map((b) => b.amount).reduce((a, b) => a + b)
     );
     const getLatestTransactions = computed(() =>
         balance.value
-            .sort((a, b) => a.date - b.date)
-            .map((f) => f.title)
+            ?.sort((a, b) => a.date - b.date)
+            .map((f) => `${f.title}: ${f.amount}`)
             .slice(-10)
     );
     const getCategoryInfo = computed(() =>
-        budgetCategories.value.map(
+        budgetCategories.value?.map(
             (b) =>
-                `${b.customName} ${b.maxAmount} ${b.balanceChanges
+                `${b.customName}: ${b.balanceChanges
                     .map((b) => b.amount)
-                    .reduce((a, b) => a + b)}`
+                    .reduce((a, b) => a + b)} / ${b.maxAmount}`
         )
     );
+    const getUsedAndTotal = computed(
+        () => `${getAmountUsed} / ${getTotalAmount}`
+    );
+    const WidgetStandard = computed(() => "Please select a setting");
+    const getCurrentBudgetID = computed(() => currentBudgetID.value);
     //Actions
     function setbalanceCategories(data) {
         balanceCategories.value = data;
     }
-    function setBudget(data) {
-        budget.value = [data];
+    function addBudget(data) {
+        const index = budget.value.findIndex((object) => {
+            return object.budgetID === data.budgetID;
+        });
+        if (index === -1) {
+            budget.value.push(data);
+        } else budget.value[index] = data;
     }
     function setBudgetCategories(data) {
         budgetCategories.value = data.budgetCategories;
@@ -58,6 +95,9 @@ export const useBudgetStore = defineStore("budget", () => {
         });
         balance.value = BalanceChanges;
     }
+    function setBudgetList(data) {
+        budgetList.value = data;
+    }
     async function fetchCategories(store) {
         siteStore.setLoading(true);
         await API_Service.GetService(
@@ -68,18 +108,53 @@ export const useBudgetStore = defineStore("budget", () => {
             siteStore.setLoading(false);
         });
     }
-    async function fetchBudget(store) {
-        siteStore.setLoading(true);
-        await API_Service.GetService("Budget/1", userStore.getToken).then(
-            (data) => {
-                console.log("loading data");
-                console.log(data);
+    function resetAll() {
+        budget.value = [];
+        budgetCategories.value = null;
+        balance.value = null;
+        balanceCategories.value = null;
+        changesMade.value = false;
+        budgetList.value = null;
+        currentBudgetID.value = null;
+    }
+    async function fetchBudget(id) {
+        if (userStore.loggedin) {
+            siteStore.setLoading(true);
+            await API_Service.GetService(
+                `Budget/${id}`,
+                userStore.getToken
+            ).then((data) => {
                 setBudgetCategories(data.data.message);
                 setBalance(data.data.message);
-                setBudget(data.data.message);
+                addBudget(data.data.message);
                 siteStore.setLoading(false);
-            }
-        );
+            });
+        }
+    }
+    async function fetchBudgetList(store) {
+        if (userStore.loggedin) {
+            console.log("HEHE");
+            siteStore.setLoading(true);
+            await API_Service.GetService(
+                "Budget/budgetList",
+                userStore.getToken
+            ).then((data) => {
+                setCurrentBudgetID(Object.keys(data.data.message)[0]);
+                setBudgetList(data.data.message);
+                siteStore.setLoading(false);
+            });
+        }
+    }
+    async function postNewBudget(newBudget) {
+        if (userStore.loggedin) {
+            await API_Service.PostService(
+                "Budget",
+                newBudget,
+                userStore.getToken
+            ).then((result) => {
+                return result;
+            });
+        }
     }
     async function fetchBalance(store) {
         await API_Service.GetService("balance", userStore.getToken).then(
@@ -88,47 +163,25 @@ export const useBudgetStore = defineStore("budget", () => {
             }
         );
     }
-    async function deleteObject(type, object, id) {
-        // setChangesMade(true);
-        findObjectAndChange(object, type, "delete");
-        await API_Service.DeleteService(
-            `${type}?id=${id}`,
-            userStore.getToken
-        ).then((data) => {
-            console.log(data);
-        });
-    }
-    async function updateObject(type, object) {
-        // setChangesMade(true);
-        findObjectAndChange(object, type, "update");
-        await API_Service.PutService(type, object, userStore.getToken).then(
-            (data) => {
-                console.log(data);
-            }
-        );
-    }
-    function findObjectAndChange(object, type, change) {
-        const smallType = type.toLowerCase();
-        let foundIndex = null;
-        let path = null;
-        if (type === "Balance") {
-            foundIndex = balance.value.findIndex(
-                (obj) => obj["changeID"] === object["changeID"]
+    async function findObjectAndChange(change, path, object, key, type) {
+        const foundIndex = path.findIndex((obj) => obj[key] === object[key]);
+
+        if (change === "update") {
+            path[object[key - 1]] = object;
+            await API_Service.PutService(type, object, userStore.getToken);
+        } else if (change === "delete") {
+            path.splice(object[key - 1], 1);
+            await API_Service.DeleteService(
+                `${type}?id=${object[key - 1]}`,
+                userStore.getToken
             );
-            path = balance.value;
-        } else if (type === "Budget") {
-            foundIndex = budget.value.findIndex(
-                (obj) => obj["budgetID"] === object["budgetID"]
-            );
-            path = budget.value;
-        } else if (type === "budgetCategories") {
-            foundIndex = budgetCategories.value.findIndex(
-                (obj) => obj["budgetCategoryID"] === object["budgetCategoryID"]
-            );
-            path = budgetCategories.value;
         }
-        if (change === "update") path[foundIndex] = object;
-        else if (change === "delete") path.splice(foundIndex, 1);
+    }
+    function setCurrentBudgetID(id) {
+        currentBudgetID.value = parseInt(id);
+        if (getBudget.budgetID == null) {
+            fetchBudget(currentBudgetID.value);
+        }
     }
     return {
         budget,
@@ -144,13 +197,21 @@ export const useBudgetStore = defineStore("budget", () => {
         getCategoryInfo,
         getTotalAmount,
         getBalanceCategories,
-        setBudget,
+        getUsedAndTotal,
+        addBudget,
         setBudgetCategories,
         setBalance,
         fetchBudget,
         fetchBalance,
         fetchCategories,
-        updateObject,
-        deleteObject,
+        findObjectAndChange,
+        fetchBudget,
+        postNewBudget,
+        getBudgetList,
+        WidgetStandard,
+        setCurrentBudgetID,
+        fetchBudgetList,
+        getCurrentBudgetID,
+        resetAll,
     };
 });

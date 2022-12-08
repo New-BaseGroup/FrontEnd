@@ -1,66 +1,68 @@
 <template>
-    <div class="base-card">
+    <div
+        class="base-card"
+        data-aos="slide-down"
+        data-aos-ease="ease"
+        data-aos-duration="350"
+        data-aos-delay="5">
+        <img
+            class="w-96"
+            src="https://res.cloudinary.com/dsderm9xw/image/upload/v1622028057/3D%20Illustrations/3d-illustration1_j06j0a.png"
+            alt="3d illustration of boy with laptop sitting" />
         <div class="base-card-Container">
-            <div
-                class="flex items-center justify-center text-4xl font-black text-background-text m-3">
-                <h1 class="tracking-wide">
-                    SkyBudget<span class="font-mono">™</span>
-                </h1>
-            </div>
-            <div>
-                <p v-if="userStore.getLoggedin">
-                    You're already logged in as '{{ userStore.getUser }}'
-                </p>
-                <form
-                    @submit.prevent="login"
-                    class="flex flex-col justify-center">
-                    <div class="input-wrapper">
-                        <label class="text-sm font-medium" for="username"
-                            >Username</label
-                        ><br />
-                        <input
-                            id="username"
-                            class="baseInput"
-                            type="text"
-                            v-model="state.input.user"
-                            placeholder="Username"
-                            @blur="v$.input.user.$touch()" />
-                        <div v-if="this.v$.input.user.$error">
-                            <p
-                                v-for="error in this.v$.input.user.$errors"
-                                :key="error">
-                                {{ error.$message }}
-                            </p>
-                        </div>
+            <p v-if="userStore.getLoggedin">
+                You're already logged in as '{{ userStore.getUser }}'
+            </p>
+            <p v-if="responseMessage" class="bg-red-600">
+                Wrong username or password!
+            </p>
+            <form @submit.prevent="login" class="flex flex-col justify-center">
+                <div class="input-wrapper">
+                    <label class="text-sm font-medium" for="username"
+                        >Username</label
+                    ><br />
+                    <input
+                        id="username"
+                        class="baseInput"
+                        type="text"
+                        v-model="state.input.user"
+                        placeholder="Username"
+                        @blur="v$.input.user.$touch()" />
+                    <div v-if="this.v$.input.user.$error">
+                        <p
+                            v-for="error in this.v$.input.user.$errors"
+                            :key="error">
+                            {{ error.$message }}
+                        </p>
                     </div>
-                    <div class="input-wrapper">
-                        <label class="text-sm font-medium" for="password"
-                            >Password</label
-                        ><br />
-                        <input
-                            id="password"
-                            class="baseInput"
-                            type="password"
-                            v-model="state.input.password"
-                            placeholder="Password"
-                            @blur="v$.input.password.$touch()" />
-                        <div v-if="this.v$.input.password.$error">
-                            <p
-                                v-for="error in this.v$.input.password.$errors"
-                                :key="error">
-                                {{ error.$message }}
-                            </p>
-                        </div>
+                </div>
+                <div class="input-wrapper">
+                    <label class="text-sm font-medium" for="password"
+                        >Password</label
+                    ><br />
+                    <input
+                        id="password"
+                        class="baseInput"
+                        type="password"
+                        v-model="state.input.password"
+                        placeholder="Password"
+                        @blur="v$.input.password.$touch()" />
+                    <div v-if="this.v$.input.password.$error">
+                        <p
+                            v-for="error in this.v$.input.password.$errors"
+                            :key="error">
+                            {{ error.$message }}
+                        </p>
                     </div>
-                    <button class="inputButton" v-on:submit="login()">
-                        <orbit-spinner
-                            v-if="isLoading"
-                            :animation-duration="2000"
-                            :size="25" />
-                        <p v-if="!isLoading">Login</p>
-                    </button>
-                </form>
-            </div>
+                </div>
+                <button class="inputButton" v-on:submit="login()">
+                    <orbit-spinner class="mx-auto"
+                        v-if="isLoading"
+                        :animation-duration="2000"
+                        :size="25" />
+                    <p v-if="!isLoading">Login</p>
+                </button>
+            </form>
         </div>
     </div>
 </template>
@@ -93,6 +95,7 @@ const rules = computed(() => {
         },
     };
 });
+const responseMessage = ref(false);
 const v$ = useValidate(rules, state);
 async function login() {
     isLoading.value = true;
@@ -103,11 +106,11 @@ async function login() {
         (response) => {
             isLoading.value = false;
             if (response.status == "success") {
+                responseMessage.value = false;
                 updateLoggedin(response);
-                alert("Du är nu inloggad '" + response.message + "'");
                 router.push({ name: "dashboard" });
             } else {
-                alert(response.message);
+                responseMessage.value = true;
             }
         }
     );
@@ -115,8 +118,8 @@ async function login() {
 
 function updateLoggedin(respons) {
     userStore.setLoggedin(true);
-    userStore.setToken(respons.token);
     userStore.setUser(respons.message);
+    userStore.setToken(respons.token);
 }
 </script>
 <style></style>
