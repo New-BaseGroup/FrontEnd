@@ -34,6 +34,8 @@
                                     : 'fa-arrow-down'
                             " />
                     </th>
+                    <th class="table-header"></th>
+                    <th class="table-header"></th>
                 </tr>
             </thead>
             <tbody>

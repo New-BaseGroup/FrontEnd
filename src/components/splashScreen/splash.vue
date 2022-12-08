@@ -93,6 +93,9 @@
             <h2 class="p-5 text-3xl font-semibold snap-start">Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do. --Steve Jobs</h2>
         </div>
         <div class="parallax img6 brightness-75"></div>
+        <div class="bbg-white w-full p-12 text-black snap-start">
+            <h2 class="p-5 text-3xl font-semibold snap-start">Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do. --Mark Twain</h2>
+        </div>
         <!-- <div class="bg-white w-full flex h-80">
         <h4 class="font-mono m-10 text-5xl font-semibold">
             "Best working budget app in the business." - Albert Einstein
@@ -128,10 +131,10 @@ const mutedVideo = ref(true);
     background-image: url("../../assets/images/businessmen-working-strategic-planning.jpg");
 }
 .img5 {
-    background-image: url("../../assets/images/jungle.png");
+    background-image: url("../../assets/images/jungle.jpg");
 }
 .img6 {
-    background-image: url("../../assets/images/city.png");
+    background-image: url("../../assets/images/happy.jpg");
 }
 .parallax {
     min-height: 500px;

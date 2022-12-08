@@ -33,7 +33,7 @@
                     </div>
                 </nav>
             </div>
-            <Footer v-if="$route.name != 'home'" />
+            <Footer />
         </div>
     </div>
 </template>
