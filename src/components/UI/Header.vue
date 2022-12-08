@@ -1,5 +1,5 @@
 <template>
-    <header class="px-4 bg-slate-800 shadow-md">
+    <header class="px-4 bg-slate-800 shadow-md snap-start">
         <div
             class="container flex items-center justify-between mx-auto max-w-6xl h-20">
             <div class="min-h-full py-2" @click="home">
