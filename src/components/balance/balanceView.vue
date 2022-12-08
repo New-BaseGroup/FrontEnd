@@ -1,7 +1,5 @@
 <template>
-    <div
-        v-if="!siteStore.loading"
-        class="base-card-table">
+    <div v-if="!siteStore.loading" class="base-card-table">
         <div class="base-card-Container">
             <browserTable
                 :header="'Balance changes in ' + budgetStore.getBudget.name"
@@ -20,7 +18,7 @@ const budgetStore = useBudgetStore();
 const siteStore = useSiteStore();
 
 async function getData() {
-    if (budgetStore.getBudget?.length === 0) {
+    if (!budgetStore.getBudget) {
         await budgetStore.fetchBudgetList();
     }
 }

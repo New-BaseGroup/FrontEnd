@@ -38,15 +38,15 @@ export const useSiteStore = defineStore("site", () => {
     }
     function addWidget() {
         widgets.value.push({
-            id: widgets.value.length,
             header: `Widget ${widgets.value.length}`,
             data: "WidgetStandard",
+            position: widgets.value.length,
         });
         changesMade.value = true;
     }
     function removeWidget(id) {
         const widgetIndex = widgets.value.findIndex(
-            (widget) => widget.id === id
+            (widget) => widget.position === id
         );
         widgets.value.splice(widgetIndex, 1);
         changesMade.value = true;
@@ -56,8 +56,8 @@ export const useSiteStore = defineStore("site", () => {
             `Account/Widgets`,
             userStore.getToken
         ).then((data) => {
-            if (data) {
-                console.log(data);
+            console.log(data);
+            if (data.data.message.length > 0) {
                 widgets.value = data.data.message;
             } else {
                 widgets.value = [
@@ -87,9 +87,8 @@ export const useSiteStore = defineStore("site", () => {
                 widgets.value,
                 userStore.getToken
             ).then((result) => {
-                changesMade.value = false;
-                if (data) {
-                    widgets.value = data.data.message;
+                if (result) {
+                    changesMade.value = false;
                 }
                 return true;
             });

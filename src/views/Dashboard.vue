@@ -14,12 +14,15 @@
             </button>
         </div>
         <div class="base-card-widgets justify-items-center">
-            <template v-for="widget in siteStore.getWidgets" :key="widget.id">
+            <template
+                v-for="widget in sortByPosition(siteStore.getWidgets)"
+                :key="widget.id">
                 <Widget
                     v-if="isLoading != widget"
                     :id="widget.id"
                     :header="widget.header"
                     :data="widget.data"
+                    :position="widget.position"
                     :key="widget.id"
                     @changeWidget="(id, option) => changeWidget(id, option)">
                 </Widget>
@@ -52,7 +55,10 @@ const isLoading = ref(null);
 const siteStore = useSiteStore();
 const budgetStore = useBudgetStore();
 function changeWidget(id, option) {
-    const widget = siteStore.getWidgets?.find((widget) => widget.id == id);
+    console.log(id);
+    const widget = siteStore.getWidgets?.find(
+        (widget) => widget.position == id
+    );
     isLoading.value = widget;
     widget.data = option.getter;
     widget.header = option.title;
@@ -62,11 +68,20 @@ function changeWidget(id, option) {
 }
 async function getData() {
     isLoading.value = true;
-    if (budgetStore.getBudget.length === 0) await budgetStore.fetchBudgetList();
-    if (!siteStore.getWidgets) await siteStore.loadWidgets();
+    if (!budgetStore.getBudget) await budgetStore.fetchBudgetList();
+    if (!siteStore.getWidgets?.length > 0) await siteStore.loadWidgets();
     setTimeout(function () {
         isLoading.value = false;
     }, 2000);
+}
+function sortByPosition(array) {
+    array.sort((a, b) => a.position - b.position);
+    let newPosition = 0;
+    array.forEach((element) => {
+        element.position = newPosition;
+        newPosition++;
+    });
+    return array;
 }
 getData();
 </script>

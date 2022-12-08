@@ -12,7 +12,7 @@
                 v-for="option in settings"
                 :key="option"
                 @click="
-                    $emit('changeWidget', props.id, option);
+                    $emit('changeWidget', props.position, option);
                     openSetting = false;
                     siteStore.setChangesMade(true);
                 "
@@ -24,7 +24,7 @@
             v-if="siteStore.getEditState"
             icon="fa-xmark"
             class="float-right text-xl text-[#000] hover:text-[#2b2b2b]"
-            @click="siteStore.removeWidget(props.id)" />
+            @click="siteStore.removeWidget(props.position)" />
         <h3 class="mt-2 text-3xl font-semibold text-black">
             {{ props.header }}
         </h3>
@@ -45,6 +45,7 @@ const props = defineProps({
     id: Number,
     header: String,
     data: String,
+    position: Number,
 });
 const settings = ref([
     {

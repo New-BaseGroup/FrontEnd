@@ -21,7 +21,7 @@ export const useBudgetStore = defineStore("budget", () => {
             return object.budgetID === currentBudgetID.value;
         });
         if (index === -1) {
-            return [];
+            return null;
         } else return budget.value[index];
     });
     const getBudgetCategories = computed(() => budgetCategories.value);
@@ -120,21 +120,15 @@ export const useBudgetStore = defineStore("budget", () => {
     async function fetchBudget(id) {
         if (userStore.loggedin) {
             siteStore.setLoading(true);
-            const findBudget = budget.value?.find(
-                (budget) => budget.budgetID === id
-            );
-            if (!findBudget) {
-                await API_Service.GetService(
-                    `Budget/${id}`,
-                    userStore.getToken
-                ).then((data) => {
-                    setBudgetCategories(data.data.message);
-                    setBalance(data.data.message);
-                    addBudget(data.data.message);
-                    siteStore.setLoading(false);
-                });
-            }
-            siteStore.setLoading(false);
+            await API_Service.GetService(
+                `Budget/${id}`,
+                userStore.getToken
+            ).then((data) => {
+                setBudgetCategories(data.data.message);
+                setBalance(data.data.message);
+                addBudget(data.data.message);
+                siteStore.setLoading(false);
+            });
         }
     }
     async function fetchBudgetList(store) {

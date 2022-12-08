@@ -98,16 +98,16 @@
         @apply px-7   bg-orange-500  text-black font-bold  cursor-pointer transition duration-300 ease-in-out flex hover:bg-orange-300;
     }
     .table {
-        @apply w-full text-sm text-left bg-background-secondary table-auto;
+        @apply w-full text-sm text-left border bg-background-secondary table-auto;
     }
     .table-title {
-        @apply text-center text-textcolor-input bg-background-secondary border-b py-4 xl:px-6 font-medium;
+        @apply text-center text-textcolor-content border bg-slate-500 py-4 xl:px-6 font-medium;
     }
     .table-row {
-        @apply bg-background-secondary border-b hover:bg-background-ternary text-textcolor-active w-full m-10;
+        @apply bg-background-secondary border hover:bg-background-ternary text-textcolor-active w-full m-10;
     }
     .table-header {
-        @apply text-textcolor-table text-center border-b py-4 mx-20 xl:px-6 font-medium w-auto;
+        @apply text-textcolor-table text-center border-b bg-slate-200 py-4 mx-20 xl:px-6 font-medium w-auto;
     }
     .table-data {
         @apply text-textcolor-table text-center p-4 m-6 xl:px-6;
