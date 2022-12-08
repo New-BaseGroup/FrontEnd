@@ -44,6 +44,8 @@ import Footer from "./components/UI/Footer.vue";
 import SideBar from "./components/UI/SideBar.vue";
 import { useSiteStore } from "./stores/site";
 const siteStore = useSiteStore();
+window.onload = siteStore.siteResize;
+window.onresize = siteStore.siteResize;
 </script>
 <style>
 ::-webkit-scrollbar {

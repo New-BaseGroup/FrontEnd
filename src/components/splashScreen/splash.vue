@@ -1,9 +1,9 @@
 <template>
     <div class="h-screen overflow-scroll snap-start">
         <div
-            class="parallax img4 text-center text-textcolor-input drop-shadow-lg snap-start">
+            class="parallax img4  text-center text-textcolor-input drop-shadow-lg snap-start ">
             <h1
-                class="font-mono p-10 text-9xl font-bold drop-shadow-xl"
+                class="font-mono px-10 pt-24 pb-10 text-9xl font-bold drop-shadow-xl "
                 data-aos="fade-up">
                 SkyBudget
             </h1>
@@ -14,7 +14,7 @@
             </h1>
         </div>
         <div
-            class="w-full flex m-auto place-items-center bg-white h-72 place-content-center snap-start">
+            class="w-full flex m-auto place-items-center bg-white h-72 drop-shadow-lg place-content-center snap-start">
             <img
                 src="../../assets/images/hardly working.jpg"
                 alt="Italian Trulli"
@@ -26,7 +26,7 @@
                 <font-awesome-icon icon="fa-angles-right" @click="" />
             </button>
         </div>
-        <div class="parallax img3 mb-1 brightness-75"></div>
+        <div class="parallax img3 mb-1 brightness-75 drop-shadow-lg"></div>
        
         <div class="bg-white w-full p-12 text-black">
             <h4 class="p-5 text-3xl font-semibold snap-start">
@@ -67,12 +67,12 @@
                 </li>
             </ul>
         </div>
-        <div class="parallax img1"></div>
-        <div class="bg-purple-400 w-full text-center h-2/3 snap-start">
+        <div class="parallax img1 drop-shadow-lg" ></div>
+        <div class="bg-purple-400 w-full text-center h-2/3 snap-start ">
             <video
                 class="h-full m-auto"
-                autoplay
                 loop
+                autoplay
                 :muted="mutedVideo"
                 @click="mutedVideo = !mutedVideo">
                 <font-awesome-icon icon="fa-angle-right" @click="" />
@@ -84,16 +84,16 @@
         </div>
        
 
-        <div class="parallax img2 brightness-75"></div>
-        <div class="bbg-white w-full p-12 text-black snap-start">
+        <div class="parallax img2 brightness-75 drop-shadow-lg"></div>
+        <div class="bg-white w-full p-12 text-black snap-start ">
             <h2 class="p-5 text-3xl font-semibold snap-start">Opportunity is missed by most people because it is dressed in overalls and looks like work. --Thomas Edison</h2>
         </div>
-        <div class="parallax img5 brightness-75"></div>
-        <div class="bbg-white w-full p-12 text-black snap-start">
+        <div class="parallax img5 brightness-75 drop-shadow-lg"></div>
+        <div class="bg-white w-full p-12 text-black snap-start">
             <h2 class="p-5 text-3xl font-semibold snap-start">Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do. --Steve Jobs</h2>
         </div>
-        <div class="parallax img6 brightness-75"></div>
-        <div class="bbg-white w-full p-12 text-black snap-start">
+        <div class="parallax img6 brightness-75 drop-shadow-lg "></div>
+        <div class=" w-full p-12 text-black snap-start">
             <h2 class="p-5 text-3xl font-semibold snap-start">Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do. --Mark Twain</h2>
         </div>
         <!-- <div class="bg-white w-full flex h-80">
@@ -129,6 +129,7 @@ const mutedVideo = ref(true);
 }
 .img4 {
     background-image: url("../../assets/images/businessmen-working-strategic-planning.jpg");
+    filter:grayscale(80%);
 }
 .img5 {
     background-image: url("../../assets/images/jungle.jpg");
