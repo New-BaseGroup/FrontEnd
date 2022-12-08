@@ -1,7 +1,7 @@
 <template>
-    <div class="snap-y snap-mandatory h-screen overflow-scroll">
+    <div class="h-screen overflow-scroll snap-start">
         <div
-            class="parallax img4 text-center text-textcolor-input drop-shadow-lg">
+            class="parallax img4 text-center text-textcolor-input drop-shadow-lg snap-start">
             <h1
                 class="font-mono p-10 text-9xl font-bold drop-shadow-xl"
                 data-aos="fade-up">
@@ -13,23 +13,23 @@
                 The budget app for you.
             </h1>
         </div>
-        <div class="bg-purple-400 w-full text-center h-80">
-            <video
-                class="h-full m-auto"
-                autoplay
-                loop
-                :muted="mutedVideo"
-                @click="mutedVideo = !mutedVideo">
-                <font-awesome-icon icon="fa-angle-right" @click="" />
-                <source
-                    src="../../assets/videos/character-explainer-ad-copy.mp4"
-                    type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <div
+            class="w-full flex m-auto place-items-center bg-white h-72 place-content-center snap-start">
+            <img
+                src="../../assets/images/hardly working.jpg"
+                alt="Italian Trulli"
+                class="w-50 h-4/5 rounded-xl" />
+            <h4 class="font-mono text-5xl m-5 p-5 font-semibold h-1/3">
+                Meet the team.
+            </h4>
+            <button class="h-1/6">
+                <font-awesome-icon icon="fa-angles-right" @click="" />
+            </button>
         </div>
         <div class="parallax img3 mb-1 brightness-75"></div>
-        <div class="bg-blue-300 w-full p-12 text-black">
-            <h4 class="p-5 text-3xl font-semibold">
+       
+        <div class="bg-white w-full p-12 text-black">
+            <h4 class="p-5 text-3xl font-semibold snap-start">
                 EFFECTPLAN REVOLUTIONIZES YOUR BUDGETING AND FORECASTING
                 PROCESSES
             </h4>
@@ -68,21 +68,31 @@
             </ul>
         </div>
         <div class="parallax img1"></div>
-        <div
-            class="w-full flex m-auto place-items-center bg-white h-72 place-content-center">
-            <img
-                src="../../assets/images/hardly working.jpg"
-                alt="Italian Trulli"
-                class="w-50 h-4/5 rounded-xl" />
-            <h4 class="font-mono text-5xl m-5 p-5 font-semibold h-1/3">
-                Meet the team.
-            </h4>
-            <button class="h-1/6">
-                <font-awesome-icon icon="fa-angles-right" @click="" />
-            </button>
+        <div class="bg-purple-400 w-full text-center h-2/3 snap-start">
+            <video
+                class="h-full m-auto"
+                autoplay
+                loop
+                :muted="mutedVideo"
+                @click="mutedVideo = !mutedVideo">
+                <font-awesome-icon icon="fa-angle-right" @click="" />
+                <source
+                    src="../../assets/videos/character-explainer-ad-copy.mp4"
+                    type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
         </div>
+       
 
         <div class="parallax img2 brightness-75"></div>
+        <div class="bbg-white w-full p-12 text-black snap-start">
+            <h2 class="p-5 text-3xl font-semibold snap-start">Opportunity is missed by most people because it is dressed in overalls and looks like work. --Thomas Edison</h2>
+        </div>
+        <div class="parallax img5 brightness-75"></div>
+        <div class="bbg-white w-full p-12 text-black snap-start">
+            <h2 class="p-5 text-3xl font-semibold snap-start">Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do. --Steve Jobs</h2>
+        </div>
+        <div class="parallax img6 brightness-75"></div>
         <!-- <div class="bg-white w-full flex h-80">
         <h4 class="font-mono m-10 text-5xl font-semibold">
             "Best working budget app in the business." - Albert Einstein
@@ -116,6 +126,12 @@ const mutedVideo = ref(true);
 }
 .img4 {
     background-image: url("../../assets/images/businessmen-working-strategic-planning.jpg");
+}
+.img5 {
+    background-image: url("../../assets/images/jungle.png");
+}
+.img6 {
+    background-image: url("../../assets/images/city.png");
 }
 .parallax {
     min-height: 500px;
