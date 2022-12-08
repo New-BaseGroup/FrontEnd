@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <button class="inputButton" v-on:submit="login()">
-                    <orbit-spinner
+                    <orbit-spinner class="mx-auto"
                         v-if="isLoading"
                         :animation-duration="2000"
                         :size="25" />

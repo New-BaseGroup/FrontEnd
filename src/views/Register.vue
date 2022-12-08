@@ -5,6 +5,8 @@
         data-aos-ease="ease"
         data-aos-duration="350"
         data-aos-delay="5">
+        
+        
         <img
             class="w-96"
             src="https://res.cloudinary.com/dsderm9xw/image/upload/v1622028085/3D%20Illustrations/3d-illustration2_ykuua3.png"
@@ -89,7 +91,7 @@
                         </div>
                     </div>
                     <button class="inputButton" v-on:submit="register">
-                        <orbit-spinner
+                        <orbit-spinner class="mx-auto"
                             v-if="isLoading"
                             :animation-duration="2000"
                             :size="30" />
@@ -98,7 +100,9 @@
                 </form>
             </div>
         </div>
+        
     </div>
+   
 </template>
 <script setup>
 import { OrbitSpinner } from "epic-spinners";
